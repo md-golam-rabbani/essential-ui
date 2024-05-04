@@ -75,7 +75,7 @@ const InputHeadingContent = ({
       {required && (
         <span
           aria-disabled={disabled}
-          className="text-danger aria-disabled:text-danger/50"
+          className="text-red-500 aria-disabled:text-red-500/50"
         >
           *
         </span>

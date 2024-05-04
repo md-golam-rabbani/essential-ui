@@ -314,7 +314,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
         <CustomButton
           disabled={false}
           colorScheme="primary"
-          className="!bg-danger"
+          className="!bg-red-500"
           type="action"
           onButtonClick={() => {
             setFormState(initialFormValue);
@@ -334,7 +334,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
           <Typography
             size="c1"
             className={cn(
-              formSubmitState?.success ? 'text-success' : 'text-danger'
+              formSubmitState?.success ? 'text-green-500' : 'text-red-500'
             )}
           >
             {formSubmitState?.message}

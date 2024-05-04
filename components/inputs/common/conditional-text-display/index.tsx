@@ -19,7 +19,7 @@ export const ConditionalTextDisplay = ({
       {/*If showErrorMsg is true, there's an error, and the component is not disabled it 
       will render the error message else it will render the helperText.*/}
       {showErrorMsg && !!error && !disabled ? (
-        <Typography size="c1" className="text-danger">
+        <Typography size="c1" className="text-red-500">
           {error}
         </Typography>
       ) : (

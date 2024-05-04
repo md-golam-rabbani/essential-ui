@@ -19,9 +19,9 @@ const Toaster = ({ ...props }: ToasterProps) => {
 
             // icons colors override based on data-type
             '[&[data-type="info"]&_[data-icon]]:text-black',
-            '[&[data-type="warning"]&_[data-icon]]:text-warning',
-            '[&[data-type="success"]&_[data-icon]]:text-success',
-            '[&[data-type="error"]&_[data-icon]]:text-danger'
+            '[&[data-type="warning"]&_[data-icon]]:text-yellow-500',
+            '[&[data-type="success"]&_[data-icon]]:text-green-500',
+            '[&[data-type="error"]&_[data-icon]]:text-red-500'
           ),
           title: cn('group-[.toast]:font-bold group-[.toast]:text-sm'),
           description: cn(
