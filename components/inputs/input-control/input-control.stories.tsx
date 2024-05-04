@@ -30,9 +30,11 @@ const meta: Meta<typeof InputControl> = {
   decorators: [
     (Story, args) => {
       return (
-        <div className="section-padding-primary container">
-          <div className="mx-auto max-w-xs">
-            <Story args={{ ...args.args }} />
+        <div className="section-padding-primary">
+          <div className="container">
+            <div className="mx-auto max-w-xs">
+              <Story args={{ ...args.args }} />
+            </div>
           </div>
         </div>
       );

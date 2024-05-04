@@ -9,10 +9,9 @@ export const customButtonVariants = cva(
        * Note: The ColorScheme field corresponds to the style field in the design.
        */
       colorScheme: {
-        primary:
-          'bg-primary text-white hover:bg-primary-dark active:bg-primary',
+        primary: 'bg-blue-500 text-white hover:bg-blue-700 active:bg-blue-700',
         secondary:
-          'bg-white text-black hover:bg-gray-light hover:text-black active:bg-primary active:text-white',
+          'bg-white text-black hover:bg-gray-300 hover:text-black active:bg-blue-500 active:text-white',
       },
     },
     defaultVariants: {

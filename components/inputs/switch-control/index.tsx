@@ -23,18 +23,18 @@ export const SwitchControl = ({
 
     /** Unchecked Style */
     // Default Style
-    'data-[state=unchecked]:bg-gray-dark data-[state=unchecked]:border-gray-dark data-[state=unchecked]:[&>span]:translate-x-[0.0625rem]',
+    'data-[state=unchecked]:bg-gray-600 data-[state=unchecked]:border-gray-600 data-[state=unchecked]:[&>span]:translate-x-[0.0625rem]',
     // Hover Style
     'data-[state=unchecked]:hover:bg-black data-[state=unchecked]:hover:border-black',
 
     /** Checked Style */
     // Default Style
-    'data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:[&>span]:translate-x-[1.1875rem]',
+    'data-[state=checked]:bg-blue-500 data-[state=checked]:border-primary data-[state=checked]:[&>span]:translate-x-[1.1875rem]',
 
     /** Error Style */
     error && '!border-danger',
     /** Disable Style */
-    'disabled:!bg-gray-light disabled:!border-gray-light',
+    'disabled:!bg-gray-300 disabled:!border-gray-300',
     className
   );
   return (

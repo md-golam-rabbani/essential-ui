@@ -44,43 +44,45 @@ export const Primary: Story = {
       };
 
       return (
-        <div className="section-padding-primary container">
-          <CustomModal
-            {...args}
-            onCustomModalChange={(open) =>
-              updateArgs({ ...args, modalOpen: open })
-            }
-            trigger={
-              <CustomButton
-                type="action"
-                colorScheme="primary"
-                disabled={false}
-                onButtonClick={modalClickHandler}
-              >
-                Show Modal
-              </CustomButton>
-            }
-            content={
-              <div className="flex flex-col items-center gap-5 rounded px-4 py-5">
-                <h3 className="text-center text-xl font-semibold">
-                  Modal Title
-                </h3>
-                <h3 className="text-md text-gray-700">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-                  magnam voluptate voluptates blanditiis, aut quam dicta labore
-                  distinctio et id?
-                </h3>
+        <div className="section-padding-primary">
+          <div className="container">
+            <CustomModal
+              {...args}
+              onCustomModalChange={(open) =>
+                updateArgs({ ...args, modalOpen: open })
+              }
+              trigger={
                 <CustomButton
                   type="action"
                   colorScheme="primary"
                   disabled={false}
-                  onButtonClick={modalCloseHandler}
+                  onButtonClick={modalClickHandler}
                 >
-                  Close
+                  Show Modal
                 </CustomButton>
-              </div>
-            }
-          />
+              }
+              content={
+                <div className="flex flex-col items-center gap-5 rounded px-4 py-5">
+                  <h3 className="text-center text-xl font-semibold">
+                    Modal Title
+                  </h3>
+                  <h3 className="text-md text-gray-700">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Odit magnam voluptate voluptates blanditiis, aut quam dicta
+                    labore distinctio et id?
+                  </h3>
+                  <CustomButton
+                    type="action"
+                    colorScheme="primary"
+                    disabled={false}
+                    onButtonClick={modalCloseHandler}
+                  >
+                    Close
+                  </CustomButton>
+                </div>
+              }
+            />
+          </div>
         </div>
       );
     },

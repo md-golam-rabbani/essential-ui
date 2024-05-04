@@ -53,8 +53,10 @@ const meta: Meta<typeof CustomSheet> = {
   },
   decorators: [
     (Story) => (
-      <div className="section-padding-primary container">
-        <Story />
+      <div className="section-padding-primary">
+        <div className="container">
+          <Story />
+        </div>
       </div>
     ),
   ],
@@ -92,7 +94,7 @@ export const Default: Story = {
           content={
             <>
               {/* Drawer Header implement with absolute */}
-              <div className="absolute top-0 w-full border-b border-gray-light bg-white px-5 py-4 text-center font-semibold">
+              <div className="absolute top-0 w-full border-b border-gray-300 bg-white px-5 py-4 text-center font-semibold">
                 <Typography
                   size="h3"
                   className="text-center font-semibold text-black"
@@ -112,7 +114,7 @@ export const Default: Story = {
                 <DummyDrawerContent />
               </div>
               {/* Drawer Footer implement with absolute */}
-              <div className="absolute bottom-0 w-full border-t border-gray-light bg-white p-5 text-center font-semibold">
+              <div className="absolute bottom-0 w-full border-t border-gray-300 bg-white p-5 text-center font-semibold">
                 <CustomButton
                   type="action"
                   colorScheme="primary"
@@ -137,14 +139,14 @@ const DummyDrawerContent = () => {
   return (
     <>
       <Typography size="s1">Paragraph Title 1</Typography>
-      <Typography size="p1" className="text-gray-dark">
+      <Typography size="p1" className="text-gray-600">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt
         laudantium architecto animi, dolores saepe, impedit blanditiis quis
         excepturi deserunt quod deleniti consequuntur vel totam, perspiciatis
         eaque culpa ab adipisci cumque!
       </Typography>
       <Typography size="s1">Paragraph Title 2</Typography>
-      <Typography size="p1" className="text-gray-dark">
+      <Typography size="p1" className="text-gray-600">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt
         laudantium architecto animi, dolores saepe, impedit blanditiis quis
         excepturi deserunt quod deleniti consequuntur vel totam, perspiciatis
@@ -159,7 +161,7 @@ const DummyDrawerContent = () => {
         quisquam?
       </Typography>
       <Typography size="s1">Paragraph Title 3</Typography>
-      <Typography size="p1" className="text-gray-dark">
+      <Typography size="p1" className="text-gray-600">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt
         laudantium architecto animi, dolores saepe, impedit blanditiis quis
         excepturi deserunt quod deleniti consequuntur vel totam, perspiciatis
@@ -168,7 +170,7 @@ const DummyDrawerContent = () => {
         tempore voluptate reiciendis sunt.
       </Typography>
       <Typography size="s1">Paragraph Title 4</Typography>
-      <Typography size="p1" className="text-gray-dark">
+      <Typography size="p1" className="text-gray-600">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt
         laudantium architecto animi, dolores saepe, impedit blanditiis quis
         excepturi deserunt quod deleniti consequuntur vel totam, perspiciatis

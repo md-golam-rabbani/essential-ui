@@ -24,7 +24,7 @@ export const RadioControl = ({
 }: IRadioControl) => {
   const radioClasses = cn(
     //Default style
-    'border border-solid size-[1.125rem] rounded-full appearance-none border-gray-dark relative flex items-center justify-center after:absolute after:size-[0.75rem] after:rounded-full after:bg-primary after:scale-0 after:transition-all after:duration-300 transition-all duration-300',
+    'border border-solid size-[1.125rem] rounded-full appearance-none border-gray-600 relative flex items-center justify-center after:absolute after:size-[0.75rem] after:rounded-full after:bg-blue-500 after:scale-0 after:transition-all after:duration-300 transition-all duration-300',
     //Hover style
     'hover:border-black',
     //Active style
@@ -32,7 +32,7 @@ export const RadioControl = ({
     //Error Style
     error && '!border-danger',
     //Disable style
-    'disabled:!border-gray-light disabled:after:!bg-gray-light',
+    'disabled:!border-gray-300 disabled:after:!bg-gray-300',
     className
   );
   return (

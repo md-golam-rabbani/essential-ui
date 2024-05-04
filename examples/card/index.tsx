@@ -53,9 +53,9 @@ export const Card = ({ image, title, author, date, content }: ICard) => {
               {title}
             </a>
           </header>
-          <p className="mt-2 text-gray-dark">{content}</p>
+          <p className="mt-2 text-gray-600">{content}</p>
           {/* Display the date */}
-          <time className="mt-4 text-sm text-gray-dark">
+          <time className="mt-4 text-sm text-gray-600">
             Published on {date}
           </time>
         </div>

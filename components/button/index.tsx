@@ -34,14 +34,14 @@ import styles from './button.module.css';
 export const CustomButton = (props: ICustomButton) => {
   const buttonClasses = cn(
     // Disabled styles
-    props.disabled && '!pointer-events-none !text-gray-light !bg-white',
+    props.disabled && '!pointer-events-none !text-gray-300 !bg-white',
     // Loading style
     [
       // Fill button default
       props.type !== 'link' &&
         props.type !== 'inline' &&
         props.loading &&
-        'pointer-events-none [&_.btn-text]:opacity-0 bg-primary text-white',
+        'pointer-events-none [&_.btn-text]:opacity-0 bg-blue-500 text-white',
     ],
     customButtonVariants({ colorScheme: props.colorScheme }),
     props.className

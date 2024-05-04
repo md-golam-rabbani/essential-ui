@@ -24,13 +24,13 @@ export const CheckboxControl = ({
 }: ICheckboxControl) => {
   const checkboxClasses = cn(
     /** Default style */
-    'border border-solid size-[1.125rem] rounded-[0.25rem] appearance-none border-gray-dark bg-transparent relative flex items-center justify-center after:absolute after:border-0 after:border-b after:border-r after:border-white after:w-[0.25rem] after:h-[0.5rem] after:top-[20%] after:rotate-45 after:bg-transparent after:scale-0 after:origin-center after:transition-all after:duration-300 transition-all duration-300',
+    'border border-solid size-[1.125rem] rounded-[0.25rem] appearance-none border-gray-600 bg-transparent relative flex items-center justify-center after:absolute after:border-0 after:border-b after:border-r after:border-white after:w-[0.25rem] after:h-[0.5rem] after:top-[20%] after:rotate-45 after:bg-transparent after:scale-0 after:origin-center after:transition-all after:duration-300 transition-all duration-300',
     /** Hover style*/
     'hover:border-black',
     /** Active style*/
-    'checked:border-primary checked:hover:border-primary checked:after:scale-100 checked:bg-primary',
+    'checked:border-primary checked:hover:border-primary checked:after:scale-100 checked:bg-blue-500',
     /** Disabled style*/
-    'disabled:!border-gray-light disabled:bg-gray-light',
+    'disabled:!border-gray-300 disabled:bg-gray-300',
     /**Error style */
     error && '!border-danger',
     className

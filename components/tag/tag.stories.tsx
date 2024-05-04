@@ -7,8 +7,10 @@ const meta: Meta<typeof Tag> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div className="section-padding-primary container">
-        <Story />
+      <div className="section-padding-primary">
+        <div className="container">
+          <Story />
+        </div>
       </div>
     ),
   ],

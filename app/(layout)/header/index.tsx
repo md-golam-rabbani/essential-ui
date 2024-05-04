@@ -44,14 +44,14 @@ export function Header({ menuLinks }: IHeader) {
                     {menuLinks.map((menuLink, index) => (
                       <li
                         key={index}
-                        className="w-full cursor-pointer py-3 text-center transition-all duration-300 hover:bg-gray-light"
+                        className="w-full cursor-pointer py-3 text-center transition-all duration-300 hover:bg-gray-300"
                       >
                         <CustomLink {...menuLink}>{menuLink.label}</CustomLink>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="absolute bottom-0 w-full border-t border-gray-light bg-white p-4">
+                  <div className="absolute bottom-0 w-full border-t border-gray-300 bg-white p-4">
                     <CustomButton
                       type="action"
                       colorScheme="primary"

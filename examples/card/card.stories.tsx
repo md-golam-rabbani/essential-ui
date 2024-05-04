@@ -10,8 +10,10 @@ const meta: Meta<typeof Card> = {
   args: cardProps,
   decorators: [
     (Story) => (
-      <div className="section-padding-primary container">
-        <Story />
+      <div className="section-padding-primary">
+        <div className="container">
+          <Story />
+        </div>
       </div>
     ),
   ],

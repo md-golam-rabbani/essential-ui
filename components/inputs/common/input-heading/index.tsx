@@ -24,7 +24,7 @@ export const InputHeading = ({
   ...props
 }: IInputHeading) => {
   const inputHeadingClasses = cn(
-    'text-sm font-normal text-black aria-disabled:text-gray-dark',
+    'text-sm font-normal text-black aria-disabled:text-gray-600',
     // Additional custom className (optional)
     className
   );

@@ -23,7 +23,7 @@ export const CustomAccordionInnerContent = ({ accordionItems }: IProps) => {
         <AccordionItem
           key={index}
           value={`item-${index}`}
-          className="border-b border-gray-light bg-transparent transition-colors [&[data-state='open']]:bg-transparent"
+          className="border-b border-gray-300 bg-transparent transition-colors [&[data-state='open']]:bg-transparent"
         >
           <AccordionTrigger className="w-full no-underline hover:no-underline [&[data-state='open']&_.accordion-icon]:-rotate-180">
             <Typography
@@ -43,10 +43,7 @@ export const CustomAccordionInnerContent = ({ accordionItems }: IProps) => {
           </AccordionTrigger>
           <AccordionContent>
             <div
-              className={cn(
-                accordionItemPadding,
-                'pt-0 text-sm text-gray-dark'
-              )}
+              className={cn(accordionItemPadding, 'pt-0 text-sm text-gray-600')}
             >
               {accordionItem.content}
             </div>

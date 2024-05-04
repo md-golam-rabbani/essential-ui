@@ -20,9 +20,11 @@ const meta: Meta<typeof CustomAccordion> = {
   },
   decorators: [
     (Story) => (
-      <div className="section-padding-primary container">
-        <div className="mx-auto max-w-[800px]">
-          <Story />
+      <div className="section-padding-primary">
+        <div className="container">
+          <div className="mx-auto max-w-[800px]">
+            <Story />
+          </div>
         </div>
       </div>
     ),

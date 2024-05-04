@@ -13,7 +13,7 @@ export function Footer({ menuLinks }: IFooter) {
                 <li key={index}>
                   <CustomLink
                     {...menuLink}
-                    className="transition-colors duration-300 hover:text-primary"
+                    className="transition-colors duration-300 hover:text-blue-500"
                   />
                 </li>
               ))}

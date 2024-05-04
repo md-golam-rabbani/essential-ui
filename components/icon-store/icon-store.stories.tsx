@@ -45,7 +45,7 @@ function IconsTemplate() {
             .map((icon, index) => (
               <div
                 key={index}
-                className="rounded-10 bg-white p-3 text-center align-top shadow-gray-light"
+                className="rounded-10 shadow-gray-light bg-white p-3 text-center align-top"
               >
                 <IconStore
                   iconName={icon}

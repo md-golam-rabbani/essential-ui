@@ -17,8 +17,10 @@ const meta: Meta<typeof Typography> = {
   },
   decorators: [
     (Story) => (
-      <div className="section-padding-primary container">
-        <Story />
+      <div className="section-padding-primary">
+        <div className="container">
+          <Story />
+        </div>
       </div>
     ),
   ],
@@ -39,67 +41,67 @@ function ShowCase() {
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Hero
         </Typography>
         <Typography size="hero">Heading</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Heading 1
         </Typography>
         <Typography size="h1">Heading</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Heading 2
         </Typography>
         <Typography size="h2">Heading</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Heading 3
         </Typography>
         <Typography size="h3">Heading</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Subheading 1
         </Typography>
         <Typography size="s1">Heading</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Subheading 2
         </Typography>
         <Typography size="s2">Heading</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Paragraph 1
         </Typography>
         <Typography size="p1">Paragraph</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Paragraph 2
         </Typography>
         <Typography size="p2">Paragraph</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Overline 1
         </Typography>
         <Typography size="o1">Overline</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Caption 1
         </Typography>
         <Typography size="c1">Caption</Typography>
       </div>
       <div className="space-y-2">
-        <Typography size="o1" className={'text-primary-light'}>
+        <Typography size="o1" className={'text-blue-500-light'}>
           Quote 1
         </Typography>
         <Typography size="q1">Quote</Typography>

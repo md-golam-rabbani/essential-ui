@@ -87,7 +87,7 @@ export const SelectControl = ({
               // Focus Style
               'transition-all duration-700 focus:outline-0 focus:ring-0 focus:ring-offset-0 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:stroke-black [&>svg]:opacity-100 [&>svg]:transition-transform [&>svg]:duration-300 [&>svg]:data-[state=open]:rotate-180',
               // Placeholder and selected value style
-              [isValue ? 'text-black' : 'text-gray-dark']
+              [isValue ? 'text-black' : 'text-gray-600']
             )}
             id={uniqueId}
             name={name}
@@ -110,7 +110,7 @@ export const SelectControl = ({
                 key={i}
                 value={value || ' '}
                 className={cn(
-                  'cursor-pointer rounded bg-white transition-all duration-300 hover:bg-gray-light',
+                  'cursor-pointer rounded bg-white transition-all duration-300 hover:bg-gray-300',
                   // Revert option style
                   !value && i == 0 && 'text-black [&_svg]:hidden'
                 )}

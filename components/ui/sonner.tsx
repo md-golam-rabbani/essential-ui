@@ -25,11 +25,11 @@ const Toaster = ({ ...props }: ToasterProps) => {
           ),
           title: cn('group-[.toast]:font-bold group-[.toast]:text-sm'),
           description: cn(
-            'group-[.toast]:text-gray-dark group-[.toast]:text-sm group-[.toast]:mt-0.5'
+            'group-[.toast]:text-gray-600 group-[.toast]:text-sm group-[.toast]:mt-0.5'
           ),
           actionButton: cn('group-[.toast]:bg-black group-[.toast]:text-white'),
           cancelButton: cn(
-            'group-[.toast]:bg-gray-light group-[.toast]:text-black'
+            'group-[.toast]:bg-gray-300 group-[.toast]:text-black'
           ),
         },
       }}

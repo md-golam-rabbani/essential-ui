@@ -26,7 +26,7 @@ export const ConditionalTextDisplay = ({
         !!helperText && (
           <Typography
             size="c1"
-            className={cn('text-gray-dark', helperTextClassName)}
+            className={cn('text-gray-600', helperTextClassName)}
           >
             {helperText}
           </Typography>

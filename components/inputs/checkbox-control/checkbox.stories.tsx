@@ -5,6 +5,7 @@ import { useArgs, useState } from '@storybook/preview-api';
 import { ICheckboxControl } from './interface';
 import { checkboxControlProps } from './story-props';
 import { ChangeEvent } from 'react';
+import { cn } from '@/lib/shadcn/utils';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof CheckboxControl> = {
@@ -41,9 +42,11 @@ const meta: Meta<typeof CheckboxControl> = {
   decorators: [
     (Story, args) => {
       return (
-        <div className="section-padding-primary container">
-          <div className="mx-auto max-w-xs">
-            <Story args={{ ...args.args }} />
+        <div className="section-padding-primary">
+          <div className="container">
+            <div className="mx-auto max-w-xs">
+              <Story args={{ ...args.args }} />
+            </div>
           </div>
         </div>
       );
@@ -77,6 +80,10 @@ export const Default: Story = {
     },
   ],
 };
+
+const checkboxWrapperClasses = cn(
+  'flex flex-row items-center justify-center gap-2 capitalize'
+);
 
 export const Example: Story = {
   args: checkboxControlProps,
@@ -112,7 +119,7 @@ export const Example: Story = {
 
       return (
         <div className="flex w-fit flex-col items-start justify-start gap-4">
-          <label className="text flex flex-row items-center justify-center gap-2 capitalize">
+          <label className={checkboxWrapperClasses}>
             <CheckboxControl
               {...args.args}
               onCheckboxChange={handleOnChange}
@@ -121,7 +128,7 @@ export const Example: Story = {
             />
             Java
           </label>
-          <label className="text flex flex-row items-center justify-center gap-2 capitalize">
+          <label className={checkboxWrapperClasses}>
             <CheckboxControl
               {...args.args}
               onCheckboxChange={handleOnChange}
@@ -130,7 +137,7 @@ export const Example: Story = {
             />
             C
           </label>
-          <label className="text flex flex-row items-center justify-center gap-2 capitalize">
+          <label className={checkboxWrapperClasses}>
             <CheckboxControl
               {...args.args}
               onCheckboxChange={handleOnChange}
@@ -139,7 +146,7 @@ export const Example: Story = {
             />
             C++
           </label>
-          <label className="text flex flex-row items-center justify-center gap-2 capitalize">
+          <label className={checkboxWrapperClasses}>
             <CheckboxControl
               {...args.args}
               onCheckboxChange={handleOnChange}
@@ -148,7 +155,7 @@ export const Example: Story = {
             />
             PHP
           </label>
-          <label className="text flex flex-row items-center justify-center gap-2 capitalize">
+          <label className={checkboxWrapperClasses}>
             <CheckboxControl
               {...args.args}
               onCheckboxChange={handleOnChange}
@@ -157,7 +164,7 @@ export const Example: Story = {
             />
             Python
           </label>
-          <label className="text flex flex-row items-center justify-center gap-2 capitalize">
+          <label className={checkboxWrapperClasses}>
             <CheckboxControl
               {...args.args}
               onCheckboxChange={handleOnChange}

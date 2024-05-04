@@ -3,7 +3,7 @@ import { ICustomAccordion } from './interface';
 import { CustomAccordionInnerContent } from './sub-components/inner-content';
 import { Accordion } from '@/components/ui/accordion';
 
-const wrapperClasses = cn('border-t border-gray-light');
+const wrapperClasses = cn('border-t border-gray-300');
 
 /**
  * The accordion component delivers large amounts

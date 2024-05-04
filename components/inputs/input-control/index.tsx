@@ -99,7 +99,7 @@ export function InputControl({
           <IconStore
             iconName="tick"
             className={cn(
-              'absolute right-3 top-1/2 cursor-default text-lg leading-none text-success',
+              'text-success absolute right-3 top-1/2 cursor-default text-lg leading-none',
               label ? 'top-[53%]' : 'top-[30%]'
             )}
           />
