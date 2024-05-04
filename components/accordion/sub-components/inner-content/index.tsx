@@ -37,7 +37,7 @@ export const CustomAccordionInnerContent = ({ accordionItems }: IProps) => {
               {accordionItem.title}
               <IconStore
                 iconName="chevron-down"
-                className="accordion-icon flex flex-none items-center justify-center self-baseline text-md/[1] text-[inherit] transition-transform duration-300"
+                className="accordion-icon flex flex-none items-center justify-center self-baseline text-lg/[1] text-[inherit] transition-transform duration-300"
               />
             </Typography>
           </AccordionTrigger>
