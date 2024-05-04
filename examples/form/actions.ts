@@ -57,7 +57,15 @@ export async function handleSubmit(
     errors.interest = 'Please enable your interest';
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 10000));
+  const terms = formData.get('terms');
+  if (!terms) {
+    errors.terms = 'Please enable terms check';
+  }
+
+  /**
+   * For testing pending state
+   */
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // If there are any validation errors, return them
   if (Object.keys(errors).length > 0) {
@@ -68,7 +76,10 @@ export async function handleSubmit(
     };
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 6000));
+  /**
+   * For testing pending state
+   */
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   // If validation passes, proceed with form processing
   return {

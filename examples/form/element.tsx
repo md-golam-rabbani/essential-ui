@@ -25,9 +25,10 @@ const initialExampleFormFieldsValue: IExampleFormFields = {
   phone: '',
   password: '',
   jobLocation: '',
+  jobRole: '',
   languages: [],
   interest: false,
-  jobRole: '',
+  terms: false,
 };
 
 interface IExampleFormElements {
@@ -40,6 +41,8 @@ export const ExampleFormElements = ({
   const [formFields, setFormFields] = useState<IExampleFormFields>(
     initialExampleFormFieldsValue
   );
+
+  console.log(formFields);
 
   const [formSubmitState, setFormSubmitState] =
     useState<IExampleFormState | null>(initialFormState);
@@ -64,24 +67,27 @@ export const ExampleFormElements = ({
     setFormFields((prevValue) => {
       let newStateValue: IExampleFormFields = { ...prevValue };
 
-      /**
-       * Updates the form state based on the element's type and value.
-       * If the element is not a checkbox, it directly assigns the
-       * element's value to the new state. If the element is a checkbox,
-       * it calls `getCheckBoxValues` to update the state with the
-       * checkbox's value.
-       */
-      if (element.type !== 'checkbox') {
-        newStateValue = { ...newStateValue, [element.name]: element.value };
-      } else {
+      // Check if the element is a checkbox for "languages"
+      if (element.name === 'languages') {
         newStateValue = {
           ...newStateValue,
-          [element.name]: getCheckBoxValues(
+          languages: getCheckBoxValues(
             prevValue[element.name as keyof IExampleFormFields] as string[],
             element.value,
             element.checked
           ),
         };
+      }
+      // Check if the element is a checkbox for "terms"
+      else if (element.name === 'terms') {
+        newStateValue = {
+          ...newStateValue,
+          terms: element.checked,
+        };
+      }
+      // For other input types
+      else {
+        newStateValue = { ...newStateValue, [element.name]: element.value };
       }
 
       return newStateValue;
@@ -100,7 +106,7 @@ export const ExampleFormElements = ({
     <>
       {/* Default variant  */}
 
-      {/* First Name  */}
+      {/* First name  */}
       <InputControl
         label="First Name"
         name="fname"
@@ -116,7 +122,7 @@ export const ExampleFormElements = ({
         onInputChange={handleFormElementChange}
       />
 
-      {/* Last Name  */}
+      {/* Last name  */}
       <InputControl
         label="Last Name"
         name="lname"
@@ -211,7 +217,7 @@ export const ExampleFormElements = ({
         helperText="Please select a job role"
       />
 
-      {/* Gender  */}
+      {/* Job location  */}
       <fieldset className={inputGroupParentClasses}>
         <InputHeading
           label={'Preferred Job Location'}
@@ -296,6 +302,7 @@ export const ExampleFormElements = ({
         )}
       </fieldset>
 
+      {/* Interested  */}
       <div className={inputGroupParentClasses}>
         <label className={inputItemParentClasses}>
           <SwitchControl
@@ -318,6 +325,30 @@ export const ExampleFormElements = ({
           />
         )}
       </div>
+
+      {/* Terms   */}
+      <fieldset className={inputGroupParentClasses}>
+        <div className={inlineWrapperClasses}>
+          <label className={inputItemParentClasses}>
+            <CheckboxControl
+              name="terms"
+              value={formFields.terms ? 'true' : 'false'}
+              onCheckboxChange={handleFormElementChange}
+              disabled={pending}
+              error={!!formSubmitState?.error?.terms}
+              checked={formFields.terms ? true : false}
+            />
+            <span>I agree to the terms & condition</span>
+          </label>
+        </div>
+
+        {formSubmitState?.error?.terms && (
+          <ConditionalTextDisplay
+            error={formSubmitState?.error?.terms}
+            showErrorMsg
+          />
+        )}
+      </fieldset>
 
       {/* Buttons  */}
       <div className="flex flex-wrap items-center gap-2">

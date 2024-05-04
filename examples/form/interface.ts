@@ -8,6 +8,7 @@ export interface IExampleFormFields {
   languages: string[];
   interest: boolean;
   jobRole: string;
+  terms: boolean;
 }
 
 export interface IExampleFormState {
