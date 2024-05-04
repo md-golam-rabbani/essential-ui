@@ -19,7 +19,7 @@ export function Footer({ menuLinks }: IFooter) {
               ))}
             </ul>
           )}
-          <p>&copy;{new Date().getFullYear()} LemonHive</p>
+          <p>&copy;{new Date().getFullYear()} Essential Ui</p>
         </div>
       </div>
     </footer>

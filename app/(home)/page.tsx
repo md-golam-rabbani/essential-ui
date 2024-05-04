@@ -1,7 +1,11 @@
+import { Typography } from '@/components/typography';
+
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1>NextJS Starter</h1>
+    <main className="flex min-h-dvh flex-col items-center justify-center">
+      <div className="container">
+        <Typography size="h1">Essential Ui</Typography>
+      </div>
     </main>
   );
 }

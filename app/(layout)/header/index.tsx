@@ -2,8 +2,6 @@
 
 import { CustomLink } from '@/components/custom-link';
 import { IHeader } from './interface';
-import Image from 'next/image';
-import Logo from '@/public/brand/logo.png';
 import Link from 'next/link';
 import { IconStore } from '@/components/icon-store';
 import { CustomSheet } from '@/components/custom-sheet';
@@ -21,18 +19,11 @@ export function Header({ menuLinks }: IHeader) {
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
             <h1>
               <Link href={'/'} className="block">
-                <Image
-                  className="w-48 md:w-auto"
-                  width={Logo.width}
-                  height={Logo.height}
-                  src={Logo.src}
-                  alt="Logo"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  placeholder="blur"
-                  blurDataURL={Logo.blurDataURL}
-                />
+                Essential Ui
               </Link>
-              <span className="sr-only">Lemon Hive Next.js Starter</span>
+              <span className="sr-only">
+                {process.env.PROJECT_NAME || 'Essential Ui'}
+              </span>
             </h1>
             <CustomSheet
               sheetOpen={sheetOpen}
