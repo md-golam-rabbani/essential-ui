@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { IFormState, IFormStatusState } from './interface';
+import { IExampleFormFields, IExampleFormState } from './interface';
 import { useFormStatus } from 'react-dom';
 import { InputControl } from '@/components/inputs/input-control';
 import { SelectControl } from '@/components/inputs/select-control';
@@ -18,7 +18,7 @@ const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
 const inputItemParentClasses = cn('flex flex-row items-center gap-2 text-base');
 const inputGroupParentClasses = cn('grid gap-1');
 
-const initialFormValue: IFormState = {
+const initialExampleFormFieldsValue: IExampleFormFields = {
   fname: '',
   lname: '',
   email: '',
@@ -30,11 +30,19 @@ const initialFormValue: IFormState = {
   jobRole: '',
 };
 
-export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
-  const [formState, setFormState] = useState<IFormState>(initialFormValue);
+interface IExampleFormElements {
+  formState: IExampleFormState;
+}
+
+export const ExampleFormElements = ({
+  formState: initialFormState,
+}: IExampleFormElements) => {
+  const [formFields, setFormFields] = useState<IExampleFormFields>(
+    initialExampleFormFieldsValue
+  );
 
   const [formSubmitState, setFormSubmitState] =
-    useState<IFormStatusState | null>(state);
+    useState<IExampleFormState | null>(initialFormState);
   /**
    * This useEffect hook is used to synchronize the formSubmitState with the
    * provided state prop. It ensures that the formSubmitState is always
@@ -45,16 +53,16 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
    * success or error states, are cleared.
    */
   useEffect(() => {
-    setFormSubmitState(state);
-  }, [state]);
+    setFormSubmitState(initialFormState);
+  }, [initialFormState]);
 
   const { pending } = useFormStatus();
 
   const handleFormElementChange = (event: ChangeEvent<HTMLInputElement>) => {
     const element = event.target;
 
-    setFormState((prevValue) => {
-      let newStateValue: IFormState = { ...prevValue };
+    setFormFields((prevValue) => {
+      let newStateValue: IExampleFormFields = { ...prevValue };
 
       /**
        * Updates the form state based on the element's type and value.
@@ -69,7 +77,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
         newStateValue = {
           ...newStateValue,
           [element.name]: getCheckBoxValues(
-            prevValue[element.name as keyof IFormState] as string[],
+            prevValue[element.name as keyof IExampleFormFields] as string[],
             element.value,
             element.checked
           ),
@@ -80,9 +88,18 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
     });
   };
 
+  useEffect(() => {
+    if (formSubmitState?.success) {
+      setFormFields({
+        ...initialExampleFormFieldsValue,
+      });
+    }
+  }, [formSubmitState]);
+
   return (
     <>
       {/* Default variant  */}
+
       {/* First Name  */}
       <InputControl
         label="First Name"
@@ -91,7 +108,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
         placeholder="Enter your first name"
         helperText="Min. 3 characters"
         required={true}
-        value={formState.fname}
+        value={formFields.fname}
         error={formSubmitState?.error?.fname}
         showErrorMsg={!!formSubmitState?.error?.fname}
         disabled={pending}
@@ -105,7 +122,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
         name="lname"
         type="text"
         placeholder="Enter your last name"
-        value={formState.lname}
+        value={formFields.lname}
         error={formSubmitState?.error?.lname}
         showErrorMsg={!!formSubmitState?.error?.lname}
         disabled={pending}
@@ -121,7 +138,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
         placeholder="Enter your email"
         helperText="Please enter a valid email"
         required={true}
-        value={formState.email}
+        value={formFields.email}
         error={formSubmitState?.error?.email}
         showErrorMsg={!!formSubmitState?.error?.email}
         disabled={pending}
@@ -137,7 +154,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
         placeholder="Enter a Password"
         helperText="Min. 8 characters, contain at least one digit, one lowercase letter, and one uppercase letter"
         required={true}
-        value={formState.password}
+        value={formFields.password}
         error={formSubmitState?.error?.password}
         showErrorMsg={!!formSubmitState?.error?.password}
         disabled={pending}
@@ -153,7 +170,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
         placeholder="Enter your phone number"
         helperText="Enter a valid phone number"
         required={true}
-        value={formState.phone}
+        value={formFields.phone}
         error={formSubmitState?.error?.phone}
         showErrorMsg={!!formSubmitState?.error?.phone}
         disabled={pending}
@@ -185,9 +202,9 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
           },
         ]}
         onSelectChange={(value) => {
-          setFormState((prevValue) => ({ ...prevValue, jobRole: value }));
+          setFormFields((prevValue) => ({ ...prevValue, jobRole: value }));
         }}
-        value={formState.jobRole}
+        value={formFields.jobRole}
         error={formSubmitState?.error?.jobRole}
         showErrorMsg={!!formSubmitState?.error?.jobRole}
         disabled={pending}
@@ -208,7 +225,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
             <RadioControl
               name="jobLocation"
               value="remote"
-              checked={formState.jobLocation === 'remote'}
+              checked={formFields.jobLocation === 'remote'}
               error={!!formSubmitState?.error?.jobLocation}
               disabled={pending}
               onRadioChange={handleFormElementChange}
@@ -219,7 +236,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
             <RadioControl
               name="jobLocation"
               value="in-office"
-              checked={formState.jobLocation === 'in-office'}
+              checked={formFields.jobLocation === 'in-office'}
               error={!!formSubmitState?.error?.jobLocation}
               disabled={pending}
               onRadioChange={handleFormElementChange}
@@ -253,7 +270,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
               disabled={pending}
               onCheckboxChange={handleFormElementChange}
               error={!!formSubmitState?.error?.languages}
-              checked={formState.languages.includes('javascript')}
+              checked={formFields.languages.includes('javascript')}
             />
             Javascript
           </label>
@@ -265,7 +282,7 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
               disabled={pending}
               onCheckboxChange={handleFormElementChange}
               error={!!formSubmitState?.error?.languages}
-              checked={formState.languages.includes('python')}
+              checked={formFields.languages.includes('python')}
             />
             Python
           </label>
@@ -284,9 +301,9 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
           <SwitchControl
             name="interested"
             onSwitchChange={(value) => {
-              setFormState((prevValue) => ({ ...prevValue, interest: value }));
+              setFormFields((prevValue) => ({ ...prevValue, interest: value }));
             }}
-            checked={formState.interest}
+            checked={formFields.interest}
             error={!!formSubmitState?.error?.interest}
             disabled={pending}
             required={false}
@@ -301,23 +318,25 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
           />
         )}
       </div>
+
       {/* Buttons  */}
       <div className="flex flex-wrap items-center gap-2">
         <CustomButton
           colorScheme="primary"
-          loading={false}
+          loading={pending}
           disabled={false}
           type="submit"
         >
           Submit
         </CustomButton>
         <CustomButton
+          loading={pending}
           disabled={false}
           colorScheme="primary"
           className="!bg-red-500"
           type="action"
           onButtonClick={() => {
-            setFormState(initialFormValue);
+            setFormFields(initialExampleFormFieldsValue);
             setFormSubmitState(null);
           }}
         >
@@ -326,20 +345,16 @@ export const ExampleFormElements = ({ state }: { state: IFormStatusState }) => {
       </div>
 
       {/* Render the form submit success and error message */}
-      {!pending &&
-        // Form submit success
-        (formSubmitState?.success ||
-          // Form submit failed due to internal server error
-          (!formSubmitState?.success && !formSubmitState?.error)) && (
-          <Typography
-            size="c1"
-            className={cn(
-              formSubmitState?.success ? 'text-green-500' : 'text-red-500'
-            )}
-          >
-            {formSubmitState?.message}
-          </Typography>
-        )}
+      {!pending && formSubmitState?.message && (
+        <Typography
+          size="c1"
+          className={cn(
+            formSubmitState?.success ? 'text-green-500' : 'text-red-500'
+          )}
+        >
+          {formSubmitState?.message}
+        </Typography>
+      )}
     </>
   );
 };

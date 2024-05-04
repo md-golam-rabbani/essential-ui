@@ -1,13 +1,13 @@
 'use server';
 
-import { IFormStatusState } from './interface';
+import { IExampleFormState } from './interface';
 
 export async function handleSubmit(
-  _prevState: IFormStatusState,
+  _prevState: IExampleFormState,
   formData: FormData
-): Promise<IFormStatusState> {
+): Promise<IExampleFormState> {
   // Initialize an error object to collect validation errors
-  const errors: IFormStatusState['error'] = {};
+  const errors: IExampleFormState['error'] = {};
 
   const email = formData.get('email');
   const gmailRegex =
@@ -57,6 +57,8 @@ export async function handleSubmit(
     errors.interest = 'Please enable your interest';
   }
 
+  await new Promise((resolve) => setTimeout(resolve, 10000));
+
   // If there are any validation errors, return them
   if (Object.keys(errors).length > 0) {
     return {
@@ -65,6 +67,8 @@ export async function handleSubmit(
       error: errors,
     };
   }
+
+  await new Promise((resolve) => setTimeout(resolve, 6000));
 
   // If validation passes, proceed with form processing
   return {

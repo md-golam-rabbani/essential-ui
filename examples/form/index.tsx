@@ -3,9 +3,9 @@
 import { useFormState } from 'react-dom';
 import { handleSubmit } from './actions';
 import { ExampleFormElements } from './element';
-import { IFormStatusState } from './interface';
+import { IExampleFormState } from './interface';
 
-const initialFormStatusState: IFormStatusState = {
+const initialExampleFormStateValue: IExampleFormState = {
   success: true,
   message: '',
 };
@@ -25,17 +25,17 @@ const initialFormStatusState: IFormStatusState = {
  * form status state.
  */
 export const ExampleForm = () => {
-  const [state, formAction] = useFormState(
+  const [formState, formAction] = useFormState(
     handleSubmit,
-    initialFormStatusState
+    initialExampleFormStateValue
   );
 
   return (
     <div className="section-padding-primary w-full bg-gray-300">
       <div className="container">
-        <div className="shadow-light mx-auto max-w-[450px] rounded-lg bg-white p-6 lg:p-10">
+        <div className="mx-auto max-w-[450px] rounded-lg bg-white p-6 shadow-lg lg:p-10">
           <form className="grid gap-4" action={formAction}>
-            <ExampleFormElements state={state} />
+            <ExampleFormElements formState={formState} />
           </form>
         </div>
       </div>

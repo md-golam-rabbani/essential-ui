@@ -1,6 +1,7 @@
 import React from 'react';
 import { EXAMPLE_CARD_IMAGE_DIMENSION_1_1, ICard } from './interface';
 import Image from 'next/image';
+import Link from 'next/link';
 
 /**
  * Card component representing a blog post with image,
@@ -46,12 +47,12 @@ export const Card = ({ image, title, author, date, content }: ICard) => {
             <h3 className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
               {author}
             </h3>
-            <a
+            <Link
               href="#"
               className="mt-1 block text-lg font-medium leading-tight text-black hover:underline"
             >
               {title}
-            </a>
+            </Link>
           </header>
           <p className="mt-2 text-gray-600">{content}</p>
           {/* Display the date */}
