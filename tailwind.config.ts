@@ -19,26 +19,6 @@ const config = {
         center: true,
         padding: '1rem',
       },
-      colors: {
-        transparent: 'transparent',
-        current: 'currentColor',
-        primary: {
-          light: '#568cdc',
-          DEFAULT: '#0d6efd',
-          dark: '#0067ff',
-        },
-        gray: {
-          light: '#dee2e6',
-          DEFAULT: '#adb5bd',
-          dark: '#6c757d',
-        },
-        black: '#000000',
-        white: '#ffffff',
-        info: '#0dcaf0',
-        success: '#198754',
-        warning: '#ffc107',
-        danger: '#dc3545',
-      },
       // Here we need to add this accordion animation config
       // for play the accordion animation correctly
       keyframes: {
