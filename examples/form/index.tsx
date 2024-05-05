@@ -31,7 +31,7 @@ export const ExampleForm = () => {
   );
 
   return (
-    <div className="section-padding-primary w-full bg-gray-300">
+    <div className="bg-gray-300 py-10 lg:py-20">
       <div className="container">
         <div className="mx-auto max-w-[450px] rounded-lg bg-white p-6 shadow-lg lg:p-10">
           <form className="grid gap-4" action={formAction}>

@@ -42,8 +42,6 @@ export const ExampleFormElements = ({
     initialExampleFormFieldsValue
   );
 
-  console.log(formFields);
-
   const [formSubmitState, setFormSubmitState] =
     useState<IExampleFormState | null>(initialFormState);
   /**
