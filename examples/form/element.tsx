@@ -12,6 +12,7 @@ import { Typography } from '@/components/typography';
 import { CustomButton } from '@/components/button';
 import { cn } from '@/lib/shadcn/utils';
 import { getCheckBoxValues } from './utils';
+import { toast } from 'sonner';
 
 // Styles
 const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
@@ -93,10 +94,18 @@ export const ExampleFormElements = ({
   };
 
   useEffect(() => {
-    if (formSubmitState?.success) {
+    if (formSubmitState && formSubmitState.success) {
+      toast.success(formSubmitState.message);
       setFormFields({
         ...initialExampleFormFieldsValue,
       });
+    }
+    if (
+      formSubmitState &&
+      formSubmitState.success === false &&
+      formSubmitState.message
+    ) {
+      toast.error(formSubmitState.message);
     }
   }, [formSubmitState]);
 

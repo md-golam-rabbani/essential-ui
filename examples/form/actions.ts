@@ -1,6 +1,7 @@
 'use server';
 
 import { IExampleFormState } from './interface';
+import nodemailer from 'nodemailer';
 
 export async function handleSubmit(
   _prevState: IExampleFormState,
@@ -20,6 +21,8 @@ export async function handleSubmit(
   if (!fname || fname.toString().length < 3) {
     errors.fname = 'First name must be at least 3 characters long';
   }
+
+  const lname = formData.get('lname');
 
   const phone = formData.get('phone')?.toString();
   const phoneRegex = /^\+?[0-9]\d{1,11}$/;
@@ -62,11 +65,6 @@ export async function handleSubmit(
     errors.terms = 'Please enable terms check';
   }
 
-  /**
-   * For testing pending state
-   */
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   // If there are any validation errors, return them
   if (Object.keys(errors).length > 0) {
     return {
@@ -76,14 +74,64 @@ export async function handleSubmit(
     };
   }
 
-  /**
-   * For testing pending state
-   */
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.CONTACT_MAIL_ADDRESS,
+        pass: process.env.CONTACT_MAIL_PASSWORD,
+      },
+    });
 
-  // If validation passes, proceed with form processing
-  return {
-    success: true,
-    message: 'Form successfully submitted',
-  };
+    const mailOptions = {
+      from: process.env.CONTACT_MAIL_ADDRESS,
+      to: process.env.CONTACT_MAIL_ADDRESS,
+      subject: 'Form submission with server action',
+      html: `
+          <h3 style="margin-bottom:8px">First Name:</h3>
+          <p style="margin:0">${fname}</p>
+          ${
+            lname &&
+            `
+              <h3 style="margin-bottom:8px">Last Name:</h3>
+              <p style="margin:0">${lname}</p>
+            `
+          }
+          <br/>
+          <h3 style="margin:0; margin-bottom:8px">Email:</h3>
+          <p style="margin:0">${email}</p>
+          <br/>
+          <h3 style="margin:0; margin-bottom:8px">Phone:</h3>
+          <p style="margin-top:0">${phone}</p>
+          <br/>
+          <h3 style="margin:0; margin-bottom:8px">Job Role:</h3>
+          <p style="margin-top:0">${jobRole}</p>
+          <br/>
+          <h3 style="margin:0; margin-bottom:8px">Job location:</h3>
+          <p style="margin-top:0">${jobLocation}</p>
+          <br/>
+          <h3 style="margin:0; margin-bottom:8px">Languages:</h3>
+          <p style="margin-top:0">${languages.join(', ')}</p>
+        `,
+    };
+
+    await transporter.sendMail(mailOptions);
+    /**
+     * For testing pending state
+     *
+     */
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // If validation passes, proceed with form processing
+    return {
+      success: true,
+      message: 'Form successfully submitted',
+    };
+  } catch (error) {
+    console.error(`Error: ${JSON.stringify(error)}`);
+    return {
+      success: false,
+      message: 'Internal server error',
+    };
+  }
 }
