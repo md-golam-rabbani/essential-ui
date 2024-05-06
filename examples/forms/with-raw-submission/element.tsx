@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { IExampleFormFields, IExampleFormState } from './interface';
+import { IFormElements, IFormFields, IFormState } from './interface';
 import { useFormStatus } from 'react-dom';
 import { InputControl } from '@/components/inputs/input-control';
 import { SelectControl } from '@/components/inputs/select-control';
@@ -19,7 +19,7 @@ const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
 const inputItemParentClasses = cn('flex flex-row items-center gap-2 text-base');
 const inputGroupParentClasses = cn('grid gap-1');
 
-const initialExampleFormFieldsValue: IExampleFormFields = {
+const initialFormFieldsValue: IFormFields = {
   fname: '',
   lname: '',
   email: '',
@@ -32,19 +32,14 @@ const initialExampleFormFieldsValue: IExampleFormFields = {
   terms: false,
 };
 
-interface IExampleFormElements {
-  formState: IExampleFormState;
-}
-
-export const ExampleFormElements = ({
-  formState: initialFormState,
-}: IExampleFormElements) => {
-  const [formFields, setFormFields] = useState<IExampleFormFields>(
-    initialExampleFormFieldsValue
+export function FormElements({ formState: initialFormState }: IFormElements) {
+  const [formFields, setFormFields] = useState<IFormFields>(
+    initialFormFieldsValue
   );
 
-  const [formSubmitState, setFormSubmitState] =
-    useState<IExampleFormState | null>(initialFormState);
+  const [formSubmitState, setFormSubmitState] = useState<IFormState | null>(
+    initialFormState
+  );
   /**
    * This useEffect hook is used to synchronize the formSubmitState with the
    * provided state prop. It ensures that the formSubmitState is always
@@ -64,14 +59,14 @@ export const ExampleFormElements = ({
     const element = event.target;
 
     setFormFields((prevValue) => {
-      let newStateValue: IExampleFormFields = { ...prevValue };
+      let newStateValue: IFormFields = { ...prevValue };
 
       // Check if the element is a checkbox for "languages"
       if (element.name === 'languages') {
         newStateValue = {
           ...newStateValue,
           languages: getCheckBoxValues(
-            prevValue[element.name as keyof IExampleFormFields] as string[],
+            prevValue[element.name as keyof IFormFields] as string[],
             element.value,
             element.checked
           ),
@@ -97,7 +92,7 @@ export const ExampleFormElements = ({
     if (formSubmitState && formSubmitState.success) {
       toast.success(formSubmitState.message);
       setFormFields({
-        ...initialExampleFormFieldsValue,
+        ...initialFormFieldsValue,
       });
     }
     if (
@@ -374,7 +369,7 @@ export const ExampleFormElements = ({
           className="!bg-red-500"
           type="action"
           onButtonClick={() => {
-            setFormFields(initialExampleFormFieldsValue);
+            setFormFields(initialFormFieldsValue);
             setFormSubmitState(null);
           }}
         >
@@ -395,4 +390,4 @@ export const ExampleFormElements = ({
       )}
     </>
   );
-};
+}

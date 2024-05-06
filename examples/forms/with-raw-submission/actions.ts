@@ -1,14 +1,14 @@
 'use server';
 
-import { IExampleFormState } from './interface';
+import { IFormState } from './interface';
 import nodemailer from 'nodemailer';
 
 export async function handleSubmit(
-  _prevState: IExampleFormState,
+  _prevState: IFormState,
   formData: FormData
-): Promise<IExampleFormState> {
+): Promise<IFormState> {
   // Initialize an error object to collect validation errors
-  const errors: IExampleFormState['error'] = {};
+  const errors: IFormState['error'] = {};
 
   const email = formData.get('email');
   const gmailRegex =
@@ -74,6 +74,7 @@ export async function handleSubmit(
     };
   }
 
+  // If validation passes, proceed with form processing
   try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -116,13 +117,7 @@ export async function handleSubmit(
     };
 
     await transporter.sendMail(mailOptions);
-    /**
-     * For testing pending state
-     *
-     */
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    // If validation passes, proceed with form processing
     return {
       success: true,
       message: 'Form successfully submitted',

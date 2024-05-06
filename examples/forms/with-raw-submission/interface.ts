@@ -1,4 +1,4 @@
-export interface IExampleFormFields {
+export interface IFormFields {
   fname: string;
   lname: string;
   email: string;
@@ -11,8 +11,12 @@ export interface IExampleFormFields {
   terms: boolean;
 }
 
-export interface IExampleFormState {
+export interface IFormState {
   success: boolean;
   message: string;
-  error?: Partial<Record<keyof IExampleFormFields, string>>;
+  error?: Partial<Record<keyof IFormFields, string>>;
+}
+
+export interface IFormElements {
+  formState: IFormState;
 }
