@@ -32,6 +32,7 @@ export const SelectControl = ({
   name,
   items,
   onSelectChange,
+  onBlur,
   label,
   error,
   required,
@@ -91,6 +92,7 @@ export const SelectControl = ({
             )}
             id={uniqueId}
             name={name}
+            onBlur={onBlur}
             aria-disabled={disabled}
             aria-required={required}
             aria-invalid={!!error}

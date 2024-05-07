@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, FocusEventHandler } from 'react';
 
 export interface IInputControl {
   /** The name of the input control. */
@@ -7,6 +7,8 @@ export interface IInputControl {
   value: string;
   /** A function to handle input change events. */
   onInputChange: ChangeEventHandler<HTMLInputElement>;
+  /** A function when a user leaves an input field: */
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   /** The type of the input control. */
   type: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
   /** A short hint that describes the expected value of the input control. */

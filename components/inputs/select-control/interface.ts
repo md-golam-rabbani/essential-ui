@@ -1,3 +1,5 @@
+import { FocusEventHandler } from 'react';
+
 interface IItem {
   //label of the item
   label: string;
@@ -14,6 +16,8 @@ export interface ISelectControl {
   value: string;
   // Callback function triggered when the value of the select control changes.
   onSelectChange: (value: string) => void;
+  // A function when a user leaves an input field:
+  onBlur?: FocusEventHandler<HTMLButtonElement>;
   // Label for the select control.
   label?: string;
   // Error message to display if there's an error.

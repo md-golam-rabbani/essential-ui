@@ -25,6 +25,7 @@ export function InputControl({
   showSuccessIcon,
   value,
   onInputChange,
+  onBlur,
   className,
   placeholder,
   label,
@@ -69,6 +70,7 @@ export function InputControl({
           name={name}
           value={value}
           onChange={onInputChange}
+          onBlur={onBlur}
           placeholder={placeholder}
           id={uniqueId}
           required={required}
