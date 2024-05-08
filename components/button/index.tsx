@@ -50,8 +50,9 @@ export const CustomButton = (props: ICustomButton) => {
   switch (props.type) {
     case 'link':
       return <CustomLinkButton {...props} buttonClasses={buttonClasses} />;
-    case 'reset':
+    case 'button':
     case 'submit':
+    case 'reset':
       return <CustomFormButton {...props} buttonClasses={buttonClasses} />;
     case 'action':
       return <CustomActionButton {...props} buttonClasses={buttonClasses} />;
@@ -188,6 +189,7 @@ const CustomFormButton = ({
   buttonClasses,
   children,
   type,
+  onButtonClick,
 }: ICustomFormButton) => {
   return (
     <button
@@ -195,6 +197,7 @@ const CustomFormButton = ({
       aria-label={ariaLabel}
       disabled={disabled}
       type={type}
+      onClick={onButtonClick}
     >
       {loading ? <ButtonWithLoading>{children}</ButtonWithLoading> : children}
     </button>

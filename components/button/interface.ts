@@ -31,9 +31,10 @@ export interface ILinkButton
 
 export interface IFormButton
   extends IBaseButton,
-    Pick<IActionButton, 'loading'> {
+    Pick<IActionButton, 'loading'>,
+    Partial<Pick<IActionButton, 'onButtonClick'>> {
   /** Specifies the type of button as an form button. */
-  type: 'submit' | 'reset';
+  type: 'button' | 'submit' | 'reset';
 }
 
 export interface IInlineButton extends IBaseButton {
