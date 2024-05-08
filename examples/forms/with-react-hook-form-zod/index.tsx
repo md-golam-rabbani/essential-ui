@@ -37,10 +37,10 @@ export const formSchema = z.object({
   }),
   jobRole: z.string({ message: 'Please select your job role' }),
   languages: z
-    .string({ message: 'Please select at least one language' })
-    .array(),
-  interest: z.boolean(),
-  terms: z.boolean(),
+    .array(z.string())
+    .min(1, { message: 'Please select at least one language' }),
+  interest: z.boolean({ message: 'Please enable your interest' }),
+  terms: z.boolean({ message: 'Please enable your terms check' }),
 });
 
 type IFormSchema = z.infer<typeof formSchema>;
@@ -96,6 +96,8 @@ export default function Form() {
 
     reset();
   };
+
+  console.log(errors, 'errors');
 
   return (
     <div className="bg-yellow-100 py-7 lg:py-10">
@@ -362,7 +364,6 @@ export default function Form() {
                     </label>
                   </div>
 
-                  {/* TODO: Need to fix error message showcase issue  */}
                   {errors.languages?.message && (
                     <ConditionalTextDisplay
                       error={errors.languages.message}
