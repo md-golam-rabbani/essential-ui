@@ -2,17 +2,17 @@
 
 import { Typography } from '@/components/typography';
 import * as z from 'zod';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { InputControl } from '@/components/inputs/input-control';
 import { CustomButton } from '@/components/button';
+import { InputControl } from '@/components/inputs/input-control';
 import { SelectControl } from '@/components/inputs/select-control';
-import { cn } from '@/lib/shadcn/utils';
 import { InputHeading } from '@/components/inputs/common/input-heading';
 import { RadioControl } from '@/components/inputs/radio-control';
 import { ConditionalTextDisplay } from '@/components/inputs/common/conditional-text-display';
 import { CheckboxControl } from '@/components/inputs/checkbox-control';
 import { SwitchControl } from '@/components/inputs/switch-control';
+import { cn } from '@/lib/shadcn/utils';
 
 // Styles
 const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
@@ -24,7 +24,7 @@ export const formSchema = z.object({
     .string()
     .min(3, { message: 'First name must be at least 3 characters long' }),
   lname: z.string().optional(),
-  email: z.string().email({ message: 'Please enter a valid Gmail address' }),
+  email: z.string().email({ message: 'Please enter a valid gmail address' }),
   phone: z.string().regex(/^\+?[0-9]\d{1,11}$/, {
     message: 'Please enter a valid phone number',
   }),
@@ -32,7 +32,9 @@ export const formSchema = z.object({
     message:
       'Password must be at least 8 characters long, contain at least one digit, one lowercase letter, and one uppercase letter',
   }),
-  jobLocation: z.enum(['remote', 'in-office']),
+  jobLocation: z.enum(['remote', 'in-office'], {
+    message: 'Please select your preferred job location',
+  }),
   jobRole: z.string({ message: 'Please select your job role' }),
   languages: z
     .string({ message: 'Please select at least one language' })
@@ -42,6 +44,14 @@ export const formSchema = z.object({
 });
 
 type IFormSchema = z.infer<typeof formSchema>;
+
+/**
+ * TODO:
+ * 1. Form field validation with errors message showcase properly with testing.
+ * 2. Form field onBlur prop
+ * 3. Form submission
+ * 4. Toast message
+ */
 
 /**
  * `Form` is a React functional component that renders a form with an email input field and a submit button.
@@ -59,15 +69,23 @@ type IFormSchema = z.infer<typeof formSchema>;
  */
 export default function Form() {
   const {
-    control,
     handleSubmit,
     reset,
-    formState: { isSubmitting },
+    control,
+    formState: { isSubmitting, errors },
   } = useForm<IFormSchema>({
     resolver: zodResolver(formSchema),
     mode: 'all',
     defaultValues: {
-      languages: [], // Provide a default empty array for languages
+      fname: '',
+      lname: '',
+      email: '',
+      password: '',
+      phone: '',
+      jobRole: '',
+      interest: false,
+      languages: [],
+      terms: false,
     },
   });
 
@@ -75,6 +93,8 @@ export default function Form() {
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     console.log('data', data);
+
+    reset();
   };
 
   return (
@@ -89,22 +109,22 @@ export default function Form() {
             Form submission with zod
           </Typography>
           <form className="grid gap-4" onSubmit={handleSubmit(onSubmit)}>
-            {/* First name  */}
+            {/* First name */}
             <Controller
               name="fname"
               control={control}
-              render={({ field, fieldState: { isTouched, error } }) => (
+              render={({ field: { name, value, onChange, onBlur } }) => (
                 <InputControl
-                  name={field.name}
-                  value={field.value || ''}
-                  onInputChange={field.onChange}
-                  onBlur={field.onBlur}
+                  name={name}
+                  value={value || ''}
+                  onInputChange={onChange}
+                  onBlur={onBlur}
                   label="First Name"
                   type="text"
                   placeholder="Enter your first name"
                   helperText="Min. 3 characters"
-                  error={isTouched ? error?.message : undefined}
-                  showErrorMsg={!!error?.message}
+                  error={errors.fname?.message || undefined}
+                  showErrorMsg={!!errors.fname?.message}
                   disabled={isSubmitting}
                   autoComplete="on"
                 />
@@ -115,98 +135,99 @@ export default function Form() {
             <Controller
               name="lname"
               control={control}
-              render={({ field, fieldState: { isTouched, error } }) => (
+              render={({ field: { name, value, onChange, onBlur } }) => (
                 <InputControl
-                  name={field.name}
-                  value={field.value || ''}
-                  onInputChange={field.onChange}
-                  onBlur={field.onBlur}
+                  name={name}
+                  value={value || ''}
+                  onInputChange={onChange}
+                  onBlur={onBlur}
                   label="Last Name"
                   type="text"
                   placeholder="Enter your last name"
-                  error={isTouched ? error?.message : undefined}
-                  showErrorMsg={!!error?.message}
+                  error={errors.lname?.message || undefined}
+                  showErrorMsg={!!errors.lname?.message}
                   disabled={isSubmitting}
                   autoComplete="on"
                 />
               )}
             />
 
-            {/* Email */}
+            {/* Email  */}
             <Controller
               name="email"
               control={control}
-              render={({ field, fieldState: { isTouched, error } }) => (
+              render={({ field: { name, value, onChange, onBlur } }) => (
                 <InputControl
-                  name={field.name}
-                  value={field.value || ''}
-                  onInputChange={field.onChange}
-                  onBlur={field.onBlur}
+                  name={name}
+                  value={value || ''}
+                  onInputChange={onChange}
+                  onBlur={onBlur}
                   label="Email"
-                  type="email"
+                  type="text"
                   placeholder="Enter your email"
                   helperText="Please enter a valid email"
-                  error={isTouched ? error?.message : undefined}
-                  showErrorMsg={!!error?.message}
+                  error={errors.email?.message || undefined}
+                  showErrorMsg={!!errors.email?.message}
                   disabled={isSubmitting}
                   autoComplete="on"
                 />
               )}
             />
-
-            {/* Password */}
+            {/* TODO: Add confirm password field and need to add password match validation check  */}
             <Controller
               name="password"
               control={control}
-              render={({ field, fieldState: { isTouched, error } }) => (
+              render={({ field: { name, value, onChange, onBlur } }) => (
                 <InputControl
-                  name={field.name}
-                  value={field.value || ''}
-                  onInputChange={field.onChange}
-                  onBlur={field.onBlur}
+                  name={name}
+                  value={value || ''}
+                  onInputChange={onChange}
+                  onBlur={onBlur}
                   label="Password"
                   type="password"
                   placeholder="Enter a Password"
                   helperText="Min. 8 characters, contain at least one digit, one lowercase letter, and one uppercase letter"
-                  error={isTouched ? error?.message : undefined}
-                  showErrorMsg={!!error?.message}
+                  error={errors.password?.message || undefined}
+                  showErrorMsg={!!errors.password?.message}
                   disabled={isSubmitting}
                   autoComplete="on"
                 />
               )}
             />
 
-            {/* Password */}
+            {/* Phone  */}
             <Controller
               name="phone"
               control={control}
-              render={({ field, fieldState: { isTouched, error } }) => (
+              render={({ field: { name, value, onChange, onBlur } }) => (
                 <InputControl
-                  name={field.name}
-                  value={field.value || ''}
-                  onInputChange={field.onChange}
-                  onBlur={field.onBlur}
+                  name={name}
+                  value={value || ''}
+                  onInputChange={onChange}
+                  onBlur={onBlur}
                   label="Phone"
                   type="tel"
                   placeholder="Enter your phone number"
                   helperText="Enter a valid phone number"
-                  error={isTouched ? error?.message : undefined}
-                  showErrorMsg={!!error?.message}
+                  error={errors.phone?.message || undefined}
+                  showErrorMsg={!!errors.phone?.message}
                   disabled={isSubmitting}
                   autoComplete="on"
                 />
               )}
             />
 
-            {/* Job role */}
+            {/* TODO: Validation message doesn't show correctly.  */}
+            {/* Job role  */}
             <Controller
               name="jobRole"
               control={control}
-              render={({ field, fieldState: { isTouched, error } }) => (
+              render={({ field: { name, value, onChange, onBlur } }) => (
                 <SelectControl
-                  name={field.name}
-                  value={field.value || ''}
-                  onSelectChange={field.onChange}
+                  name={name}
+                  value={value || ''}
+                  onSelectChange={onChange}
+                  onBlur={onBlur}
                   items={[
                     {
                       label: 'Select job Role',
@@ -225,21 +246,20 @@ export default function Form() {
                       value: 'fullstack',
                     },
                   ]}
-                  onBlur={field.onBlur}
                   label="Job Role"
                   helperText="Please select a job role"
-                  error={isTouched ? error?.message : undefined}
-                  showErrorMsg={!!error?.message}
+                  error={errors.jobRole?.message || undefined}
+                  showErrorMsg={!!errors.jobRole?.message}
                   disabled={isSubmitting}
                 />
               )}
             />
 
-            {/* Job location */}
+            {/* Job location  */}
             <Controller
               name="jobLocation"
               control={control}
-              render={({ field, fieldState: { isTouched, error } }) => (
+              render={({ field: { name, value, onChange } }) => (
                 <fieldset className={inputGroupParentClasses}>
                   <InputHeading
                     label={'Preferred Job Location'}
@@ -251,29 +271,29 @@ export default function Form() {
                   <div className={inlineWrapperClasses}>
                     <label className={inputItemParentClasses}>
                       <RadioControl
-                        name={field.name}
+                        name={name}
                         value="remote"
-                        checked={field.value === 'remote'}
+                        checked={value === 'remote'}
                         disabled={isSubmitting}
-                        onRadioChange={field.onChange}
+                        onRadioChange={onChange}
                       />
                       Remote
                     </label>
                     <label className={inputItemParentClasses}>
                       <RadioControl
-                        name={field.name}
+                        name={name}
                         value="in-office"
-                        checked={field.value === 'in-office'}
+                        checked={value === 'in-office'}
                         disabled={isSubmitting}
-                        onRadioChange={field.onChange}
+                        onRadioChange={onChange}
                       />
                       In-office
                     </label>
                   </div>
 
-                  {(isTouched || error?.message) && (
+                  {errors.jobLocation?.message && (
                     <ConditionalTextDisplay
-                      error={error?.message}
+                      error={errors.jobLocation.message}
                       showErrorMsg
                     />
                   )}
@@ -281,14 +301,11 @@ export default function Form() {
               )}
             />
 
-            {/* Languages */}
+            {/* Languages  */}
             <Controller
               name="languages"
               control={control}
-              render={({
-                field: { name, value, onChange },
-                fieldState: { isTouched, error },
-              }) => (
+              render={({ field: { name, value, onChange } }) => (
                 <fieldset className={inputGroupParentClasses}>
                   <InputHeading
                     label={'Languages'}
@@ -316,7 +333,7 @@ export default function Form() {
                           onChange(updatedLanguages); // Update form value
                         }}
                         disabled={isSubmitting}
-                        error={!!error?.message}
+                        error={!!errors.languages?.message}
                       />
                       Javascript
                     </label>
@@ -339,15 +356,16 @@ export default function Form() {
                           onChange(updatedLanguages); // Update form value
                         }}
                         disabled={isSubmitting}
-                        error={!!error?.message}
+                        error={!!errors?.languages?.message}
                       />
                       Python
                     </label>
                   </div>
 
-                  {(isTouched || error?.message) && (
+                  {/* TODO: Need to fix error message showcase issue  */}
+                  {errors.languages?.message && (
                     <ConditionalTextDisplay
-                      error={error?.message}
+                      error={errors.languages.message}
                       showErrorMsg
                     />
                   )}
@@ -355,30 +373,28 @@ export default function Form() {
               )}
             />
 
-            {/* Interested  */}
+            {/* Interest  */}
             <Controller
               name="interest"
               control={control}
-              render={({
-                field: { name, onChange, value },
-                fieldState: { isTouched, error },
-              }) => (
+              render={({ field: { name, onChange, value } }) => (
                 <div className={inputGroupParentClasses}>
-                  <p>{JSON.stringify(value)}</p>
                   <label className={inputItemParentClasses}>
                     <SwitchControl
                       name={name}
                       checked={value}
                       onSwitchChange={onChange}
-                      error={!!error?.message}
+                      error={!!errors?.interest?.message}
                       disabled={isSubmitting}
                       required={false}
                     />
                     Are you interested?
                   </label>
-                  {isTouched && error?.message && (
+
+                  {/* TODO: Need to fix error message showcase issue  */}
+                  {errors.interest?.message && (
                     <ConditionalTextDisplay
-                      error={error?.message}
+                      error={errors.interest.message}
                       showErrorMsg={true}
                       disabled={isSubmitting}
                     />
@@ -387,16 +403,12 @@ export default function Form() {
               )}
             />
 
-            {/* Terms   */}
+            {/* Terms  */}
             <Controller
               name="terms"
               control={control}
-              render={({
-                field: { name, value, onChange },
-                fieldState: { error },
-              }) => (
+              render={({ field: { name, value, onChange } }) => (
                 <fieldset className={inputGroupParentClasses}>
-                  <p>{JSON.stringify(value)}</p>
                   <div className={inlineWrapperClasses}>
                     <label className={inputItemParentClasses}>
                       <CheckboxControl
@@ -404,16 +416,16 @@ export default function Form() {
                         value={value ? 'true' : 'false'}
                         onCheckboxChange={onChange}
                         disabled={isSubmitting}
-                        error={!!error?.message}
+                        error={!!errors?.terms?.message}
                         checked={value ? true : false}
                       />
                       <span>I agree to the terms & condition</span>
                     </label>
                   </div>
 
-                  {error?.message && (
+                  {errors?.terms?.message && (
                     <ConditionalTextDisplay
-                      error={error?.message}
+                      error={errors.terms.message}
                       showErrorMsg
                     />
                   )}
@@ -436,7 +448,7 @@ export default function Form() {
                 disabled={false}
                 colorScheme="primary"
                 className="!bg-red-500"
-                type="action"
+                type="reset"
                 onButtonClick={() => {
                   reset();
                 }}
