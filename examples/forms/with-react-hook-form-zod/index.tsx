@@ -2,7 +2,7 @@
 
 import { Typography } from '@/components/typography';
 import * as z from 'zod';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputControl } from '@/components/inputs/input-control';
 import { CustomButton } from '@/components/button';
@@ -12,6 +12,7 @@ import { InputHeading } from '@/components/inputs/common/input-heading';
 import { RadioControl } from '@/components/inputs/radio-control';
 import { ConditionalTextDisplay } from '@/components/inputs/common/conditional-text-display';
 import { CheckboxControl } from '@/components/inputs/checkbox-control';
+import { SwitchControl } from '@/components/inputs/switch-control';
 
 // Styles
 const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
@@ -65,7 +66,16 @@ export default function Form() {
   } = useForm<IFormSchema>({
     resolver: zodResolver(formSchema),
     mode: 'all',
+    defaultValues: {
+      languages: [], // Provide a default empty array for languages
+    },
   });
+
+  const onSubmit: SubmitHandler<IFormSchema> = async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    console.log('data', data);
+  };
 
   return (
     <div className="bg-yellow-100 py-7 lg:py-10">
@@ -78,10 +88,7 @@ export default function Form() {
           >
             Form submission with zod
           </Typography>
-          <form
-            className="grid gap-4"
-            onSubmit={handleSubmit((d) => console.log(d))}
-          >
+          <form className="grid gap-4" onSubmit={handleSubmit(onSubmit)}>
             {/* First name  */}
             <Controller
               name="fname"
@@ -278,7 +285,10 @@ export default function Form() {
             <Controller
               name="languages"
               control={control}
-              render={({ field, fieldState: { isTouched, error } }) => (
+              render={({
+                field: { name, value, onChange },
+                fieldState: { isTouched, error },
+              }) => (
                 <fieldset className={inputGroupParentClasses}>
                   <InputHeading
                     label={'Languages'}
@@ -290,38 +300,46 @@ export default function Form() {
                   <div className={inlineWrapperClasses}>
                     <label className={inputItemParentClasses}>
                       <CheckboxControl
-                        name={field.name}
+                        name={name}
                         value="javascript"
+                        checked={value.includes('javascript') ? true : false}
+                        onCheckboxChange={(e) => {
+                          const isChecked = e.target.checked;
+                          let updatedLanguages;
+                          if (isChecked) {
+                            updatedLanguages = [...value, e.target.value]; // Add language if checked
+                          } else {
+                            updatedLanguages = value.filter(
+                              (lang) => lang !== e.target.value
+                            ); // Remove language if unchecked
+                          }
+                          onChange(updatedLanguages); // Update form value
+                        }}
                         disabled={isSubmitting}
-                        onCheckboxChange={field.onChange}
                         error={!!error?.message}
-                        checked={
-                          field &&
-                          field.value &&
-                          field.value.length > 0 &&
-                          field.value.includes('javascript')
-                            ? true
-                            : false
-                        }
                       />
                       Javascript
                     </label>
 
                     <label className={inputItemParentClasses}>
                       <CheckboxControl
-                        name={field.name}
+                        name={name}
                         value="python"
+                        checked={value.includes('python') ? true : false}
+                        onCheckboxChange={(e) => {
+                          const isChecked = e.target.checked;
+                          let updatedLanguages;
+                          if (isChecked) {
+                            updatedLanguages = [...value, e.target.value]; // Add language if checked
+                          } else {
+                            updatedLanguages = value.filter(
+                              (lang) => lang !== e.target.value
+                            ); // Remove language if unchecked
+                          }
+                          onChange(updatedLanguages); // Update form value
+                        }}
                         disabled={isSubmitting}
-                        onCheckboxChange={field.onChange}
                         error={!!error?.message}
-                        checked={
-                          field &&
-                          field.value &&
-                          field.value.length > 0 &&
-                          field.value.includes('python')
-                            ? true
-                            : false
-                        }
                       />
                       Python
                     </label>
@@ -338,55 +356,70 @@ export default function Form() {
             />
 
             {/* Interested  */}
-            {/* <div className={inputGroupParentClasses}>
-              <label className={inputItemParentClasses}>
-                <SwitchControl
-                  name="interested"
-                  onSwitchChange={(value) => {
-                    setFormFields((prevValue) => ({
-                      ...prevValue,
-                      interest: value,
-                    }));
-                  }}
-                  checked={formFields.interest}
-                  error={!!formSubmitState?.error?.interest}
-                  disabled={pending}
-                  required={false}
-                />
-                Are you interested?
-              </label>
-              {formSubmitState?.error?.interest && (
-                <ConditionalTextDisplay
-                  error={formSubmitState?.error?.interest}
-                  showErrorMsg={true}
-                  disabled={pending}
-                />
+            <Controller
+              name="interest"
+              control={control}
+              render={({
+                field: { name, onChange, value },
+                fieldState: { isTouched, error },
+              }) => (
+                <div className={inputGroupParentClasses}>
+                  <p>{JSON.stringify(value)}</p>
+                  <label className={inputItemParentClasses}>
+                    <SwitchControl
+                      name={name}
+                      checked={value}
+                      onSwitchChange={onChange}
+                      error={!!error?.message}
+                      disabled={isSubmitting}
+                      required={false}
+                    />
+                    Are you interested?
+                  </label>
+                  {isTouched && error?.message && (
+                    <ConditionalTextDisplay
+                      error={error?.message}
+                      showErrorMsg={true}
+                      disabled={isSubmitting}
+                    />
+                  )}
+                </div>
               )}
-            </div> */}
+            />
 
             {/* Terms   */}
-            {/* <fieldset className={inputGroupParentClasses}>
-              <div className={inlineWrapperClasses}>
-                <label className={inputItemParentClasses}>
-                  <CheckboxControl
-                    name="terms"
-                    value={formFields.terms ? 'true' : 'false'}
-                    onCheckboxChange={handleFormElementChange}
-                    disabled={pending}
-                    error={!!formSubmitState?.error?.terms}
-                    checked={formFields.terms ? true : false}
-                  />
-                  <span>I agree to the terms & condition</span>
-                </label>
-              </div>
+            <Controller
+              name="terms"
+              control={control}
+              render={({
+                field: { name, value, onChange },
+                fieldState: { error },
+              }) => (
+                <fieldset className={inputGroupParentClasses}>
+                  <p>{JSON.stringify(value)}</p>
+                  <div className={inlineWrapperClasses}>
+                    <label className={inputItemParentClasses}>
+                      <CheckboxControl
+                        name={name}
+                        value={value ? 'true' : 'false'}
+                        onCheckboxChange={onChange}
+                        disabled={isSubmitting}
+                        error={!!error?.message}
+                        checked={value ? true : false}
+                      />
+                      <span>I agree to the terms & condition</span>
+                    </label>
+                  </div>
 
-              {formSubmitState?.error?.terms && (
-                <ConditionalTextDisplay
-                  error={formSubmitState?.error?.terms}
-                  showErrorMsg
-                />
+                  {error?.message && (
+                    <ConditionalTextDisplay
+                      error={error?.message}
+                      showErrorMsg
+                    />
+                  )}
+                </fieldset>
               )}
-            </fieldset> */}
+            />
 
             {/* Buttons  */}
             <div className="flex flex-wrap items-center gap-2">
