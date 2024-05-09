@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, FocusEventHandler } from 'react';
 
 export interface ITextareaControl {
   /** The name of the textarea control. */
@@ -7,6 +7,8 @@ export interface ITextareaControl {
   value: string;
   /** A function to handle textarea change events. */
   onTextareaChange: ChangeEventHandler<HTMLTextAreaElement>;
+  /** A function to handle textarea focus events. */
+  onBlur?: FocusEventHandler<HTMLTextAreaElement>;
   /** A short hint that describes the expected value of the textarea control. */
   placeholder?: string;
   /** A label for the textarea control. */

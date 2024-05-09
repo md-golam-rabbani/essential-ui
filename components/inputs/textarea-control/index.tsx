@@ -13,6 +13,7 @@ export function TextareaControl({
   name,
   value,
   onTextareaChange,
+  onBlur,
   placeholder,
   label,
   required,
@@ -49,6 +50,7 @@ export function TextareaControl({
           name={name}
           value={value}
           onChange={onTextareaChange}
+          onBlur={onBlur}
           placeholder={placeholder}
           id={uniqueId}
           required={required}
