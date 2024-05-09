@@ -1,7 +1,6 @@
 'use client';
 
 import { Typography } from '@/components/typography';
-import * as z from 'zod';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CustomButton } from '@/components/button';
@@ -13,56 +12,14 @@ import { ConditionalTextDisplay } from '@/components/inputs/common/conditional-t
 import { CheckboxControl } from '@/components/inputs/checkbox-control';
 import { SwitchControl } from '@/components/inputs/switch-control';
 import { cn } from '@/lib/shadcn/utils';
+import { formSchema, IFormFields } from './interface';
+import { toast } from 'sonner';
+import { formSubmit } from './actions';
 
 // Styles
 const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
 const inputItemParentClasses = cn('flex flex-row items-center gap-2 text-base');
 const inputGroupParentClasses = cn('grid gap-1');
-
-export const formSchema = z.object({
-  fname: z
-    .string({
-      required_error: 'First name is required',
-    })
-    .min(3, { message: 'First name must be at least 3 characters long' }),
-  lname: z.string().optional(),
-  email: z
-    .string({ required_error: 'Email is required' })
-    .email({ message: 'Please enter a valid gmail address' }),
-  phone: z
-    .string({ required_error: 'Phone is required' })
-    .regex(/^\+?[0-9]\d{1,11}$/, {
-      message: 'Please enter a valid phone number',
-    }),
-  password: z
-    .string({ required_error: 'Password is required' })
-    .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, {
-      message:
-        'Password must be at least 8 characters long, contain at least one digit, one lowercase letter, and one uppercase letter',
-    }),
-  confirmPassword: z.string().regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, {
-    message:
-      'Password must be at least 8 characters long, contain at least one digit, one lowercase letter, and one uppercase letter',
-  }),
-  jobLocation: z.enum(['remote', 'in-office'], {
-    required_error: 'Please select your preferred job location',
-  }),
-  jobRole: z.string({
-    required_error: 'Job role is required',
-    invalid_type_error: 'Please select your job role',
-  }),
-  languages: z
-    .array(z.string())
-    .min(1, { message: 'Please select at least one language' }),
-  interest: z.boolean().refine((value) => value === true, {
-    message: 'Please enable your interest',
-  }),
-  terms: z.boolean().refine((value) => value === true, {
-    message: 'You must agree the terms and condition',
-  }),
-});
-
-type IFormFields = z.infer<typeof formSchema>;
 
 /**
  * TODO:
@@ -70,6 +27,7 @@ type IFormFields = z.infer<typeof formSchema>;
  * 2. Form field onBlur prop
  * 3. Form submission
  * 4. Toast message
+ * 5. Cleanup
  */
 
 /**
@@ -103,14 +61,21 @@ export default function Form() {
   });
 
   const onSubmit: SubmitHandler<IFormFields> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const result = formSchema.safeParse(data);
 
-    console.log('data', data);
-
-    reset();
+    if (result.error) {
+      toast.error(result.error.message);
+    }
+    if (result.success) {
+      const res = await formSubmit(data);
+      if (res.data) {
+        toast.success(res.message);
+        reset();
+      } else {
+        toast.error(res.message);
+      }
+    }
   };
-
-  console.log(errors, 'errors');
 
   return (
     <div className="bg-yellow-100 py-7 lg:py-10">
@@ -188,6 +153,7 @@ export default function Form() {
                 />
               )}
             />
+
             {/* TODO: Add confirm password field and need to add password match validation check  */}
             <Controller
               name="password"

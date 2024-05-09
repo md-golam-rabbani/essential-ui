@@ -1,94 +1,38 @@
 'use server';
 
-import { IFormState } from './interface';
+import { ServerActionResponse } from '@/lib/types';
 import nodemailer from 'nodemailer';
+import { formSchema, IFormFields } from './interface';
 
-export async function handleSubmit(
-  _prevState: IFormState,
-  formData: FormData
-): Promise<IFormState> {
-  // Initialize an error object to collect validation errors
-  const errors: IFormState['error'] = {};
+export async function formSubmit(
+  data: IFormFields
+): Promise<ServerActionResponse<boolean>> {
+  const result = formSchema.safeParse(data);
 
-  const email = formData.get('email');
-  const gmailRegex =
-    /^[a-zA-Z0-9]+([\.{1}])?[a-zA-Z0-9]+@(?:gmail|GMAIL)\.(?:com|COM)$/g;
-  if (!email || !gmailRegex.test(email.toString())) {
-    errors.email = 'Please enter a valid Gmail address';
-  }
-
-  const fname = formData.get('fname');
-  if (!fname || fname.toString().length < 3) {
-    errors.fname = 'First name must be at least 3 characters long';
-  }
-
-  const lname = formData.get('lname');
-
-  const phone = formData.get('phone')?.toString();
-  const phoneRegex = /^\+?[0-9]\d{1,11}$/;
-  if (!phone || !phoneRegex.test(phone)) {
-    errors.phone = 'Please enter a valid phone number';
-  }
-
-  const password = formData.get('password')?.toString();
-  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-  if (!password || !passwordRegex.test(password)) {
-    errors.password =
-      'Password must be at least 8 characters long, contain at least one digit, one lowercase letter, and one uppercase letter';
-  }
-
-  const jobLocation = formData.get('jobLocation');
-  if (
-    !jobLocation ||
-    (jobLocation !== 'remote' && jobLocation !== 'in-office')
-  ) {
-    errors.jobLocation = 'Please select a preferred job location';
-  }
-
-  const languages = formData.getAll('languages');
-  if (!languages || languages.length === 0) {
-    errors.languages = 'Please select at least one language';
-  }
-
-  const jobRole = formData.get('jobRole');
-  if (!jobRole || jobRole.toString().trim() === '') {
-    errors.jobRole = 'Please select your job role';
-  }
-
-  const interest = formData.get('interested');
-  if (!interest) {
-    errors.interest = 'Please enable your interest';
-  }
-
-  const terms = formData.get('terms');
-  if (!terms) {
-    errors.terms = 'Please enable terms check';
-  }
-
-  // If there are any validation errors, return them
-  if (Object.keys(errors).length > 0) {
+  if (result.error) {
     return {
       success: false,
-      message: 'Form values are not valid',
-      error: errors,
+      data: null,
+      message: 'Internal Server Error',
     };
   }
+  if (result.success) {
+    const { fname, lname, email, phone, jobLocation, jobRole, languages } =
+      data;
+    try {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.CONTACT_MAIL_ADDRESS,
+          pass: process.env.CONTACT_MAIL_PASSWORD,
+        },
+      });
 
-  // If validation passes, proceed with form processing
-  try {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.CONTACT_MAIL_ADDRESS,
-        pass: process.env.CONTACT_MAIL_PASSWORD,
-      },
-    });
-
-    const mailOptions = {
-      from: process.env.CONTACT_MAIL_ADDRESS,
-      to: process.env.CONTACT_MAIL_ADDRESS,
-      subject: 'Form submission with server action',
-      html: `
+      const mailOptions = {
+        from: process.env.CONTACT_MAIL_ADDRESS,
+        to: process.env.CONTACT_MAIL_ADDRESS,
+        subject: 'Form submission with server action, zod, react-hook-form',
+        html: `
           <h3 style="margin-bottom:8px">First Name:</h3>
           <p style="margin:0">${fname}</p>
           ${
@@ -114,19 +58,29 @@ export async function handleSubmit(
           <h3 style="margin:0; margin-bottom:8px">Languages:</h3>
           <p style="margin-top:0">${languages.join(', ')}</p>
         `,
-    };
+      };
 
-    await transporter.sendMail(mailOptions);
+      await transporter.sendMail(mailOptions);
 
-    return {
-      success: true,
-      message: 'Form successfully submitted',
-    };
-  } catch (error) {
-    console.error(`Error: ${JSON.stringify(error)}`);
+      return {
+        isSuccess: true,
+        data: true,
+        message: 'Thanks for getting in touch',
+      };
+    } catch (error) {
+      console.error(`Form Error: ${JSON.stringify(error)}`);
+
+      return {
+        success: false,
+        data: null,
+        message: 'Internal Server Error',
+      };
+    }
+  } else {
     return {
       success: false,
-      message: 'Internal server error',
+      data: null,
+      message: 'Internal Server Error',
     };
   }
 }

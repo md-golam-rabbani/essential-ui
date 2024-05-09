@@ -21,3 +21,28 @@ export interface PageParams {
   params: { id: string };
   searchParams: { [key: string]: string | undefined };
 }
+
+/**
+ * A union type for server action response.
+ *
+ * This improves the developer experience, we know that if
+ * a server action is successfull then we will have a valid data
+ * object.
+ *
+ * We should not have to check for isSuccess and data.
+ */
+interface IServerActionSuccess<T> {
+  isSuccess: true;
+  data: T;
+  message: string;
+}
+
+interface IServerActionFailure {
+  success: false;
+  data: null;
+  message: string;
+}
+
+export type ServerActionResponse<T> =
+  | IServerActionSuccess<T>
+  | IServerActionFailure;
