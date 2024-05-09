@@ -7,7 +7,7 @@ export interface IInputControl {
   value: string;
   /** A function to handle input change events. */
   onInputChange: ChangeEventHandler<HTMLInputElement>;
-  /** A function when a user leaves an input field: */
+  /** A function to handle input focus events. */
   onBlur?: FocusEventHandler<HTMLInputElement>;
   /** The type of the input control. */
   type: 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'url';
