@@ -13,7 +13,6 @@ import { ConditionalTextDisplay } from '@/components/inputs/common/conditional-t
 import { CheckboxControl } from '@/components/inputs/checkbox-control';
 import { SwitchControl } from '@/components/inputs/switch-control';
 import { cn } from '@/lib/shadcn/utils';
-import { TextareaControl } from '@/components/inputs/textarea-control';
 
 // Styles
 const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
@@ -130,19 +129,19 @@ export default function Form() {
               name="fname"
               control={control}
               render={({ field: { name, value, onChange, onBlur } }) => (
-                <TextareaControl
+                <InputControl
                   name={name}
                   value={value || ''}
-                  onTextareaChange={onChange}
+                  onInputChange={onChange}
                   onBlur={onBlur}
                   label="First Name"
-                  // type="text"
+                  type="text"
                   placeholder="Enter your first name"
                   helperText="Min. 3 characters"
                   error={errors.fname?.message || undefined}
                   showErrorMsg={!!errors.fname?.message}
                   disabled={isSubmitting}
-                  // autoComplete="on"
+                  autoComplete="on"
                 />
               )}
             />
