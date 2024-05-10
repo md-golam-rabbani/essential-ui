@@ -26,10 +26,10 @@ export function CarouselPagination({
               onClick(index);
             }}
             className={cn(
-              'inline-flex h-2.5 w-2.5 cursor-pointer items-center justify-center rounded-full border-[0.5px] border-solid border-gray-light bg-gray-light transition-all',
+              'border-gray-light bg-gray-light inline-flex h-2.5 w-2.5 cursor-pointer items-center justify-center rounded-full border-[0.5px] border-solid transition-all',
               paginationBulletClassName,
               isActive && [
-                'cursor-default bg-primary-light text-white',
+                'bg-primary-light cursor-default text-white',
                 paginationBulletActiveClassName,
               ]
             )}

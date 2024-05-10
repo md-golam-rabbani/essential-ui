@@ -1,12 +1,10 @@
-import resolveConfig from 'tailwindcss/resolveConfig';
-import tailwindConfig from '@/tailwind.config';
+import { SCREENS } from '@/lib/types';
 
-const screens = resolveConfig(tailwindConfig).theme.screens;
-export interface Breakpoints extends Record<keyof typeof screens, number> {
+export interface Breakpoints extends Record<keyof typeof SCREENS, number> {
   initial: number;
 }
 
-export interface ICarousel {
+export interface IKeenCarousel {
   /** The content inside the carousel. */
   children: React.ReactNode;
   /** The transitionSpeed of the slide transition. */
@@ -57,8 +55,8 @@ export interface ICarousel {
 }
 
 export const ITEM_GAP: Breakpoints = {
-  initial: 10,
-  sm: 10,
+  initial: 12,
+  sm: 12,
   md: 16,
   lg: 20,
   xl: 24,

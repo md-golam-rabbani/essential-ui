@@ -1,6 +1,6 @@
-import { ICarousel, ITEMS_PER_SLIDE, ITEM_GAP } from './interface';
+import { IKeenCarousel, ITEMS_PER_SLIDE, ITEM_GAP } from './interface';
 
-export const carouselOptions: Omit<ICarousel, 'children'> = {
+export const carouselOptions: Omit<IKeenCarousel, 'children'> = {
   haveOffset: true,
   transitionSpeed: 1000,
   itemsPerSlide: ITEMS_PER_SLIDE,

@@ -3,7 +3,7 @@
 import 'keen-slider/keen-slider.min.css';
 import { CSSProperties, useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
-import { ICarousel, ITEMS_PER_SLIDE, ITEM_GAP } from './interface';
+import { IKeenCarousel, ITEMS_PER_SLIDE, ITEM_GAP } from './interface';
 import { CarouselAutoPlayPlugin, carouselConfig } from './utils';
 import { CarouselPagination } from './sub-components/pagination';
 import { CarouselProgressBar } from './sub-components/progress';
@@ -14,7 +14,7 @@ import { KeenSliderPlugin } from 'keen-slider';
 /**
  * This is the base carousel component.
  */
-export function Carousel({
+export function KeenCarousel({
   children,
   haveOffset = true,
   transitionSpeed = 1000,
@@ -39,7 +39,7 @@ export function Carousel({
 
   progressWrapperClassName,
   progressCompleteBarClassName,
-}: ICarousel) {
+}: IKeenCarousel) {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [sliderReady, setSliderReady] = useState<boolean>(false);
 

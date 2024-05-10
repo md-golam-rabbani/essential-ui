@@ -1,8 +1,8 @@
-import { ICarousel } from '../../interface';
+import { IKeenCarousel } from '../../interface';
 
 export interface ICarouselPagination
   extends Pick<
-    ICarousel,
+    IKeenCarousel,
     | 'paginationWrapperClassName'
     | 'paginationBulletClassName'
     | 'paginationBulletActiveClassName'

@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Carousel } from '.';
-import { CarouselItem } from './sub-components/item';
+import { KeenCarousel } from '.';
+import { KeenCarouselItem } from './sub-components/item';
 import { carouselOptions } from './story-props';
 import { cn } from '@/lib/shadcn/utils';
 
-const meta: Meta<typeof Carousel> = {
-  title: 'Components/Carousel',
-  component: Carousel,
+const meta: Meta<typeof KeenCarousel> = {
+  title: 'Components/Carousel/Keen Carousel',
+  component: KeenCarousel,
   tags: ['autodocs'],
   argTypes: {
     children: {
@@ -27,11 +27,12 @@ interface ICard {
   title: string;
   className?: string;
 }
+
 function Card({ title, className }: ICard) {
   return (
     <div
       className={cn(
-        'grid h-48 w-full place-items-center border-2 border-solid border-black bg-white shadow-gray-light',
+        'shadow-gray-light grid h-48 w-full place-items-center border-2 border-solid border-black bg-white',
         className
       )}
     >
@@ -40,19 +41,19 @@ function Card({ title, className }: ICard) {
   );
 }
 
-type Story = StoryObj<typeof Carousel>;
+type Story = StoryObj<typeof KeenCarousel>;
 
 export const Default: Story = {
   render: (args) => (
     <div className="overflow-hidden py-20">
       <div className="container">
-        <Carousel {...args}>
+        <KeenCarousel {...args}>
           {Array.from({ length: 6 }, (_, i) => i + 1).map((_, index) => (
-            <CarouselItem key={index}>
+            <KeenCarouselItem key={index}>
               <Card title={`Slide ${index + 1}`} />
-            </CarouselItem>
+            </KeenCarouselItem>
           ))}
-        </Carousel>
+        </KeenCarousel>
       </div>
     </div>
   ),
@@ -62,7 +63,7 @@ export const ExampleOne: Story = {
   render: (args) => (
     <div className="overflow-hidden bg-gray-100 py-20">
       <div className="container">
-        <Carousel
+        <KeenCarousel
           {...args}
           itemsPerSlide={{
             initial: 1.2,
@@ -88,14 +89,14 @@ export const ExampleOne: Story = {
           progressWrapperClassName={cn('mt-7 md:mt-10')}
         >
           {Array.from({ length: 6 }, (_, i) => i + 1).map((_, index) => (
-            <CarouselItem key={index}>
+            <KeenCarouselItem key={index}>
               <Card
                 title={`Slide ${index + 1}`}
                 className="h-80 border-none shadow-none"
               />
-            </CarouselItem>
+            </KeenCarouselItem>
           ))}
-        </Carousel>
+        </KeenCarousel>
       </div>
     </div>
   ),
@@ -106,7 +107,7 @@ export const ExampleTwo: Story = {
     <div className="overflow-hidden bg-gray-100 py-20">
       <div className="container">
         <div className="mx-auto max-w-[320px]">
-          <Carousel
+          <KeenCarousel
             {...args}
             haveOffset={false}
             hasPagination
@@ -129,14 +130,14 @@ export const ExampleTwo: Story = {
             paginationWrapperClassName="absolute bottom-2 right-0 left-0 !m-0 gap-1"
           >
             {Array.from({ length: 6 }, (_, i) => i + 1).map((_, index) => (
-              <CarouselItem key={index}>
+              <KeenCarouselItem key={index}>
                 <Card
                   title={`Slide ${index + 1}`}
                   className="h-80 border-none shadow-none"
                 />
-              </CarouselItem>
+              </KeenCarouselItem>
             ))}
-          </Carousel>
+          </KeenCarousel>
         </div>
       </div>
     </div>

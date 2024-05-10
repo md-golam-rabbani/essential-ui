@@ -1,8 +1,8 @@
-import { ICarousel } from '../../interface';
+import { IKeenCarousel } from '../../interface';
 
 export interface ICarouselProgressBar
   extends Pick<
-    ICarousel,
+    IKeenCarousel,
     'progressWrapperClassName' | 'progressCompleteBarClassName'
   > {
   progress: number;

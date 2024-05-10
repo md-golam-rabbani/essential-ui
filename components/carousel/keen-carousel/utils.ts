@@ -1,6 +1,6 @@
 import { KeenSliderOptions, SliderInstance } from 'keen-slider';
-import { ICarousel } from './interface';
-import theme from 'tailwindcss/defaultTheme';
+import { IKeenCarousel } from './interface';
+import { SCREENS } from '@/lib/types';
 
 export function generateArrayFromNumber(num: number) {
   return Array(num)
@@ -10,7 +10,10 @@ export function generateArrayFromNumber(num: number) {
 
 export function carouselConfig(
   args: Required<
-    Pick<ICarousel, 'transitionSpeed' | 'itemsPerSlide' | 'itemGap' | 'loop'>
+    Pick<
+      IKeenCarousel,
+      'transitionSpeed' | 'itemsPerSlide' | 'itemGap' | 'loop'
+    >
   >
 ): KeenSliderOptions {
   return {
@@ -23,31 +26,31 @@ export function carouselConfig(
       spacing: args.itemGap.initial ?? 10,
     },
     breakpoints: {
-      [`(min-width: ${theme.screens.sm})`]: {
+      [`(min-width: ${SCREENS.sm})`]: {
         slides: {
           perView: args.itemsPerSlide.sm || 1.5,
           spacing: args.itemGap.sm ?? 16,
         },
       },
-      [`(min-width: ${theme.screens.md})`]: {
+      [`(min-width: ${SCREENS.md})`]: {
         slides: {
           perView: args.itemsPerSlide.md || 1.5,
           spacing: args.itemGap.md ?? 16,
         },
       },
-      [`(min-width: ${theme.screens.lg})`]: {
+      [`(min-width: ${SCREENS.lg})`]: {
         slides: {
           perView: args.itemsPerSlide.lg || 3,
           spacing: args.itemGap.lg ?? 20,
         },
       },
-      [`(min-width: ${theme.screens.xl})`]: {
+      [`(min-width: ${SCREENS.xl})`]: {
         slides: {
           perView: args.itemsPerSlide.xl || 4,
           spacing: args.itemGap.xl ?? 24,
         },
       },
-      [`(min-width: ${theme.screens['2xl']})`]: {
+      [`(min-width: ${SCREENS['2xl']})`]: {
         slides: {
           perView: args.itemsPerSlide['2xl'] || 5,
           spacing: args.itemGap['2xl'] ?? 24,
