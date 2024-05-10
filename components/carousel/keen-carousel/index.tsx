@@ -91,7 +91,7 @@ export function KeenCarousel({
   // Slide per view
   const slidesPerView = {
     '--initial-view': itemsPerSlide?.initial,
-    '--sm-view': itemsPerSlide.sm,
+    '--sm-view': itemsPerSlide?.sm,
     '--md-view': itemsPerSlide?.md,
     '--lg-view': itemsPerSlide?.lg,
     '--xl-view': itemsPerSlide?.xl,
