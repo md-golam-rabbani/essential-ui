@@ -12,7 +12,7 @@ import { IImage } from '@/lib/types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof RawCarousel> = {
-  title: 'Components/RawCarousel',
+  title: 'Components/Carousel/RawCarousel',
   component: RawCarousel,
   tags: ['autodocs'],
   args: rawCarouselProps,
