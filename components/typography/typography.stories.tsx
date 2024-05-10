@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Typography } from '.';
-import { typographyProps } from './story-props';
+import { typographyProps, typographyShowcaseProps } from './story-props';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Typography> = {
@@ -39,74 +39,20 @@ export const Default: Story = {
 
 function ShowCase() {
   return (
-    <div className="space-y-4">
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Hero
-        </Typography>
-        <Typography size="hero">Heading</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Heading 1
-        </Typography>
-        <Typography size="h1">Heading</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Heading 2
-        </Typography>
-        <Typography size="h2">Heading</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Heading 3
-        </Typography>
-        <Typography size="h3">Heading</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Subheading 1
-        </Typography>
-        <Typography size="s1">Heading</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Subheading 2
-        </Typography>
-        <Typography size="s2">Heading</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Paragraph 1
-        </Typography>
-        <Typography size="p1">Paragraph</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Paragraph 2
-        </Typography>
-        <Typography size="p2">Paragraph</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Overline 1
-        </Typography>
-        <Typography size="o1">Overline</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Caption 1
-        </Typography>
-        <Typography size="c1">Caption</Typography>
-      </div>
-      <div className="space-y-2">
-        <Typography size="o1" className={'text-blue-500-light'}>
-          Quote 1
-        </Typography>
-        <Typography size="q1">Quote</Typography>
-      </div>
-    </div>
+    <>
+      {typographyShowcaseProps && typographyShowcaseProps.length > 0 && (
+        <div className="grid gap-4">
+          {typographyShowcaseProps.map((typo, index) => (
+            <div className="grid gap-1" key={index}>
+              <Typography size="o1" className="text-blue-500">
+                {typo.size}
+              </Typography>
+              <Typography size={typo.size}>{typo.children}</Typography>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
   );
 }
 
