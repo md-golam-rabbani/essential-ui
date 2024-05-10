@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang="en">
-      <body className={clsx(primary.variable, 'font-primary')}>
+      <body className={clsx(primary.variable, 'font-primary text-black')}>
         <Header menuLinks={[]} />
         {children}
-        <Toaster />
         <Footer menuLinks={[]} />
+        <Toaster />
       </body>
     </html>
   );
