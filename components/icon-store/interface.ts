@@ -1,7 +1,7 @@
 const iconTick = ['tick'] as const;
 const iconView = ['view', 'hide'] as const;
 const iconSpinner = ['spinner-circle'] as const;
-const iconChevron = ['chevron-down'] as const;
+const iconChevron = ['chevron-down', 'chevron-left', 'chevron-right'] as const;
 const iconMenu = ['menu'] as const;
 
 export const icons = [

@@ -1,3 +1,6 @@
+import resolveConfig from 'tailwindcss/resolveConfig';
+import tailwindConfig from '@/tailwind.config';
+
 export interface IImage {
   /** Specifies the path to the image */
   src: string;
@@ -46,3 +49,5 @@ interface IServerActionFailure {
 export type ServerActionResponse<T> =
   | IServerActionSuccess<T>
   | IServerActionFailure;
+
+export const SCREENS = resolveConfig(tailwindConfig).theme.screens;

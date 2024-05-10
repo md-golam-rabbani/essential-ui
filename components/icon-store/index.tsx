@@ -1,5 +1,7 @@
 import { IIconStore } from './interface';
 import { ChevronDown } from './sub-components/chevron-down';
+import { ChevronLeft } from './sub-components/chevron-left';
+import { ChevronRight } from './sub-components/chevron-right';
 import { Hide } from './sub-components/hide';
 import { Menu } from './sub-components/menu';
 import { SpinnerCircle } from './sub-components/spinner-circle';
@@ -32,6 +34,12 @@ function Icon({ iconName }: IIcon): JSX.Element {
     }
     case 'chevron-down': {
       return <ChevronDown />;
+    }
+    case 'chevron-left': {
+      return <ChevronLeft />;
+    }
+    case 'chevron-right': {
+      return <ChevronRight />;
     }
     case 'menu': {
       return <Menu />;
