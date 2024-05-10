@@ -115,7 +115,7 @@ export function KeenCarousel({
           ref={sliderRef}
           style={{ ...slidesPerView, ...gapPerItem }}
           className={cn(
-            'keen-slider carousel',
+            'keen-slider keen-carousel',
             haveOffset && '!overflow-visible',
             mainWrapperClassName
           )}

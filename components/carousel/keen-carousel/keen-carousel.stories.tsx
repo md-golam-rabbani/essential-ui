@@ -32,7 +32,7 @@ function Card({ title, className }: ICard) {
   return (
     <div
       className={cn(
-        'shadow-gray-light grid h-48 w-full place-items-center border-2 border-solid border-black bg-white',
+        'grid h-48 w-full place-items-center border-2 border-solid border-black bg-white shadow-lg',
         className
       )}
     >

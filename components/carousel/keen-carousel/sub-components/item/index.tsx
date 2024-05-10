@@ -5,7 +5,7 @@ export function KeenCarouselItem({ children, className }: IKeenCarouselItem) {
   return (
     <div
       className={cn(
-        'keen-slider__slide carousel-slide !overflow-visible',
+        'keen-slider__slide keen-carousel-slide !overflow-visible',
         className
       )}
     >
