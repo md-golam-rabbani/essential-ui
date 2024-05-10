@@ -15,6 +15,7 @@ import { cn } from '@/lib/shadcn/utils';
 import { formSchema, IFormFields } from './interface';
 import { toast } from 'sonner';
 import { formSubmit } from './actions';
+import * as z from 'zod';
 
 // Styles
 const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
@@ -22,27 +23,14 @@ const inputItemParentClasses = cn('flex flex-row items-center gap-2 text-base');
 const inputGroupParentClasses = cn('grid gap-1');
 
 /**
- * TODO:
- * 1. Form field validation with errors message showcase properly with testing.
- * 2. Form field onBlur prop
- * 3. Form submission
- * 4. Toast message
- * 5. Cleanup
- */
-
-/**
- * `Form` is a React functional component that renders a form with an email input field and a submit button.
- * It leverages the `useFormState` and `useFormStatus` hooks from `react-dom`
- * for form state management, including handling form submission and displaying
- * form status messages.
+ * `Form` is a React functional component that renders a form with various input fields and controls.
+ * It utilizes the `useForm` hook from `react-hook-form` for form state management,
+ * including handling form submission and displaying form validation errors.
  *
- * @ResourceLink https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#pending-states
- * This component is designed to work with Next.js server actions and
- * mutations, handling pending states effectively.
+ * @remarks
+ * This component integrates with Zod schema validation for form validation.
  *
- * @see {@link handleSubmit} - The function used to handle form submission.
- * @see {@link IInitialFormStatusState} - The interface defining the initial
- * form status state.
+ * @see {@link IFormFields} - The interface defining the structure of form fields.
  */
 export default function Form() {
   const {
@@ -60,19 +48,36 @@ export default function Form() {
     },
   });
 
+  /**
+   * Handles form submission.
+   * @param data - The form data submitted by the user.
+   */
   const onSubmit: SubmitHandler<IFormFields> = async (data) => {
-    const result = formSchema.safeParse(data);
+    try {
+      // Validate form data using Zod schema
+      const result = formSchema.safeParse(data);
 
-    if (result.error) {
-      toast.error(result.error.message);
-    }
-    if (result.success) {
-      const res = await formSubmit(data);
-      if (res.data) {
-        toast.success(res.message);
-        reset();
+      // If validation succeeds, proceed with form submission
+      if (result.success) {
+        const res = await formSubmit(data);
+        if (res.data) {
+          toast.success(res.message);
+          reset();
+        } else {
+          toast.error(res.message);
+        }
+      }
+    } catch (error) {
+      // If validation fails, handle Zod validation error
+      if (error instanceof z.ZodError) {
+        // Extract error messages from Zod error
+        const validationErrors = error.errors.map((err) => err.message);
+        // Display the first validation error to the user
+        toast.error(validationErrors[0]);
       } else {
-        toast.error(res.message);
+        // Handle non-validation errors
+        console.error(error);
+        toast.error('An error occurred. Please try again.');
       }
     }
   };
@@ -154,7 +159,7 @@ export default function Form() {
               )}
             />
 
-            {/* TODO: Add confirm password field and need to add password match validation check  */}
+            {/* TODO: Add a confirm password field and support it with a password matcher */}
             <Controller
               name="password"
               control={control}
@@ -198,7 +203,6 @@ export default function Form() {
               )}
             />
 
-            {/* TODO: Validation message doesn't show correctly.  */}
             {/* Job role  */}
             <Controller
               name="jobRole"
@@ -371,7 +375,6 @@ export default function Form() {
                     Are you interested?
                   </label>
 
-                  {/* TODO: Need to fix error message showcase issue  */}
                   {errors.interest?.message && (
                     <ConditionalTextDisplay
                       error={errors.interest.message}

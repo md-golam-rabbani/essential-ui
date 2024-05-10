@@ -35,7 +35,7 @@ export const formSchema = z.object({
     message: 'Please enable your interest',
   }),
   terms: z.boolean().refine((value) => value === true, {
-    message: 'You must agree the terms and condition',
+    message: 'You must agree to the terms and conditions',
   }),
 });
 
