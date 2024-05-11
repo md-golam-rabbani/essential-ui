@@ -8,6 +8,7 @@ const config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './sections/**/*.{js,ts,jsx,tsx,mdx}',
     './examples/**/*.{js,ts,jsx,tsx,mdx}',
+    './creative/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   prefix: '',
   theme: {
