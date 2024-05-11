@@ -106,7 +106,7 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
       <div className="flex h-full w-full items-center justify-center">
         <div className="w-full overflow-hidden">
           <div className="container">
-            <ul
+            <div
               style={
                 {
                   '--active-item': activeItem,
@@ -119,7 +119,7 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
               )}
             >
               {people.map((people, index) => (
-                <li
+                <div
                   onClick={() => {
                     startTransition(() => {
                       setActiveItem(index);
@@ -165,26 +165,21 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
                           : 'transition-none md:-translate-x-full md:opacity-0'
                       )}
                     >
-                      <Link href={people.link} className="w-fit">
-                        <Typography
-                          size="h2"
-                          className="flex w-fit flex-wrap items-center gap-x-2 text-white md:gap-x-4"
-                        >
-                          {people.title}
-                          <span className="h-fit text-2xl !leading-[0] md:text-4xl">
-                            {/* TODO: Need update  */}
-                            <IconStore iconName="chevron-down" />
-                          </span>
-                        </Typography>
-                      </Link>
+                      <Typography
+                        size="h2"
+                        tagName="h3"
+                        className="flex w-fit flex-wrap items-center gap-x-2 text-white md:gap-x-4"
+                      >
+                        <Link href={people.link}>{people.title}</Link>
+                      </Typography>
                       <Typography size="p2" className="text-white md:text-base">
                         {people.subTitle}
                       </Typography>
                     </div>
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
