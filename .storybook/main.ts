@@ -16,6 +16,7 @@ const config: StorybookConfig = {
     '../components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../app/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../examples/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../creative/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   staticDirs: ['../public'],
   addons: [
@@ -23,6 +24,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
+    '@storybook/addon-styling-webpack',
   ],
   framework: {
     name: '@storybook/nextjs',
