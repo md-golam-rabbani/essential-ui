@@ -3,6 +3,7 @@ const iconView = ['view', 'hide'] as const;
 const iconSpinner = ['spinner-circle'] as const;
 const iconChevron = ['chevron-down', 'chevron-left', 'chevron-right'] as const;
 const iconMenu = ['menu'] as const;
+const iconClose = ['close'] as const;
 
 export const icons = [
   ...iconTick,
@@ -10,6 +11,7 @@ export const icons = [
   ...iconSpinner,
   ...iconChevron,
   ...iconMenu,
+  ...iconClose,
 ];
 
 export type IconName = (typeof icons)[number];
