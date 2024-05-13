@@ -1,7 +1,7 @@
 'use client';
 
 import { Typography } from '@/components/typography';
-import { CustomButton } from '@/components/button';
+import { CustomButton } from '@/components/custom-button';
 import { InputControl } from '@/components/inputs/input-control';
 import { SelectControl } from '@/components/inputs/select-control';
 import { InputHeading } from '@/components/inputs/common/input-heading';

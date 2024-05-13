@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { IconStore } from '@/components/icon-store';
 import { CustomSheet } from '@/components/custom-sheet';
 import { useState } from 'react';
-import { CustomButton } from '@/components/button';
+import { CustomButton } from '@/components/custom-button';
 
 /** This is the header section. This should render at the top of every page. */
 export function Header({ menuLinks }: IHeader) {

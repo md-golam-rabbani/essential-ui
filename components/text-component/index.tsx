@@ -1,4 +1,4 @@
-import { CustomButton } from '../button';
+import { CustomButton } from '../custom-button';
 import { ITextComponent } from './interface';
 import { Typography } from '../typography';
 import React from 'react';

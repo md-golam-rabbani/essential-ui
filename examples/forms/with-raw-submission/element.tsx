@@ -9,7 +9,7 @@ import { CheckboxControl } from '@/components/inputs/checkbox-control';
 import { ConditionalTextDisplay } from '@/components/inputs/common/conditional-text-display';
 import { SwitchControl } from '@/components/inputs/switch-control';
 import { Typography } from '@/components/typography';
-import { CustomButton } from '@/components/button';
+import { CustomButton } from '@/components/custom-button';
 import { cn } from '@/lib/shadcn/utils';
 import { getCheckBoxValues } from './utils';
 import { toast } from 'sonner';

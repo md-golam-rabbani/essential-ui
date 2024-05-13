@@ -1,5 +1,5 @@
 import { toast } from 'sonner';
-import { CustomButton } from '../button';
+import { CustomButton } from '../custom-button';
 import { Toaster } from './sonner';
 import { Meta, StoryObj } from '@storybook/react';
 import { Typography } from '../typography';

@@ -1,4 +1,4 @@
-import { ICustomLink } from './../custom-link/interface';
+import { ICustomLink } from '../custom-link/interface';
 import { VariantProps } from 'class-variance-authority';
 import { PropsWithChildren } from 'react';
 import { customButtonVariants } from './variants-style';

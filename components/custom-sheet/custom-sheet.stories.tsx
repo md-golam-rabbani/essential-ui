@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { CustomButton } from '../button';
+import { CustomButton } from '../custom-button';
 import { Typography } from '../typography';
 import { CustomSheet } from '.';
 import { useArgs } from '@storybook/preview-api';

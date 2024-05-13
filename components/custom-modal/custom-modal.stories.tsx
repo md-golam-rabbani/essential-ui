@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs, useState } from '@storybook/preview-api';
-import { CustomButton } from '../button';
+import { CustomButton } from '../custom-button';
 import { CustomModal } from '.';
 import { ICustomModal } from './interface';
 

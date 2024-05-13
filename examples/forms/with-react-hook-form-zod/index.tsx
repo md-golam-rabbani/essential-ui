@@ -3,7 +3,7 @@
 import { Typography } from '@/components/typography';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CustomButton } from '@/components/button';
+import { CustomButton } from '@/components/custom-button';
 import { InputControl } from '@/components/inputs/input-control';
 import { SelectControl } from '@/components/inputs/select-control';
 import { InputHeading } from '@/components/inputs/common/input-heading';
