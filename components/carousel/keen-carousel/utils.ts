@@ -1,10 +1,9 @@
+import { KeenSliderOptions } from 'keen-slider';
 import {
-  KeenSliderHooks,
-  KeenSliderInstance,
-  KeenSliderOptions,
-  SliderInstance,
-} from 'keen-slider';
-import { IKeenCarouselCustomHook } from './interface';
+  IKeenCarouselCustomHook,
+  KEEN_ITEM_TO_ITEM_GAP,
+  KEEN_ITEMS_PER_SLIDE,
+} from './interface';
 import { SCREENS } from '@/lib/types';
 
 export function generateArrayFromNumber(num: number) {
@@ -22,105 +21,40 @@ export function keenCarouselConfig(
       duration: args.transitionSpeed,
     },
     slides: {
-      perView: args.itemsPerSlide.initial || 1.2,
-      spacing: args.itemGap.initial ?? 10,
+      perView: args.itemsPerSlide.initial || KEEN_ITEMS_PER_SLIDE.initial,
+      spacing: args.itemGap.initial ?? KEEN_ITEM_TO_ITEM_GAP.initial,
     },
     breakpoints: {
       [`(min-width: ${SCREENS.sm})`]: {
         slides: {
-          perView: args.itemsPerSlide.sm || 1.5,
-          spacing: args.itemGap.sm ?? 16,
+          perView: args.itemsPerSlide.sm || KEEN_ITEMS_PER_SLIDE.sm,
+          spacing: args.itemGap.sm ?? KEEN_ITEM_TO_ITEM_GAP.sm,
         },
       },
       [`(min-width: ${SCREENS.md})`]: {
         slides: {
-          perView: args.itemsPerSlide.md || 1.5,
-          spacing: args.itemGap.md ?? 16,
+          perView: args.itemsPerSlide.md || KEEN_ITEMS_PER_SLIDE.md,
+          spacing: args.itemGap.md ?? KEEN_ITEM_TO_ITEM_GAP.md,
         },
       },
       [`(min-width: ${SCREENS.lg})`]: {
         slides: {
-          perView: args.itemsPerSlide.lg || 3,
-          spacing: args.itemGap.lg ?? 20,
+          perView: args.itemsPerSlide.lg || KEEN_ITEMS_PER_SLIDE.lg,
+          spacing: args.itemGap.lg ?? KEEN_ITEM_TO_ITEM_GAP.lg,
         },
       },
       [`(min-width: ${SCREENS.xl})`]: {
         slides: {
-          perView: args.itemsPerSlide.xl || 4,
-          spacing: args.itemGap.xl ?? 24,
+          perView: args.itemsPerSlide.xl || KEEN_ITEMS_PER_SLIDE.xl,
+          spacing: args.itemGap.xl ?? KEEN_ITEM_TO_ITEM_GAP.xl,
         },
       },
       [`(min-width: ${SCREENS['2xl']})`]: {
         slides: {
-          perView: args.itemsPerSlide['2xl'] || 5,
-          spacing: args.itemGap['2xl'] ?? 24,
+          perView: args.itemsPerSlide['2xl'] || KEEN_ITEMS_PER_SLIDE['2xl'],
+          spacing: args.itemGap['2xl'] ?? KEEN_ITEM_TO_ITEM_GAP['2xl'],
         },
       },
     },
   };
 }
-
-type Slider = SliderInstance<
-  KeenSliderOptions<object, object, KeenSliderHooks>,
-  KeenSliderInstance<object, object, KeenSliderHooks>,
-  KeenSliderHooks
->;
-
-/**
- * AutoPlay Plugin for Keen Carousel
- * @param interval (milliseconds)
- * @param pauseOnHover (boolean)
- * @returns
- */
-export const keenCarouselAutoPlayPlugin =
-  (interval?: number, pauseOnHover?: boolean) => (slider: Slider) => {
-    let timeout: ReturnType<typeof setTimeout>;
-    let mouseOver = false;
-
-    function clearNextTimeout() {
-      clearTimeout(timeout);
-    }
-
-    function nextTimeout() {
-      clearTimeout(timeout);
-
-      if (!mouseOver) {
-        timeout = setTimeout(() => {
-          slider.next();
-        }, interval);
-      }
-    }
-
-    function onMouseOver() {
-      if (pauseOnHover) {
-        mouseOver = true;
-        clearNextTimeout();
-      }
-    }
-
-    function onMouseOut() {
-      if (pauseOnHover) {
-        mouseOver = false;
-        nextTimeout();
-      }
-    }
-
-    function onStart() {
-      slider.container.addEventListener('mouseover', onMouseOver);
-      slider.container.addEventListener('mouseout', onMouseOut);
-      slider.on('animationEnded', nextTimeout);
-      nextTimeout();
-    }
-
-    function onStop() {
-      slider.container.removeEventListener('mouseover', onMouseOver);
-      slider.container.removeEventListener('mouseout', onMouseOut);
-      slider.on('animationEnded', nextTimeout, true);
-      clearNextTimeout();
-    }
-
-    slider.on('created', interval ? onStart : onStop);
-    slider.on('destroyed', onStop);
-    slider.on('animationStopped', onStop);
-    slider.on('animationStarted', interval ? onStart : onStop);
-  };

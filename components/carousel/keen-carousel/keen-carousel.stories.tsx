@@ -3,9 +3,11 @@ import { KeenCarousel } from '.';
 import { KeenCarouselItem } from './sub-components/item';
 import { keenCarouselOptions } from './story-props';
 import { cn } from '@/lib/shadcn/utils';
-import { useCustomKeenSlider } from './custom-keen-slider-hook';
-import { keenCarouselAutoPlayPlugin } from './utils';
 import { Breakpoints } from '@/lib/types';
+import { useCustomKeenSlider } from './hooks/use-custom-keen-slider';
+import { Typography } from '@/components/typography';
+import { keenCarouselTouchScrollPlugin } from './plugins/touch-scroll';
+import { keenCarouselAutoPlayPlugin } from './plugins/autoplay';
 
 const meta: Meta<typeof KeenCarousel> = {
   title: 'Components/Carousel/Keen Caraousel',
@@ -204,3 +206,98 @@ export const DifferentConfigExample: Story = {
     );
   },
 };
+
+export const TouchScrollExample: Story = {
+  render: (args) => {
+    /**
+     * @Note Need to pass the same values of itemsPerSlide & itemsGap
+     * as props for KeenCarousel component.
+     *
+     * We are passing this to avoid the flickering issue during initial stage
+     */
+
+    const { currentSlide, sliderReady, sliderRef, instanceRef } =
+      useCustomKeenSlider({
+        transitionSpeed: 2000,
+        itemsPerSlide: itemsPerSlideConfig1,
+        itemGap: itemGapConfig1,
+        plugins: [keenCarouselTouchScrollPlugin],
+      });
+
+    return (
+      <>
+        <div className="overflow-hidden bg-gray-100 py-20">
+          <div className="container">
+            <KeenCarousel
+              {...args}
+              currentSlide={currentSlide}
+              sliderReady={sliderReady}
+              sliderRef={sliderRef}
+              instanceRef={instanceRef}
+              // Navigation
+              haveOffset={true}
+              hasNavigation={true}
+              // Progress
+              hasProgress
+              progressWrapperClassName={cn('mt-7 md:mt-10')}
+              itemsPerSlide={itemsPerSlideConfig1}
+              itemGap={itemGapConfig1}
+            >
+              {Array.from({ length: 100 }, (_, i) => i + 1).map((_, index) => (
+                <KeenCarouselItem key={index}>
+                  <Card
+                    title={`Slide ${index + 1}`}
+                    className="min-h-80 border-none shadow-none"
+                  />
+                </KeenCarouselItem>
+              ))}
+            </KeenCarousel>
+          </div>
+        </div>
+        <DummySection />
+        <DummySection className="bg-red-100" />
+        <DummySection />
+      </>
+    );
+  },
+};
+
+const cards: { title: string; description: string }[] = [
+  {
+    title: 'Lorem ipsum dolor sit amet, consectetur',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.',
+  },
+  {
+    title: 'Lorem ipsum dolor sit amet, consectetur',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.',
+  },
+  {
+    title: 'Lorem ipsum dolor sit amet, consectetur',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.',
+  },
+];
+
+function DummySection({ className }: { className?: string }) {
+  return (
+    <div className={cn('section-padding-primary bg-gray-300', className)}>
+      <div className="container">
+        {!!cards.length && (
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-10">
+            {cards.map((card, index) => (
+              <div
+                key={index}
+                className="space-y-6 rounded-lg bg-white p-6 text-black shadow-lg"
+              >
+                <Typography size="h3">{card.title}</Typography>
+                <Typography size="p1">{card.description}</Typography>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

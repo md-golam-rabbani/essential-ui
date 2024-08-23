@@ -2,8 +2,8 @@
 
 import { KeenSliderPlugin, useKeenSlider } from 'keen-slider/react';
 import { useState } from 'react';
-import { KEEN_ITEMS_PER_SLIDE, KEEN_ITEM_TO_ITEM_GAP } from './interface';
-import { keenCarouselConfig } from './utils';
+import { KEEN_ITEM_TO_ITEM_GAP, KEEN_ITEMS_PER_SLIDE } from '../interface';
+import { keenCarouselConfig } from '../utils';
 
 /**
  * Custom keen slider hook for returning props that needed to be passed from parent .

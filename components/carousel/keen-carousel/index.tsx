@@ -28,7 +28,7 @@ export function KeenCarousel({
   itemGap = KEEN_ITEM_TO_ITEM_GAP,
   itemsPerSlide = KEEN_ITEMS_PER_SLIDE,
 
-  haveOffset = true,
+  haveOffset = false,
   hasNavigation = false,
   hasPagination = false,
   hasProgress = false,
@@ -80,6 +80,7 @@ export function KeenCarousel({
     }
   }
 
+  // Perview
   const slidesPerView = {
     '--initial-view': itemsPerSlide.initial,
     '--sm-view': itemsPerSlide.sm,
