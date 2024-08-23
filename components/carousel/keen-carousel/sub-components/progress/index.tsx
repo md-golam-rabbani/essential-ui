@@ -1,7 +1,7 @@
 import { cn } from '@/lib/shadcn/utils';
 import { ICarouselProgressBar } from './interface';
 
-export function CarouselProgressBar({
+export function KeenCarouselProgressBar({
   progress,
   progressWrapperClassName,
   progressCompleteBarClassName,
@@ -21,6 +21,8 @@ export function CarouselProgressBar({
         style={{
           width: `${progress * 100}%`,
         }}
+        aria-valuenow={Number(progress * 100)}
+        aria-labelledby="keen carousel progress label"
       ></span>
     </div>
   );

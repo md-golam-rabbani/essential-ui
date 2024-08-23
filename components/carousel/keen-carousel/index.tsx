@@ -1,30 +1,37 @@
 'use client';
 
 import 'keen-slider/keen-slider.min.css';
-import { CSSProperties, useState } from 'react';
-import { useKeenSlider } from 'keen-slider/react';
-import { IKeenCarousel, ITEMS_PER_SLIDE, ITEM_GAP } from './interface';
-import { CarouselAutoPlayPlugin, carouselConfig } from './utils';
-import { CarouselPagination } from './sub-components/pagination';
-import { CarouselProgressBar } from './sub-components/progress';
-import { CarouselNavigationButton } from './sub-components/navigation';
+import { CSSProperties } from 'react';
+import {
+  IKeenCarousel,
+  KEEN_ITEM_TO_ITEM_GAP,
+  KEEN_ITEMS_PER_SLIDE,
+} from './interface';
+import { KeenCarouselPagination } from './sub-components/pagination';
+import { KeenCarouselProgressBar } from './sub-components/progress';
+import { KeenCarouselNavigationButton } from './sub-components/navigation';
 import { cn } from '@/lib/shadcn/utils';
-import { KeenSliderPlugin } from 'keen-slider';
+import styles from './keen-carousel.module.css';
 
 /**
- * This is the base carousel component.
+ * Keen Carousel
+ * Please use with `useCustomKeenSlider` custom hook.
+ *
+ * Please note: If you pass a custom `itemGap` and `itemPerSlide` it will overwrite the default values then
+ * you also have to pass it to this component
+ *
+ * TODO: Review CSS module.
+ * TODO: Document how this component works and how to update it
  */
 export function KeenCarousel({
   children,
+  itemGap = KEEN_ITEM_TO_ITEM_GAP,
+  itemsPerSlide = KEEN_ITEMS_PER_SLIDE,
+
   haveOffset = true,
-  transitionSpeed = 1000,
-  itemGap = ITEM_GAP,
-  itemsPerSlide = ITEMS_PER_SLIDE,
-  loop = false,
   hasNavigation = false,
   hasPagination = false,
   hasProgress = false,
-  autoPlay,
 
   // Overwriting styling
   mainWrapperClassName,
@@ -39,28 +46,13 @@ export function KeenCarousel({
 
   progressWrapperClassName,
   progressCompleteBarClassName,
+
+  // Carousel Config
+  sliderRef,
+  instanceRef,
+  currentSlide,
+  sliderReady,
 }: IKeenCarousel) {
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [sliderReady, setSliderReady] = useState<boolean>(false);
-
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
-    {
-      ...carouselConfig({ transitionSpeed, itemsPerSlide, itemGap, loop }),
-      slideChanged(slider) {
-        setCurrentSlide(slider.track.details.rel);
-      },
-      created() {
-        setSliderReady(true);
-      },
-    },
-    [
-      CarouselAutoPlayPlugin(
-        autoPlay?.interval,
-        autoPlay?.pauseOnHover
-      ) as KeenSliderPlugin,
-    ]
-  );
-
   // Pagination, Progress, SlidePerView
   let progress: number = 0;
   let paginationDots: number = 0;
@@ -73,7 +65,7 @@ export function KeenCarousel({
     typeof instanceRef.current?.options.slides.perView === 'number'
   ) {
     slidePerView = Math.floor(instanceRef.current?.options.slides.perView);
-    if (loop) {
+    if (instanceRef.current?.options.loop) {
       progress = (currentSlide + 1) / instanceRef.current?.slides.length;
       paginationDots = instanceRef.current?.slides.length;
     } else {
@@ -88,24 +80,23 @@ export function KeenCarousel({
     }
   }
 
-  // Slide per view
   const slidesPerView = {
-    '--initial-view': itemsPerSlide?.initial,
-    '--sm-view': itemsPerSlide?.sm,
-    '--md-view': itemsPerSlide?.md,
-    '--lg-view': itemsPerSlide?.lg,
-    '--xl-view': itemsPerSlide?.xl,
-    '--2xl-view': itemsPerSlide?.['2xl'],
+    '--initial-view': itemsPerSlide.initial,
+    '--sm-view': itemsPerSlide.sm,
+    '--md-view': itemsPerSlide.md,
+    '--lg-view': itemsPerSlide.lg,
+    '--xl-view': itemsPerSlide.xl,
+    '--2xl-view': itemsPerSlide['2xl'],
   } as CSSProperties;
 
   // Item gap
   const gapPerItem = {
-    '--initial-gap': `${itemGap?.initial}px`,
-    '--sm-gap': `${itemGap?.sm}px`,
-    '--md-gap': `${itemGap?.md}px`,
-    '--lg-gap': `${itemGap?.lg}px`,
-    '--xl-gap': `${itemGap?.xl}px`,
-    '--2xl-gap': `${itemGap?.['2xl']}px`,
+    '--initial-gap': `${itemGap.initial}px`,
+    '--sm-gap': `${itemGap.sm}px`,
+    '--md-gap': `${itemGap.md}px`,
+    '--lg-gap': `${itemGap.lg}px`,
+    '--xl-gap': `${itemGap.xl}px`,
+    '--2xl-gap': `${itemGap['2xl']}px`,
   } as CSSProperties;
 
   return (
@@ -115,34 +106,41 @@ export function KeenCarousel({
           ref={sliderRef}
           style={{ ...slidesPerView, ...gapPerItem }}
           className={cn(
-            'keen-slider keen-carousel',
+            'keen-slider',
+            styles['keen-carousel'],
             haveOffset && '!overflow-visible',
             mainWrapperClassName
           )}
+          aria-label="Keen slider"
         >
           {children}
         </div>
 
         {/* Navigation  */}
         {hasNavigation && sliderReady && instanceRef.current && (
-          <div className={cn(navigationWrapperClassName)}>
-            <CarouselNavigationButton
+          <div
+            className={cn(navigationWrapperClassName)}
+            aria-label="Keen slider navigation"
+          >
+            <KeenCarouselNavigationButton
               onClick={(e: React.MouseEvent<HTMLSpanElement>) => {
                 e.stopPropagation();
                 instanceRef.current?.prev();
               }}
-              disabled={!loop && currentSlide === 0}
+              disabled={
+                !instanceRef.current?.options.loop && currentSlide === 0
+              }
               className={navigationPrevBtnClassName}
               iconName="chevron-left"
             />
 
-            <CarouselNavigationButton
+            <KeenCarouselNavigationButton
               onClick={(e: React.MouseEvent<HTMLSpanElement>) => {
                 e.stopPropagation();
                 instanceRef.current?.next();
               }}
               disabled={
-                !loop &&
+                !instanceRef.current?.options.loop &&
                 (currentSlide ===
                   instanceRef.current.track.details.slides.length -
                     slidePerView ||
@@ -157,7 +155,7 @@ export function KeenCarousel({
 
         {/* Pagination */}
         {hasPagination && sliderReady && instanceRef.current && (
-          <CarouselPagination
+          <KeenCarouselPagination
             totalCount={paginationDots}
             onClick={(newIndex: number) => {
               instanceRef.current?.moveToIdx(newIndex);
@@ -172,7 +170,7 @@ export function KeenCarousel({
 
       {/* ProgressBar  */}
       {hasProgress && (
-        <CarouselProgressBar
+        <KeenCarouselProgressBar
           progress={progress}
           progressWrapperClassName={progressWrapperClassName}
           progressCompleteBarClassName={progressCompleteBarClassName}

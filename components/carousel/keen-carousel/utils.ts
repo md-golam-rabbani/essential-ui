@@ -1,5 +1,10 @@
-import { KeenSliderOptions, SliderInstance } from 'keen-slider';
-import { IKeenCarousel } from './interface';
+import {
+  KeenSliderHooks,
+  KeenSliderInstance,
+  KeenSliderOptions,
+  SliderInstance,
+} from 'keen-slider';
+import { IKeenCarouselCustomHook } from './interface';
 import { SCREENS } from '@/lib/types';
 
 export function generateArrayFromNumber(num: number) {
@@ -8,13 +13,8 @@ export function generateArrayFromNumber(num: number) {
     .map((_, i) => i + 1);
 }
 
-export function carouselConfig(
-  args: Required<
-    Pick<
-      IKeenCarousel,
-      'transitionSpeed' | 'itemsPerSlide' | 'itemGap' | 'loop'
-    >
-  >
+export function keenCarouselConfig(
+  args: Required<IKeenCarouselCustomHook>
 ): KeenSliderOptions {
   return {
     loop: args.loop,
@@ -60,55 +60,67 @@ export function carouselConfig(
   };
 }
 
-interface Slider extends SliderInstance {
-  next: () => void;
-  container: HTMLElement;
-}
+type Slider = SliderInstance<
+  KeenSliderOptions<object, object, KeenSliderHooks>,
+  KeenSliderInstance<object, object, KeenSliderHooks>,
+  KeenSliderHooks
+>;
 
-export const CarouselAutoPlayPlugin =
+/**
+ * AutoPlay Plugin for Keen Carousel
+ * @param interval (milliseconds)
+ * @param pauseOnHover (boolean)
+ * @returns
+ */
+export const keenCarouselAutoPlayPlugin =
   (interval?: number, pauseOnHover?: boolean) => (slider: Slider) => {
     let timeout: ReturnType<typeof setTimeout>;
     let mouseOver = false;
-    const clearNextTimeout = () => {
-      clearTimeout(timeout);
-    };
 
-    const nextTimeout = () => {
+    function clearNextTimeout() {
       clearTimeout(timeout);
-      if (mouseOver) return;
-      timeout = setTimeout(() => {
-        slider.next();
-      }, interval);
-    };
+    }
 
-    const onMouseOver = () => {
-      if (!pauseOnHover) {
-        mouseOver = true;
+    function nextTimeout() {
+      clearTimeout(timeout);
+
+      if (!mouseOver) {
+        timeout = setTimeout(() => {
+          slider.next();
+        }, interval);
       }
-      clearNextTimeout();
-    };
+    }
 
-    const onMouseOut = () => {
-      mouseOver = false;
-      nextTimeout();
-    };
+    function onMouseOver() {
+      if (pauseOnHover) {
+        mouseOver = true;
+        clearNextTimeout();
+      }
+    }
 
-    const onStart = () => {
+    function onMouseOut() {
+      if (pauseOnHover) {
+        mouseOver = false;
+        nextTimeout();
+      }
+    }
+
+    function onStart() {
       slider.container.addEventListener('mouseover', onMouseOver);
       slider.container.addEventListener('mouseout', onMouseOut);
       slider.on('animationEnded', nextTimeout);
       nextTimeout();
-    };
+    }
 
-    const onStop = () => {
+    function onStop() {
       slider.container.removeEventListener('mouseover', onMouseOver);
       slider.container.removeEventListener('mouseout', onMouseOut);
       slider.on('animationEnded', nextTimeout, true);
       clearNextTimeout();
-    };
+    }
 
     slider.on('created', interval ? onStart : onStop);
     slider.on('destroyed', onStop);
-    slider.on('stopped', onStop);
-    slider.on('resumed', interval ? onStart : onStop);
+    slider.on('animationStopped', onStop);
+    slider.on('animationStarted', interval ? onStart : onStop);
   };

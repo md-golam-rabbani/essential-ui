@@ -51,3 +51,5 @@ export type ServerActionResponse<T> =
   | IServerActionFailure;
 
 export const SCREENS = resolveConfig(tailwindConfig).theme.screens;
+
+export type Breakpoints = Record<keyof typeof SCREENS | 'initial', number>;

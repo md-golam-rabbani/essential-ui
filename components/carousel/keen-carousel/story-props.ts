@@ -1,12 +1,13 @@
-import { IKeenCarousel, ITEMS_PER_SLIDE, ITEM_GAP } from './interface';
+import { IKeenCarousel } from './interface';
 
-export const carouselOptions: Omit<IKeenCarousel, 'children'> = {
+export const keenCarouselOptions: Omit<
+  IKeenCarousel,
+  'children' | 'sliderRef' | 'instanceRef'
+> = {
   haveOffset: true,
-  transitionSpeed: 1000,
-  itemsPerSlide: ITEMS_PER_SLIDE,
-  itemGap: ITEM_GAP,
-  loop: false,
   hasNavigation: false,
   hasPagination: false,
   hasProgress: false,
+  currentSlide: 0,
+  sliderReady: false,
 };

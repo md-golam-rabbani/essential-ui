@@ -1,39 +1,51 @@
 import { cn } from '@/lib/shadcn/utils';
 import { generateArrayFromNumber } from '../../utils';
-import { ICarouselPagination } from './interface';
+import { IKeenCarouselPagination } from './interface';
 
-export function CarouselPagination({
+export function KeenCarouselPagination({
   totalCount,
   onClick,
   currentSlide,
   paginationWrapperClassName,
   paginationBulletClassName,
   paginationBulletActiveClassName,
-}: ICarouselPagination) {
+}: IKeenCarouselPagination) {
   return (
     <div
       className={cn(
         'mt-7 flex flex-wrap items-center justify-center gap-2 lg:mt-10',
         paginationWrapperClassName
       )}
+      aria-label="Keen slider dot's"
     >
       {generateArrayFromNumber(totalCount).map((_, index) => {
         const isActive = currentSlide === index;
         return (
-          <span
+          <button
+            aria-label="keen slider dot"
             key={index}
             onClick={() => {
               onClick(index);
             }}
             className={cn(
-              'inline-flex h-2.5 w-2.5 cursor-pointer items-center justify-center rounded-full border-[0.5px] border-solid border-gray-300 bg-gray-300 transition-all',
+              // Layout
+              'inline-flex h-2.5 w-2.5 cursor-pointer items-center justify-center rounded-full',
+              // General
+              'cursor-pointer bg-gray-300',
+              // Animation
+              'transition-all',
+              // Border
+              'border-[0.5px] border-solid border-gray-300',
+
               paginationBulletClassName,
+
+              // Conditional classes
               isActive && [
-                'cursor-default bg-blue-500 text-white',
+                'cursor-default bg-blue-500',
                 paginationBulletActiveClassName,
               ]
             )}
-          ></span>
+          ></button>
         );
       })}
     </div>

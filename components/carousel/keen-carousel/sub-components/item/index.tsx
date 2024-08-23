@@ -8,6 +8,7 @@ export function KeenCarouselItem({ children, className }: IKeenCarouselItem) {
         'keen-slider__slide keen-carousel-slide !overflow-visible',
         className
       )}
+      aria-label="Keen slider slide"
     >
       {children}
     </div>

@@ -1,6 +1,6 @@
 import { IKeenCarousel } from '../../interface';
 
-export interface ICarouselPagination
+export interface IKeenCarouselPagination
   extends Pick<
     IKeenCarousel,
     | 'paginationWrapperClassName'
