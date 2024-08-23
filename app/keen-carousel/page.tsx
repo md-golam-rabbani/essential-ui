@@ -13,17 +13,17 @@ const itemsPerSlideConfig1: Breakpoints = {
   sm: 1.2,
   md: 2,
   lg: 2,
-  xl: 2,
-  '2xl': 5,
+  xl: 3,
+  '2xl': 4,
 };
 
 const itemGapConfig1: Breakpoints = {
-  initial: 80,
-  sm: 80,
-  md: 58,
-  lg: 80,
-  xl: 80,
-  '2xl': 80,
+  initial: 20,
+  sm: 20,
+  md: 24,
+  lg: 24,
+  xl: 24,
+  '2xl': 24,
 };
 
 interface ICard {
@@ -63,7 +63,7 @@ export default function Page() {
             sliderRef={sliderRef}
             instanceRef={instanceRef}
             // Navigation
-            haveOffset={true}
+            haveOffset={false}
             hasNavigation={true}
             // Progress
             hasProgress
@@ -71,11 +71,14 @@ export default function Page() {
             itemsPerSlide={itemsPerSlideConfig1}
             itemGap={itemGapConfig1}
           >
-            {Array.from({ length: 100 }, (_, i) => i + 1).map((_, index) => (
+            {Array.from({ length: 40 }, (_, i) => i + 1).map((_, index) => (
               <KeenCarouselItem key={index}>
                 <Card
                   title={`Slide ${index + 1}`}
-                  className="min-h-80 border-none shadow-none"
+                  className={cn(
+                    'min-h-80 rounded-lg border-none shadow-none  transition-colors duration-300',
+                    currentSlide == index && 'bg-blue-500 text-white'
+                  )}
                 />
               </KeenCarouselItem>
             ))}
