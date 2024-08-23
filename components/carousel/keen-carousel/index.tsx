@@ -102,6 +102,7 @@ export function KeenCarousel({
   return (
     <div className="relative">
       <div className="group relative flex flex-col">
+        {/* Main carousel  */}
         <div
           ref={sliderRef}
           style={{ ...slidesPerView, ...gapPerItem }}
