@@ -1,3 +1,5 @@
+'use client';
+
 import { Fragment, PropsWithChildren } from 'react';
 import {
   IActionButton,
@@ -33,17 +35,13 @@ import styles from './custom-button.module.css';
  */
 export const CustomButton = (props: ICustomButton) => {
   const buttonClasses = cn(
-    // Disabled styles
-    props.disabled && '!pointer-events-none !text-gray-300 !bg-white',
-    // Loading style
-    [
-      // Fill button default
-      props.type !== 'link' &&
-        props.type !== 'inline' &&
-        props.loading &&
-        'pointer-events-none [&_.btn-text]:opacity-0 bg-blue-500 text-white',
-    ],
-    customButtonVariants({ colorScheme: props.colorScheme }),
+    customButtonVariants({
+      colorScheme: props.colorScheme,
+      variant: props.variant,
+      disabled: props.disabled,
+      loading:
+        props.type !== 'link' && props.type !== 'inline' && props.loading,
+    }),
     props.className
   );
 

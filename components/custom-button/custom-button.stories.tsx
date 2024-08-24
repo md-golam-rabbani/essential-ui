@@ -24,10 +24,18 @@ const meta: Meta<typeof CustomButton> = {
         disable: true,
       },
     },
+    colorScheme: {
+      options: ['primary', 'secondary'],
+      control: { type: 'radio' },
+    },
+    variant: {
+      options: ['fill', 'outline'],
+      control: { type: 'radio' },
+    },
   },
   decorators: [
     (Story) => (
-      <div className="section-padding-primary bg-slate-300">
+      <div className="section-padding-primary">
         <div className="container">
           <Story />
         </div>

@@ -4,6 +4,7 @@ export const commonButtonProps: Omit<ICustomButton, 'onButtonClick' | 'type'> =
   {
     children: 'Button Label',
     colorScheme: 'primary',
+    variant: 'fill',
     disabled: false,
   };
 
@@ -22,6 +23,7 @@ export const linkButtonProps: ICustomButton = {
   type: 'link',
   children: 'Link',
   colorScheme: 'primary',
+  variant: 'fill',
   disabled: false,
   href: 'https://www.lemonhive.com/',
   target: '_blank',

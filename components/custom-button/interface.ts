@@ -6,10 +6,13 @@ import { customButtonVariants } from './variants-style';
 interface IBaseButton extends PropsWithChildren {
   /** The color scheme of the button. */
   colorScheme: NonNullable<CustomButtonVariants['colorScheme']>;
+  /** Variant of the button (fill, outline, etc.) */
+  variant: NonNullable<CustomButtonVariants['variant']>;
   /** Disables the Button, preventing mouse event*/
   disabled: boolean;
   /** The aria-label of the button. */
   ariaLabel?: string;
+  /** Additional CSS classes */
   className?: string;
 }
 
