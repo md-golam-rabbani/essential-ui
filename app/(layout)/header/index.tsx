@@ -17,14 +17,14 @@ export function Header({ menuLinks }: IHeader) {
       <div className="container">
         <div className="grid gap-1">
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
-            <h1>
+            <div>
               <Link href={'/'} className="block">
                 Essential Ui
               </Link>
               <span className="sr-only">
                 {process.env.PROJECT_NAME || 'Essential Ui'}
               </span>
-            </h1>
+            </div>
             <CustomSheet
               sheetOpen={sheetOpen}
               onCustomSheetChange={setSheetOpen}
