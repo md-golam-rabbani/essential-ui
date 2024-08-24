@@ -27,7 +27,7 @@ const meta: Meta<typeof CustomButton> = {
   },
   decorators: [
     (Story) => (
-      <div className="section-padding-primary bg-[#D9D9D9]">
+      <div className="section-padding-primary bg-slate-300">
         <div className="container">
           <Story />
         </div>

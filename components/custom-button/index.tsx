@@ -9,7 +9,7 @@ import {
 import { cn } from '@/lib/shadcn/utils';
 import Link from 'next/link';
 import { customButtonVariants } from './variants-style';
-import styles from './button.module.css';
+import styles from './custom-button.module.css';
 
 /**
  * A flexible and customizable button component that can render different
