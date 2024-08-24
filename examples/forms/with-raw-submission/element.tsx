@@ -356,6 +356,7 @@ export function FormElements({ formState: initialFormState }: IFormElements) {
       <div className="flex flex-wrap items-center gap-2">
         <CustomButton
           colorScheme="primary"
+          variant="fill"
           loading={pending}
           disabled={false}
           type="submit"
@@ -366,6 +367,7 @@ export function FormElements({ formState: initialFormState }: IFormElements) {
           loading={pending}
           disabled={false}
           colorScheme="primary"
+          variant="fill"
           className="!bg-red-500"
           type="action"
           onButtonClick={() => {

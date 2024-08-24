@@ -81,6 +81,7 @@ export const Default: Story = {
               type="action"
               disabled={false}
               colorScheme="primary"
+              variant="fill"
               onButtonClick={() => updateArgs({ ...args, sheetOpen: true })}
             >
               <span>Open Drawer</span>
@@ -118,6 +119,7 @@ export const Default: Story = {
                 <CustomButton
                   type="action"
                   colorScheme="primary"
+                  variant="fill"
                   onButtonClick={() => {
                     updateArgs({ ...args, sheetOpen: false });
                   }}

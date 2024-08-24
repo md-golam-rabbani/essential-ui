@@ -55,6 +55,7 @@ export function Header({ menuLinks }: IHeader) {
                     <CustomButton
                       type="action"
                       colorScheme="primary"
+                      variant="fill"
                       onButtonClick={() => setSheetOpen(false)}
                       className="w-full text-lg"
                       disabled={false}

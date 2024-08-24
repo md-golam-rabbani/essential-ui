@@ -55,6 +55,7 @@ export const Primary: Story = {
                 <CustomButton
                   type="action"
                   colorScheme="primary"
+                  variant="fill"
                   disabled={false}
                   onButtonClick={modalClickHandler}
                 >
@@ -74,6 +75,7 @@ export const Primary: Story = {
                   <CustomButton
                     type="action"
                     colorScheme="primary"
+                    variant="fill"
                     disabled={false}
                     onButtonClick={modalCloseHandler}
                   >
@@ -118,6 +120,7 @@ export const AsyncAwait: Story = {
               <CustomButton
                 type="action"
                 colorScheme="primary"
+                variant="fill"
                 disabled={false}
                 onButtonClick={modalClickHandler}
               >
@@ -137,6 +140,7 @@ export const AsyncAwait: Story = {
                 <CustomButton
                   type="action"
                   colorScheme="primary"
+                  variant="fill"
                   disabled={false}
                   onButtonClick={modalCloseHandler}
                   loading={loading}

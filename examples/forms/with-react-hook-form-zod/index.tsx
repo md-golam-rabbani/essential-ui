@@ -420,6 +420,7 @@ export default function Form() {
             <div className="flex flex-wrap items-center gap-2">
               <CustomButton
                 colorScheme="primary"
+                variant="fill"
                 loading={isSubmitting}
                 disabled={false}
                 type="submit"
@@ -430,6 +431,7 @@ export default function Form() {
                 loading={isSubmitting}
                 disabled={false}
                 colorScheme="primary"
+                variant="fill"
                 className="!bg-red-500"
                 type="reset"
                 onButtonClick={() => {

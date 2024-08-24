@@ -65,6 +65,7 @@ export function TextComponent({
               type="link"
               {...button}
               colorScheme="primary"
+              variant="fill"
             >
               {button.label}
             </CustomButton>

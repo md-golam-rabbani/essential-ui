@@ -23,6 +23,7 @@ export function CustomPopoverStorybook() {
             <CustomButton
               type="inline"
               colorScheme="primary"
+              variant="fill"
               disabled={false}
               className="fixed right-7 top-7"
             >
@@ -105,6 +106,7 @@ export function CustomPopoverStorybook() {
                 <CustomButton
                   type="action"
                   colorScheme="primary"
+                  variant="fill"
                   onButtonClick={() => {
                     alert('Hi i am closed');
                   }}

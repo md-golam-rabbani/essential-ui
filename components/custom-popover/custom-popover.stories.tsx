@@ -82,6 +82,7 @@ export const Primary: Story = {
                   <CustomButton
                     type="inline"
                     colorScheme="primary"
+                    variant="fill"
                     disabled={false}
                   >
                     Open Popover
@@ -100,6 +101,7 @@ export const Primary: Story = {
                     <CustomButton
                       type="action"
                       colorScheme="primary"
+                      variant="fill"
                       disabled={false}
                       onButtonClick={modalCloseHandler}
                     >
@@ -144,6 +146,7 @@ export const AsyncAwait: Story = {
                   <CustomButton
                     type="inline"
                     colorScheme="primary"
+                    variant="fill"
                     disabled={false}
                   >
                     Open Popover
@@ -162,6 +165,7 @@ export const AsyncAwait: Story = {
                     <CustomButton
                       type="action"
                       colorScheme="primary"
+                      variant="fill"
                       disabled={false}
                       onButtonClick={modalCloseHandler}
                       loading={loading}

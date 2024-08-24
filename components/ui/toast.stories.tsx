@@ -29,6 +29,7 @@ const meta: Meta<typeof Toaster> = {
             <CustomButton
               type="action"
               colorScheme="primary"
+              variant="fill"
               disabled={false}
               onButtonClick={() => {
                 toast('Event has been created');
@@ -40,6 +41,7 @@ const meta: Meta<typeof Toaster> = {
             <CustomButton
               type="action"
               colorScheme="primary"
+              variant="fill"
               disabled={false}
               onButtonClick={() => {
                 toast.message('Event has been created', {
@@ -54,6 +56,7 @@ const meta: Meta<typeof Toaster> = {
             <CustomButton
               type="action"
               colorScheme="primary"
+              variant="fill"
               disabled={false}
               onButtonClick={() => {
                 toast.success('Event has been created');
@@ -66,6 +69,7 @@ const meta: Meta<typeof Toaster> = {
             <CustomButton
               type="action"
               colorScheme="primary"
+              variant="fill"
               disabled={false}
               onButtonClick={() => {
                 toast.info('Be at the area 10 minutes before the event time');
@@ -78,6 +82,7 @@ const meta: Meta<typeof Toaster> = {
             <CustomButton
               type="action"
               colorScheme="primary"
+              variant="fill"
               disabled={false}
               onButtonClick={() => {
                 toast.warning(
@@ -92,6 +97,7 @@ const meta: Meta<typeof Toaster> = {
             <CustomButton
               type="action"
               colorScheme="primary"
+              variant="fill"
               disabled={false}
               onButtonClick={() => {
                 toast.error('Be at the area 10 minutes before the event time');
