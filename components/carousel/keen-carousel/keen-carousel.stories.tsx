@@ -369,7 +369,7 @@ export const ThumbnailExample: Story = {
     return (
       <div className="overflow-hidden bg-gray-100 py-20">
         <div className="container">
-          {/* Main slider  */}
+          {/* Main   */}
           <KeenCarousel
             currentSlide={currentSlide}
             sliderReady={sliderReady}
@@ -392,7 +392,7 @@ export const ThumbnailExample: Story = {
             ))}
           </KeenCarousel>
 
-          {/* Thumbnail Carousel  */}
+          {/* Thumbnail */}
           <KeenCarousel
             currentSlide={currentSlide2}
             sliderReady={sliderReady2}
