@@ -8,6 +8,7 @@ import { useCustomKeenSlider } from './hooks/use-custom-keen-slider';
 import { Typography } from '@/components/typography';
 import { keenCarouselTouchScrollPlugin } from './plugins/touch-scroll';
 import { keenCarouselAutoPlayPlugin } from './plugins/autoplay';
+import { KeenCarouselThumbnailPlugin } from './plugins/thumbnail';
 
 const meta: Meta<typeof KeenCarousel> = {
   title: 'Components/Carousel/Keen Caraousel',
@@ -101,7 +102,6 @@ export const AutoplayExample: Story = {
      *
      * We are passing this to avoid the flickering issue during initial stage
      */
-
     const { currentSlide, sliderReady, sliderRef, instanceRef } =
       useCustomKeenSlider({
         transitionSpeed: 2000,
@@ -119,10 +119,8 @@ export const AutoplayExample: Story = {
             sliderReady={sliderReady}
             sliderRef={sliderRef}
             instanceRef={instanceRef}
-            // Navigation
             haveOffset={true}
             hasNavigation={true}
-            // Progress
             hasProgress
             progressWrapperClassName={cn('mt-7 md:mt-10')}
             itemsPerSlide={itemsPerSlideConfig1}
@@ -215,7 +213,6 @@ export const TouchScrollExample: Story = {
      *
      * We are passing this to avoid the flickering issue during initial stage
      */
-
     const { currentSlide, sliderReady, sliderRef, instanceRef } =
       useCustomKeenSlider({
         transitionSpeed: 2000,
@@ -234,10 +231,8 @@ export const TouchScrollExample: Story = {
               sliderReady={sliderReady}
               sliderRef={sliderRef}
               instanceRef={instanceRef}
-              // Navigation
               haveOffset={true}
               hasNavigation={true}
-              // Progress
               hasProgress
               progressWrapperClassName={cn('mt-7 md:mt-10')}
               itemsPerSlide={itemsPerSlideConfig1}
@@ -301,3 +296,123 @@ function DummySection({ className }: { className?: string }) {
     </div>
   );
 }
+
+const itemsPerSlideConfig3: Breakpoints = {
+  initial: 1,
+  sm: 1,
+  md: 1,
+  lg: 1,
+  xl: 1,
+  '2xl': 1,
+};
+
+const itemGapConfig3: Breakpoints = {
+  initial: 16,
+  sm: 20,
+  md: 20,
+  lg: 24,
+  xl: 24,
+  '2xl': 24,
+};
+
+const itemsPerSlideConfig4: Breakpoints = {
+  initial: 3,
+  sm: 3,
+  md: 4,
+  lg: 4,
+  xl: 4,
+  '2xl': 4,
+};
+
+const itemGapConfig4: Breakpoints = {
+  initial: 16,
+  sm: 20,
+  md: 20,
+  lg: 24,
+  xl: 24,
+  '2xl': 24,
+};
+
+export const ThumbnailExample: Story = {
+  render: () => {
+    /**
+     * @Note Need to pass the same values of itemsPerSlide & itemsGap
+     * as props for KeenCarousel component.
+     *
+     * We are passing this to avoid the flickering issue during initial stage
+     */
+    const { currentSlide, sliderReady, sliderRef, instanceRef } =
+      useCustomKeenSlider({
+        transitionSpeed: 2000,
+        itemsPerSlide: itemsPerSlideConfig3,
+        itemGap: itemGapConfig3,
+      });
+
+    /**
+     * @Note Need to pass the same values of itemsPerSlide & itemsGap
+     * as props for KeenCarousel component.
+     *
+     * We are passing this to avoid the flickering issue during initial stage
+     */
+    const {
+      currentSlide: currentSlide2,
+      sliderReady: sliderReady2,
+      sliderRef: sliderRef2,
+      instanceRef: instanceRef2,
+    } = useCustomKeenSlider({
+      transitionSpeed: 2000,
+      itemsPerSlide: itemsPerSlideConfig4,
+      itemGap: itemGapConfig4,
+      plugins: [KeenCarouselThumbnailPlugin(instanceRef)],
+    });
+
+    return (
+      <div className="overflow-hidden bg-gray-100 py-20">
+        <div className="container">
+          {/* Main slider  */}
+          <KeenCarousel
+            currentSlide={currentSlide}
+            sliderReady={sliderReady}
+            sliderRef={sliderRef}
+            instanceRef={instanceRef}
+            haveOffset={false}
+            hasNavigation={true}
+            hasProgress
+            progressWrapperClassName={cn('my-7 md:my-10')}
+            itemsPerSlide={itemsPerSlideConfig3}
+            itemGap={itemGapConfig3}
+          >
+            {Array.from({ length: 20 }, (_, i) => i + 1).map((_, index) => (
+              <KeenCarouselItem key={index}>
+                <Card
+                  title={`Slide ${index + 1}`}
+                  className="min-h-80 border-none shadow-none"
+                />
+              </KeenCarouselItem>
+            ))}
+          </KeenCarousel>
+
+          {/* Thumbnail Carousel  */}
+          <KeenCarousel
+            currentSlide={currentSlide2}
+            sliderReady={sliderReady2}
+            sliderRef={sliderRef2}
+            instanceRef={instanceRef2}
+            haveOffset={false}
+            itemsPerSlide={itemsPerSlideConfig4}
+            itemGap={itemGapConfig4}
+          >
+            {Array.from({ length: 20 }, (_, i) => i + 1).map((_, index) => (
+              <KeenCarouselItem key={index}>
+                <Card
+                  title={`Thumbnail ${index + 1}`}
+                  className="min-h-80 border-none shadow-none"
+                />
+              </KeenCarouselItem>
+            ))}
+          </KeenCarousel>
+        </div>
+      </div>
+    );
+  },
+};
