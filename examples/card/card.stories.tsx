@@ -46,5 +46,3 @@ export const GridView: Story = {
     ),
   ],
 };
-
-// TODO: Need to add a carousel view after create the carousel
