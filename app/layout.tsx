@@ -2,10 +2,11 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { primary } from '@/fonts';
 import { PropsWithChildren } from 'react';
-import clsx from 'clsx';
 import { Toaster } from '@/components/ui/sonner';
 import { Header } from './(layout)/header';
 import { Footer } from './(layout)/footer';
+import { cn } from '@/lib/shadcn/utils';
+import { headerProps } from './(layout)/header/story-props';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +16,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang="en">
-      <body className={clsx(primary.variable, 'font-primary text-black')}>
-        <Header menuLinks={[]} />
+      <body
+        className={cn(
+          primary.variable,
+          'font-primary text-[1rem]/[1.5] text-black'
+        )}
+      >
+        <Header {...headerProps} />
         {children}
         <Footer menuLinks={[]} />
         <Toaster />

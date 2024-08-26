@@ -14,7 +14,7 @@ import { ICustomSheet } from './interface';
  * content for the sheet, ensuring a cohesive and user-friendly experience.
  *
  * @example
- * // Example usage of the Drawer component
+ * Example usage of the Drawer component
  * <Drawer
  *   sheetOpen={sheetOpen}
  *   onCustomSheetChange={setSheetOpen}
@@ -37,7 +37,7 @@ export const CustomSheet = ({
   const sheetContentClasses = cn(
     'bg-white p-0',
     {
-      'w-full max-w-[23.4375rem] md:max-w-[29.1875rem]':
+      'w-full max-w-[20rem] md:max-w-[26.25rem]':
         side == 'left' || side == 'right',
       'w-full': side == 'top' || side == 'bottom',
     },
