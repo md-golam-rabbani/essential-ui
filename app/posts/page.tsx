@@ -13,16 +13,19 @@ export default async function Page() {
             <p className="text-gray-800">{`{JSON} Placeholder`}</p>
           </div>
 
+          {/* Posts  */}
           {posts && !!posts.length && (
-            <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 lg:gap-10">
+            <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
               {posts.map((post) => (
                 <div
                   key={post.id}
                   className="space-y-4 rounded-lg bg-white p-10 shadow transition-all duration-300 hover:shadow-lg"
                 >
-                  <p>{post.id}</p>
                   <p>{post.userId}</p>
-                  <h3 className="font-bold text-black">{post.title}</h3>
+                  <h3 className="text-[1.25rem] font-bold text-black">
+                    {post.title}
+                  </h3>
+
                   {post.body && <p className="text-slate-700">{post.body}</p>}
                 </div>
               ))}
