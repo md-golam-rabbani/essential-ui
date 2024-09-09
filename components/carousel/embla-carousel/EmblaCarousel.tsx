@@ -9,6 +9,7 @@ import {
 } from './EmblaCarouselArrowButtons';
 import useEmblaCarousel from 'embla-carousel-react';
 import { cn } from '@/lib/shadcn/utils';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 type PropType = {
   slides: number[];
@@ -17,7 +18,9 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    WheelGesturesPlugin(),
+  ]);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
