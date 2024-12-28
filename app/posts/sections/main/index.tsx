@@ -11,118 +11,155 @@ import { useInView } from 'react-intersection-observer';
 import { InputControl } from '@/components/inputs/input-control';
 import debounce from 'lodash.debounce';
 
-// Styles
+// CSS classes
 const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
 const inputItemParentClasses = cn('flex flex-row items-center gap-2 text-base');
 const inputGroupParentClasses = cn('grid gap-1');
 
+// Props for the main section component
 export type PostsMainSectionProps = {
   posts: PostCardProps[];
 };
 
+// Number of items to display per page
 const ITEMS_PER_PAGE = 10;
+const CURRENT_PAGE_NUMBER = 1;
+const SEARCH_DEBOUNCE_VALUE = 300;
 
+/**
+ * Main section component to display and filter posts.
+ */
 export default function PostsMainSection({ posts }: PostsMainSectionProps) {
-  const [usersIds, setUsersIds] = useState<string[]>([]);
+  // State for selected user IDs from checkboxes
+  const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
 
-  const [pageNumber, setPageNumber] = useState(1);
+  // State for search input field (immediate typing)
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const [searchTerm, setSearchTerm] = useState(''); // Immediate input value
-  const [search, setSearch] = useState(''); // Debounced search value
+  // State for debounced search value
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
 
+  // State for the current page number in pagination
+  const [currentPage, setCurrentPage] = useState(CURRENT_PAGE_NUMBER);
+
+  // Intersection observer to detect when the user scrolls near the bottom
   const { ref, inView } = useInView({ threshold: 0.5 });
 
-  const userIds = useMemo(() => {
-    return Array.from(new Set(posts.map(({ userId }) => String(userId))));
-  }, [posts]);
+  // Unique user IDs extracted from posts
+  const uniqueUserIds = useMemo(
+    () => Array.from(new Set(posts.map(({ userId }) => String(userId)))),
+    [posts]
+  );
 
-  // Memoized filtered posts
+  // Compute filtered posts based on selected user IDs and search term
   const filteredPosts = useMemo(() => {
     return posts.filter((post) => {
+      // Filter by user IDs
       const matchesUserIds =
-        usersIds.length === 0 || usersIds.includes(String(post.userId));
+        selectedUserIds.length === 0 ||
+        selectedUserIds.includes(String(post.userId));
 
-      const matchesSearch =
-        search.trim() === '' ||
-        post.title.toLowerCase().includes(search.trim().toLowerCase());
+      // Filter by search term
+      const matchesSearchTerm =
+        debouncedSearchTerm.trim() === '' ||
+        post.title
+          .toLowerCase()
+          .includes(debouncedSearchTerm.trim().toLowerCase());
 
-      return matchesUserIds && matchesSearch;
+      return matchesUserIds && matchesSearchTerm;
     });
-  }, [posts, usersIds, search]);
+  }, [posts, selectedUserIds, debouncedSearchTerm]);
 
-  // Visible posts with pagination
+  // Compute posts visible based on the current page
   const visiblePosts = useMemo(() => {
-    return filteredPosts.slice(0, pageNumber * ITEMS_PER_PAGE);
-  }, [filteredPosts, pageNumber]);
+    return filteredPosts.slice(0, currentPage * ITEMS_PER_PAGE);
+  }, [filteredPosts, currentPage]);
 
-  // Infinite scroll logic
+  // Effect: Infinite scroll to load more posts
   useEffect(() => {
-    if (inView && pageNumber * ITEMS_PER_PAGE < filteredPosts.length) {
-      setPageNumber((prev) => prev + 1);
+    if (inView && currentPage * ITEMS_PER_PAGE < filteredPosts.length) {
+      setCurrentPage((prevPage) => prevPage + 1);
     }
-  }, [inView, pageNumber, filteredPosts]);
+  }, [inView, currentPage, filteredPosts]);
 
-  // Debounced search logic
-  const debouncedSearch = useMemo(
+  // Debounced search input handler
+  const debouncedSearchHandler = useMemo(
     () =>
       debounce((value: string) => {
-        setSearch(value); // Update the actual search state after debounce
-        setPageNumber(1); // Reset pagination
-      }, 300),
+        // Update debounced search state
+        setDebouncedSearchTerm(value);
+        // Reset pagination on new search
+        setCurrentPage(CURRENT_PAGE_NUMBER);
+      }, SEARCH_DEBOUNCE_VALUE),
     []
   );
 
-  // Handle input changes
-  const handleInputChange = (value: string) => {
-    setSearchTerm(value); // Update the input value immediately
-    debouncedSearch(value); // Trigger debounced search logic
-  };
-
-  // Cleanup debounce on unmount
+  // Cleanup debounce on component unmount
   useEffect(() => {
     return () => {
-      debouncedSearch.cancel();
+      debouncedSearchHandler.cancel();
     };
-  }, [debouncedSearch]);
+  }, [debouncedSearchHandler]);
 
-  // Handle checkbox state changes
+  /**
+   * Handle changes in the search input field.
+   * @param value The current input value.
+   */
+  const handleSearchInputChange = (value: string) => {
+    // Update immediate input state
+    setSearchTerm(value);
+    // Trigger debounced update
+    debouncedSearchHandler(value);
+  };
+
+  /**
+   * Handle checkbox state changes.
+   * @param userId The user ID associated with the checkbox.
+   * @param isChecked Whether the checkbox is checked or not.
+   */
   const handleCheckboxChange = (userId: string, isChecked: boolean) => {
-    setUsersIds((prev) =>
+    setSelectedUserIds((prev) =>
       isChecked ? [...prev, userId] : prev.filter((id) => id !== userId)
     );
-    setPageNumber(1); // Reset pagination on filter change
+
+    // Reset pagination on filter change
+    setCurrentPage(CURRENT_PAGE_NUMBER);
   };
 
   return (
     <div className="space-y-6">
+      {/* Header */}
       <Typography size="h1">Posts</Typography>
 
-      <div className="grid grid-cols-1 items-baseline lg:grid-cols-[320px_auto]">
+      <div className="grid grid-cols-1 items-baseline gap-6 lg:grid-cols-[320px_auto]">
+        {/* Sidebar Filters */}
         <div className="sticky top-20">
           <Typography size="p1" className="mb-4">
             Number of posts:{' '}
             <span className="font-bold">{visiblePosts.length}</span>
           </Typography>
 
+          {/* Search Input */}
           <InputControl
             type="text"
             name="search"
             placeholder="Search by title"
             value={searchTerm}
-            onInputChange={(e) => handleInputChange(e.target.value)}
+            onInputChange={(e) => handleSearchInputChange(e.target.value)}
           />
 
-          {userIds.length > 0 && (
+          {/* User ID Filters */}
+          {uniqueUserIds.length > 0 && (
             <fieldset className={inputGroupParentClasses}>
               <InputHeading label="User Ids" tagName="legend" />
 
-              {userIds.map((userId) => (
+              {uniqueUserIds.map((userId) => (
                 <div key={userId} className={inlineWrapperClasses}>
                   <label className={inputItemParentClasses}>
                     <CheckboxControl
                       name={userId}
                       value={userId}
-                      checked={usersIds.includes(userId)}
+                      checked={selectedUserIds.includes(userId)}
                       onCheckboxChange={(e) =>
                         handleCheckboxChange(userId, e.target.checked)
                       }
@@ -134,8 +171,13 @@ export default function PostsMainSection({ posts }: PostsMainSectionProps) {
             </fieldset>
           )}
         </div>
+
+        {/* Main Content */}
         <div>
+          {/* List of Posts */}
           <PostListSection posts={visiblePosts} />
+
+          {/* Intersection Observer Reference */}
           <div ref={ref}></div>
         </div>
       </div>
