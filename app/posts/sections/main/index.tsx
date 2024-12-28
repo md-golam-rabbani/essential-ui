@@ -79,8 +79,12 @@ export default function PostsMainSection({ posts }: PostsMainSectionProps) {
     <div className="space-y-6">
       <Typography size="h1">Posts</Typography>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[320px_auto]">
-        <div>
+      <div className="grid grid-cols-1 items-baseline lg:grid-cols-[320px_auto]">
+        <div className="sticky top-20">
+          <Typography size="p1" className="mb-4">
+            Number of posts:{' '}
+            <span className="font-bold">{visiblePosts?.length}</span>
+          </Typography>
           {_userIds && !!_userIds.length && (
             <fieldset className={inputGroupParentClasses}>
               <InputHeading label={'User Ids'} tagName="legend" />
