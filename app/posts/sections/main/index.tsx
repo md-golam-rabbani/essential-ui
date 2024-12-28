@@ -6,8 +6,10 @@ import { PostListSection } from './list-section';
 import { CheckboxControl } from '@/components/inputs/checkbox-control';
 import { cn } from '@/lib/shadcn/utils';
 import { InputHeading } from '@/components/inputs/common/input-heading';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { InputControl } from '@/components/inputs/input-control';
+import debounce from 'lodash.debounce';
 
 // Styles
 const inlineWrapperClasses = cn('flex flex-wrap gap-x-4 gap-y-2');
@@ -21,58 +23,74 @@ export type PostsMainSectionProps = {
 const ITEMS_PER_PAGE = 10;
 
 export default function PostsMainSection({ posts }: PostsMainSectionProps) {
-  const [filteredPosts, setFilteredPosts] = useState(posts);
+  const [usersIds, setUsersIds] = useState<string[]>([]);
+
   const [pageNumber, setPageNumber] = useState(1);
-  const [visiblePosts, setVisiblePosts] = useState(
-    filteredPosts?.slice(0, ITEMS_PER_PAGE)
-  );
-  const extractUserIds = posts?.map(({ userId }) => String(userId));
 
-  const _userIds = Array.from(new Set(extractUserIds));
-
-  const [usersIds, setUsersIds] = useState<typeof _userIds>([]);
+  const [searchTerm, setSearchTerm] = useState(''); // Immediate input value
+  const [search, setSearch] = useState(''); // Debounced search value
 
   const { ref, inView } = useInView({ threshold: 0.5 });
 
-  // Function to load posts
-  const loadMorePosts = useCallback(() => {
-    if (pageNumber * ITEMS_PER_PAGE >= filteredPosts.length) return;
+  const userIds = useMemo(() => {
+    return Array.from(new Set(posts.map(({ userId }) => String(userId))));
+  }, [posts]);
 
-    const updatedPosts = filteredPosts.slice(
-      0,
-      (pageNumber + 1) * ITEMS_PER_PAGE
-    );
-    setVisiblePosts(updatedPosts);
-    setPageNumber((prev) => prev + 1);
+  // Memoized filtered posts
+  const filteredPosts = useMemo(() => {
+    return posts.filter((post) => {
+      const matchesUserIds =
+        usersIds.length === 0 || usersIds.includes(String(post.userId));
+
+      const matchesSearch =
+        search.trim() === '' ||
+        post.title.toLowerCase().includes(search.trim().toLowerCase());
+
+      return matchesUserIds && matchesSearch;
+    });
+  }, [posts, usersIds, search]);
+
+  // Visible posts with pagination
+  const visiblePosts = useMemo(() => {
+    return filteredPosts.slice(0, pageNumber * ITEMS_PER_PAGE);
   }, [filteredPosts, pageNumber]);
 
   // Infinite scroll logic
   useEffect(() => {
-    if (inView) {
-      loadMorePosts();
+    if (inView && pageNumber * ITEMS_PER_PAGE < filteredPosts.length) {
+      setPageNumber((prev) => prev + 1);
     }
-  }, [inView, loadMorePosts]);
+  }, [inView, pageNumber, filteredPosts]);
+
+  // Debounced search logic
+  const debouncedSearch = useMemo(
+    () =>
+      debounce((value: string) => {
+        setSearch(value); // Update the actual search state after debounce
+        setPageNumber(1); // Reset pagination
+      }, 300),
+    []
+  );
+
+  // Handle input changes
+  const handleInputChange = (value: string) => {
+    setSearchTerm(value); // Update the input value immediately
+    debouncedSearch(value); // Trigger debounced search logic
+  };
+
+  // Cleanup debounce on unmount
+  useEffect(() => {
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
 
   // Handle checkbox state changes
   const handleCheckboxChange = (userId: string, isChecked: boolean) => {
-    const updatedUserIds = isChecked
-      ? [...usersIds, userId]
-      : usersIds.filter((id) => id !== userId);
-
-    setUsersIds(updatedUserIds);
-
-    const _filterdPosts = posts?.filter((post) => {
-      const matchesUserIds =
-        updatedUserIds?.length === 0
-          ? true
-          : updatedUserIds.includes(String(post.userId));
-
-      return matchesUserIds;
-    });
-
-    setFilteredPosts(_filterdPosts);
-    setPageNumber(1);
-    setVisiblePosts(_filterdPosts?.slice(0, ITEMS_PER_PAGE));
+    setUsersIds((prev) =>
+      isChecked ? [...prev, userId] : prev.filter((id) => id !== userId)
+    );
+    setPageNumber(1); // Reset pagination on filter change
   };
 
   return (
@@ -83,22 +101,31 @@ export default function PostsMainSection({ posts }: PostsMainSectionProps) {
         <div className="sticky top-20">
           <Typography size="p1" className="mb-4">
             Number of posts:{' '}
-            <span className="font-bold">{visiblePosts?.length}</span>
+            <span className="font-bold">{visiblePosts.length}</span>
           </Typography>
-          {_userIds && !!_userIds.length && (
-            <fieldset className={inputGroupParentClasses}>
-              <InputHeading label={'User Ids'} tagName="legend" />
 
-              {_userIds.map((userId, index) => (
-                <div key={index} className={inlineWrapperClasses}>
+          <InputControl
+            type="text"
+            name="search"
+            placeholder="Search by title"
+            value={searchTerm}
+            onInputChange={(e) => handleInputChange(e.target.value)}
+          />
+
+          {userIds.length > 0 && (
+            <fieldset className={inputGroupParentClasses}>
+              <InputHeading label="User Ids" tagName="legend" />
+
+              {userIds.map((userId) => (
+                <div key={userId} className={inlineWrapperClasses}>
                   <label className={inputItemParentClasses}>
                     <CheckboxControl
                       name={userId}
                       value={userId}
-                      onCheckboxChange={(e) => {
-                        handleCheckboxChange(userId, e.target.checked);
-                      }}
-                      checked={usersIds?.includes(userId)}
+                      checked={usersIds.includes(userId)}
+                      onCheckboxChange={(e) =>
+                        handleCheckboxChange(userId, e.target.checked)
+                      }
                     />
                     {userId}
                   </label>
