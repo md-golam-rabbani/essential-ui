@@ -1,3 +1,4 @@
+import { Typography } from '@/components/typography';
 import { PostCard, PostCardProps } from './card';
 
 export type PostListSectionPorps = {
@@ -7,12 +8,16 @@ export type PostListSectionPorps = {
 export function PostListSection({ posts }: PostListSectionPorps) {
   return (
     <>
-      {posts && !!posts.length && (
+      {posts && !!posts.length ? (
         <div className="grid grid-cols-2 gap-6 lg:grid-cols-2">
           {posts.map((post) => (
             <PostCard key={post.id} {...post} />
           ))}
         </div>
+      ) : (
+        <Typography size="h2" className="text-center font-bold">
+          No data found
+        </Typography>
       )}
     </>
   );

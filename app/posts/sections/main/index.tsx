@@ -133,8 +133,8 @@ export default function PostsMainSection({ posts }: PostsMainSectionProps) {
 
       <div className="grid grid-cols-1 items-baseline gap-6 lg:grid-cols-[320px_auto]">
         {/* Sidebar Filters */}
-        <div className="sticky top-20">
-          <Typography size="p1" className="mb-4">
+        <div className="sticky top-20 space-y-4">
+          <Typography size="p1">
             Number of posts:{' '}
             <span className="font-bold">{visiblePosts.length}</span>
           </Typography>
