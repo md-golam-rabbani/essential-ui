@@ -25,6 +25,7 @@ export type PostsMainSectionProps = {
 const ITEMS_PER_PAGE = 10;
 const CURRENT_PAGE_NUMBER = 1;
 const SEARCH_DEBOUNCE_VALUE = 300;
+const LOAD_MORE_DEBOUNCE_VALUE = 150;
 
 /**
  * Main section component to display and filter posts.
@@ -43,7 +44,7 @@ export default function PostsMainSection({ posts }: PostsMainSectionProps) {
   const [currentPage, setCurrentPage] = useState(CURRENT_PAGE_NUMBER);
 
   // Intersection observer to detect when the user scrolls near the bottom
-  const { ref, inView } = useInView({ threshold: 0.5 });
+  const { ref, inView } = useInView({ threshold: 0.25 });
 
   // Unique user IDs extracted from posts
   const uniqueUserIds = useMemo(
@@ -72,15 +73,30 @@ export default function PostsMainSection({ posts }: PostsMainSectionProps) {
 
   // Compute posts visible based on the current page
   const visiblePosts = useMemo(() => {
-    return filteredPosts.slice(0, currentPage * ITEMS_PER_PAGE);
+    const endIndex = Math.min(
+      currentPage * ITEMS_PER_PAGE,
+      filteredPosts.length
+    );
+    return filteredPosts.slice(0, endIndex);
   }, [filteredPosts, currentPage]);
 
   // Effect: Infinite scroll to load more posts
   useEffect(() => {
-    if (inView && currentPage * ITEMS_PER_PAGE < filteredPosts.length) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
+    const handlePagination = debounce(() => {
+      if (inView && currentPage * ITEMS_PER_PAGE < filteredPosts.length) {
+        setCurrentPage((prevPage) => prevPage + 1);
+      }
+    }, LOAD_MORE_DEBOUNCE_VALUE);
+
+    handlePagination();
+    return () => handlePagination.cancel();
   }, [inView, currentPage, filteredPosts]);
+
+  useEffect(() => {
+    if (currentPage * ITEMS_PER_PAGE > filteredPosts.length) {
+      setCurrentPage(CURRENT_PAGE_NUMBER);
+    }
+  }, [filteredPosts, currentPage]);
 
   // Debounced search input handler
   const debouncedSearchHandler = useMemo(
