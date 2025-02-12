@@ -1,3 +1,5 @@
+'use client';
+
 import { Typography } from '@/components/typography';
 import { useCounterStore } from '../store/counter/store';
 import { CustomButton } from '@/components/custom-button';
