@@ -7,7 +7,7 @@ export function SimpleText2() {
   // !TODO: Bad implementation
   //   const { simpleText, setSimpleText, resetSimpleText } = useCounterStore();
 
-  // Recommended implemenatation
+  // Recommended implementation
   const simpleText = useAtomValue(simpleTextAtom);
   const setSimpleText = useSetAtom(simpleTextAtom);
 

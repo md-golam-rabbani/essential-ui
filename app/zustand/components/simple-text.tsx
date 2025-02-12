@@ -7,7 +7,7 @@ export function SimpleText() {
   // !TODO: Bad implementation
   // const { simpleText } = useCounterStore();
 
-  // Recommended implemenatation
+  // Recommended implementation
   const simpleText = useCounterStore((state) => state.simpleText);
 
   console.log(simpleText, `from simple text component`);

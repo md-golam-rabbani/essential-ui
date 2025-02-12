@@ -8,7 +8,7 @@ export function SimpleText() {
   // !TODO: Bad implementation
   // const { simpleText } = useCounterStore();
 
-  // Recommended implemenatation
+  // Recommended implementation
   const simpleText = useAtomValue(simpleTextAtom);
 
   console.log(simpleText, `from simple text component`);

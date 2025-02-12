@@ -6,7 +6,7 @@ export function SimpleText2() {
   // !TODO: Bad implementation
   //   const { simpleText, setSimpleText, resetSimpleText } = useCounterStore();
 
-  // Recommended implemenatation
+  // Recommended implementation
   const simpleText = useCounterStore((state) => state.simpleText);
   const setSimpleText = useCounterStore((state) => state.setSimpleText);
   const resetSimpleText = useCounterStore((state) => state.resetSimpleText);
