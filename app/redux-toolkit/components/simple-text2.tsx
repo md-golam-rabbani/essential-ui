@@ -1,6 +1,8 @@
 import { Typography } from '@/components/typography';
 import { RootState } from '../store/store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetSimpleText, setSimpleText } from '../store/slices/counterSlice';
+import { CustomButton } from '@/components/custom-button';
 
 export function SimpleText2() {
   // !TODO: Bad implementation
@@ -10,8 +12,20 @@ export function SimpleText2() {
   const simpleText = useSelector(
     (state: RootState) => state.counter.simpleText
   );
-  // const setSimpleText = useCounterStore((state) => state.setSimpleText);
-  // const resetSimpleText = useCounterStore((state) => state.resetSimpleText);
+
+  const dispatch = useDispatch();
+
+  function handleUpdateText() {
+    dispatch(
+      setSimpleText({
+        text: 'Hi i am simple text ' + Math.round(Math.random() * 1000),
+      })
+    );
+  }
+
+  function handleResetText() {
+    dispatch(resetSimpleText());
+  }
 
   console.log(simpleText, `Simple text 2 `);
 
@@ -21,17 +35,13 @@ export function SimpleText2() {
         <Typography size="h2">Simple Text 2</Typography>
         <Typography size="p1">{simpleText}</Typography>
 
-        {/* <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3">
           <CustomButton
             colorScheme="primary"
             variant="fill"
             disabled={false}
             type="action"
-            onButtonClick={() =>
-              setSimpleText(
-                'Hi i am simple text ' + Math.round(Math.random() * 1000)
-              )
-            }
+            onButtonClick={handleUpdateText}
           >
             Set text
           </CustomButton>
@@ -41,11 +51,11 @@ export function SimpleText2() {
             variant="fill"
             disabled={false}
             type="action"
-            onButtonClick={() => resetSimpleText()}
+            onButtonClick={handleResetText}
           >
             Reset text
           </CustomButton>
-        </div> */}
+        </div>
       </div>
     </div>
   );

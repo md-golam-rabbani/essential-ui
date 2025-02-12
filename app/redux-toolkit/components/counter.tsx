@@ -11,11 +11,11 @@ export function Counter() {
   const dispatch = useDispatch();
 
   function handleIncrement() {
-    dispatch(increment(1));
+    dispatch(increment({ by: 2 }));
   }
 
   function handleDecrement() {
-    dispatch(decrement(1));
+    dispatch(decrement({ by: 2 }));
   }
 
   function handleReset() {
