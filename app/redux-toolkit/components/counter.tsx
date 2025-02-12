@@ -4,7 +4,7 @@ import { Typography } from '@/components/typography';
 import { RootState } from '../store/store';
 import { CustomButton } from '@/components/custom-button';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment, reset } from '../store/counter/slice';
+import { decrement, increment, reset } from '../store/slices/counterSlice';
 
 export function Counter() {
   const count = useSelector((state: RootState) => state.counter.count);
