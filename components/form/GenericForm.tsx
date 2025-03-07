@@ -12,7 +12,7 @@ import {
   Mode,
 } from 'react-hook-form';
 import { z, ZodType } from 'zod';
-import { Form } from '../ui/form';
+import { Form } from '@/components/ui/form';
 
 export type GenericFormRef<T extends FieldValues> = {
   getValues: () => T;
