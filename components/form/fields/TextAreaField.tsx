@@ -1,11 +1,6 @@
 /*
  * File: TextAreaField.tsx
  * Responsibility: Component for rendering a textarea input field.
- * Author: Aditya Chakraborty
- * Created: 2024-11-07
- * Last Modified By: Null
- * Last Modified At: Null
- * Version: 0.1.0
  */
 import { Button } from '@/components/ui/button';
 import {

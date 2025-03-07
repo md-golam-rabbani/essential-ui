@@ -1,12 +1,6 @@
 /*
  * File: LoadingSpinner.tsx
  * Responsibility: LoadingSpinner component for displaying a loading spinner.
-
- * Author: Aditya Chakraborty
- * Created: 2024-11-07
- * Last Modified By: Null
- * Last Modified At: Null
- * Version: 0.1.0
  */
 
 import { cn } from '@/lib/shadcn/utils';
