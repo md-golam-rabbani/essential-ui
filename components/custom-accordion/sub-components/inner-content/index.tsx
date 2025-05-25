@@ -8,7 +8,7 @@ import { cn } from '@/lib/shadcn/utils';
 import { Typography } from '@/components/typography';
 import { IconStore } from '@/components/icon-store';
 
-interface IProps extends Pick<ICustomAccordion, 'accordionItems'> {}
+type IProps = Pick<ICustomAccordion, 'accordionItems'>;
 
 /** The itemPadding variable is a class string that applies
  * equal padding and alignment to the x-axis and y-axis

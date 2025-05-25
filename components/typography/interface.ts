@@ -1,12 +1,12 @@
 // Define the possible heading, paragraph, and other sizes.
-const headingSizes = ['hero', 'h1', 'h2', 'h3'] as const;
-const paragraphSizes = ['p1', 'p2'] as const;
-const otherSizes = ['s1', 's2', 'o1', 'c1', 'q1'] as const;
+const _headingSizes = ['hero', 'h1', 'h2', 'h3'] as const;
+const _paragraphSizes = ['p1', 'p2'] as const;
+const _otherSizes = ['s1', 's2', 'o1', 'c1', 'q1'] as const;
 
 // Create type aliases for each size category.
-export type HeadingSize = (typeof headingSizes)[number];
-export type ParagraphSize = (typeof paragraphSizes)[number];
-type OtherSize = (typeof otherSizes)[number];
+export type HeadingSize = (typeof _headingSizes)[number];
+export type ParagraphSize = (typeof _paragraphSizes)[number];
+type OtherSize = (typeof _otherSizes)[number];
 
 // Create a union type for all possible sizes.
 type Size = HeadingSize | ParagraphSize | OtherSize;
