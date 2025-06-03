@@ -5,7 +5,7 @@ import { primary } from '../fonts';
 import { Toaster } from '../components/ui/sonner';
 import type { Preview } from '@storybook/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { fontFamily } from 'tailwindcss/defaultTheme';
+// import { fontFamily } from 'tailwindcss/defaultTheme';
 
 const preview: Preview = {
   parameters: {
@@ -37,7 +37,8 @@ const preview: Preview = {
           '--font-primary',
           primary.style.fontFamily
         );
-        document.body.style.fontFamily = `var(--font-primary), ${fontFamily.sans}`;
+        document.body.style.fontFamily = `var(--font-primary)`;
+        // document.body.style.fontFamily = `var(--font-primary), ${fontFamily.sans}`;
       }
 
       return (

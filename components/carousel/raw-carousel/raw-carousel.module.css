@@ -6,27 +6,27 @@
     * items per slide 
     * carousel gap
   */
-  @screen sm {
+  @media (width >= theme(--breakpoint-sm)) {
     --item-per-slide: var(--sm-view);
     --raw-carousel-gap: var(--sm-gap);
   }
 
-  @screen md {
+  @media (width >= theme(--breakpoint-md)) {
     --item-per-slide: var(--md-view);
     --raw-carousel-gap: var(--md-gap);
   }
 
-  @screen lg {
+  @media (width >= theme(--breakpoint-lg)) {
     --item-per-slide: var(--lg-view);
     --raw-carousel-gap: var(--lg-gap);
   }
 
-  @screen xl {
+  @media (width >= theme(--breakpoint-xl)) {
     --item-per-slide: var(--xl-view);
     --raw-carousel-gap: var(--xl-gap);
   }
 
-  @screen 2xl {
+  @media (width >= theme(--breakpoint-2xl)) {
     --item-per-slide: var(--2xl-view);
     --raw-carousel-gap: var(--2xl-gap);
   }

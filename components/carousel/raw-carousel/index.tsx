@@ -130,10 +130,10 @@ export function RawCarousel({
           ref={rawCarouselRef}
           className={cn(
             // layout
-            'relative mt-10 flex snap-none items-start overflow-y-hidden overflow-x-scroll scroll-smooth',
+            'relative mt-10 flex snap-none items-start overflow-x-scroll overflow-y-hidden scroll-smooth',
             // when offset is true , items will be flow over container
             haveOffset &&
-              '-ml-[--container-side-gap] -mr-[--container-side-gap] w-[calc(100vw-var(--scrollbar-width))] pl-[--container-side-gap] pr-[--container-side-gap]',
+              '-mr-(--container-side-gap) -ml-(--container-side-gap) w-[calc(100vw-var(--scrollbar-width))] pr-(--container-side-gap) pl-(--container-side-gap)',
             // common
             styles['raw-carousel']
           )}

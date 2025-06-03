@@ -18,7 +18,7 @@ export function MainSection() {
           <div
             onClick={() => setSelectedDay('all')}
             className={cn(
-              'rounded bg-gray-300 px-6 py-2 text-lg',
+              'rounded-sm bg-gray-300 px-6 py-2 text-lg',
               selectedDay == 'all' && 'bg-blue-500'
             )}
           >
@@ -29,7 +29,7 @@ export function MainSection() {
             <div
               key={dayItinerary.day}
               className={cn(
-                'rounded bg-gray-300 px-6 py-2 text-lg',
+                'rounded-sm bg-gray-300 px-6 py-2 text-lg',
                 selectedDay == dayItinerary.day && 'bg-blue-500'
               )}
               onClick={() => setSelectedDay(dayItinerary.day)}

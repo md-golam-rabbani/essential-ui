@@ -15,7 +15,7 @@ export function KeenCarouselProgressBar({
     >
       <span
         className={cn(
-          'absolute inset-0 z-[1] origin-left rounded-[inherit] bg-blue-500 transition-[width] duration-500',
+          'absolute inset-0 z-1 origin-left rounded-[inherit] bg-blue-500 transition-[width] duration-500',
           progressCompleteBarClassName
         )}
         style={{

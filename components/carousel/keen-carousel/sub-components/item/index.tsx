@@ -12,7 +12,7 @@ export function KeenCarouselItem({ children, className }: IKeenCarouselItem) {
         'keen-slider__slide',
 
         // Override default Keen slider styles
-        '!overflow-visible',
+        'overflow-visible!',
 
         // Custom styles for the carousel item
         // Note: Check keen-carousel.module.css before renaming

@@ -72,13 +72,13 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
 
   const carouselItemClasses = cn(
     // Initial width
-    'w-[16rem] md:w-[8rem] lg:w-[10rem] xl:w-[11.25rem]',
+    'w-[16rem] md:w-32 lg:w-40 xl:w-45',
     // Active item width
-    "[&[aria-current='true']]:w-[16rem] md:[&[aria-current='true']]:w-[20rem] lg:[&[aria-current='true']]:w-[26rem] xl:[&[aria-current='true']]:w-[30rem]",
+    'aria-current:w-[16rem] md:aria-current:w-[20rem] lg:aria-current:w-104 xl:aria-current:w-120',
     // Hover item width
-    'md:&:not(:hover):group-hover:w-[9rem] lg:&:not(:hover):group-hover:w-[11rem] xl:&:not(:hover):group-hover:w-[13rem] md:hover:w-[9.5rem] lg:hover:w-[11.5rem] xl:hover:w-[13.5rem]',
+    'md:&:not(:hover):group-hover:w-[9rem] lg:&:not(:hover):group-hover:w-[11rem] xl:&:not(:hover):group-hover:w-[13rem] md:hover:w-38 lg:hover:w-46 xl:hover:w-54',
 
-    'relative flex-shrink-0 cursor-pointer overflow-hidden',
+    'relative shrink-0 cursor-pointer overflow-hidden',
     'md:[transition:width_var(--transition,200ms_ease-in)]'
   );
 
@@ -86,7 +86,7 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
     <div className="section-padding-primary flex w-full flex-col gap-8 overflow-hidden md:gap-12">
       <div className="container">
         <div className="flex items-end justify-between">
-          <div className="max-w-[40rem]">
+          <div className="max-w-160">
             <TextComponent
               {...textComponent}
               titleSize="h1"
@@ -114,7 +114,7 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
                 } as CSSProperties
               }
               className={cn(
-                'group flex h-[20.5rem] w-full flex-row gap-3 transition-all duration-700 md:h-[28rem] md:gap-6 lg:h-[34rem] xl:h-[37.5rem]',
+                'group flex h-82 w-full flex-row gap-3 transition-all duration-700 md:h-112 md:gap-6 lg:h-136 xl:h-150',
                 styles['people-carousel']
               )}
             >
@@ -132,7 +132,7 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
                   <div className="relative h-full w-full overflow-hidden rounded-2xl bg-[#c9c6c7]">
                     <Image
                       className={cn(
-                        'duration-400 absolute right-0 top-1/2 h-auto w-full max-w-none -translate-y-1/2 object-cover transition-all md:left-1/2 md:w-[30rem] md:-translate-x-1/2',
+                        'absolute top-1/2 right-0 h-auto w-full max-w-none -translate-y-1/2 object-cover transition-all duration-400 md:left-1/2 md:w-120 md:-translate-x-1/2',
                         activeItem === index ? 'md:grayscale-0' : 'md:grayscale'
                       )}
                       src={people.img?.src || DEFAULT_PERSON_IMAGE}
@@ -145,7 +145,7 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
                     />
                     <div
                       className={cn(
-                        'bg-primary duration-400 absolute -bottom-[2rem] -left-4 aspect-square w-[10rem] origin-bottom-left scale-100 rounded-full opacity-70 blur-[50px] transition-all md:-bottom-[4rem] md:w-[15rem] md:blur-[70px] lg:w-[17.5rem] lg:blur-[80px] xl:w-[19.5rem] xl:blur-[100px]',
+                        'bg-primary absolute -bottom-8 -left-4 aspect-square w-40 origin-bottom-left scale-100 rounded-full opacity-70 blur-[50px] transition-all duration-400 md:-bottom-16 md:w-60 md:blur-[70px] lg:w-70 lg:blur-[80px] xl:w-78 xl:blur-[100px]',
                         activeItem === index
                           ? 'md:scale-100 md:opacity-70'
                           : 'md:scale-0 md:opacity-0'
@@ -153,7 +153,7 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
                     />
                     <div
                       className={cn(
-                        'bg-gradient-2 absolute bottom-0 left-0 h-36 w-full origin-bottom from-[#000]/[0] to-[#000]/[.71] transition-all duration-500',
+                        'bg-gradient-2 absolute bottom-0 left-0 h-36 w-full origin-bottom from-black/0 to-black/[.71] transition-all duration-500',
                         activeItem === index ? 'md:opacity-70' : 'md:opacity-0'
                       )}
                     />

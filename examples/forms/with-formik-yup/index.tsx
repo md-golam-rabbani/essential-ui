@@ -349,7 +349,7 @@ export default function Form() {
                     disabled={false}
                     colorScheme="primary"
                     variant="fill"
-                    className="!bg-red-500"
+                    className="bg-red-500!"
                     type="reset"
                     onButtonClick={() => {
                       handleReset();

@@ -86,7 +86,7 @@ export const SelectControl = ({
               styles['default-form-input'],
               styles['hide-input-appearance'],
               // Focus Style
-              'transition-all duration-700 focus:outline-0 focus:ring-0 focus:ring-offset-0 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:stroke-black [&>svg]:opacity-100 [&>svg]:transition-transform [&>svg]:duration-300 [&>svg]:data-[state=open]:rotate-180',
+              'transition-all duration-700 focus:ring-0 focus:ring-offset-0 focus:outline-0 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:stroke-black [&>svg]:opacity-100 [&>svg]:transition-transform [&>svg]:duration-300 data-[state=open]:[&>svg]:rotate-180',
               // Placeholder and selected value style
               [isValue ? 'text-black' : 'text-gray-600']
             )}
@@ -112,7 +112,7 @@ export const SelectControl = ({
                 key={i}
                 value={value || ' '}
                 className={cn(
-                  'cursor-pointer rounded bg-white transition-all duration-300 hover:bg-gray-300',
+                  'cursor-pointer rounded-sm bg-white transition-all duration-300 hover:bg-gray-300',
                   // Revert option style
                   !value && i == 0 && 'text-black [&_svg]:hidden'
                 )}

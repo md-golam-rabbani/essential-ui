@@ -14,7 +14,7 @@ export function inputFieldCommonClassesGenerator({
 }: Params): string {
   return cn(
     // Layout styles
-    'flex items-center min-h-[3rem] w-full rounded-lg px-3 py-1',
+    'flex items-center min-h-12 w-full rounded-lg px-3 py-1',
 
     // General styles
     ' bg-white text-black placeholder:text-gray-600 text-sm',

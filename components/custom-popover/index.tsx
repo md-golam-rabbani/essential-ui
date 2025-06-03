@@ -67,7 +67,7 @@ export const CustomPopover = ({
          * we can prevent the overflow of the CustomTable contents inside popover.
          */
         className={cn(
-          'border-col-4 bg-col-5 m-2 w-[--popover-width] border p-0 [--popover-width:22.438rem] md:[--popover-width:27.688rem] lg:m-3',
+          'border-col-4 bg-col-5 m-2 w-(--popover-width) border p-0 [--popover-width:22.438rem] md:[--popover-width:27.688rem] lg:m-3',
           // 'md:[&_.custom-table]:[calc(var(--popover-width)- horizontalPadding of the popover)]
           'md:[&_.custom-table]:[calc(var(--popover-width)-3.5rem)] [&_.custom-table]:max-w-[calc(var(--popover-width)-2.75rem)]',
           className

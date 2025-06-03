@@ -76,7 +76,7 @@ export default function Page() {
                 <Card
                   title={`Slide ${index + 1}`}
                   className={cn(
-                    'min-h-80 rounded-lg border-none shadow-none  transition-colors duration-300',
+                    'min-h-80 rounded-lg border-none shadow-none transition-colors duration-300',
                     currentSlide == index && 'bg-blue-500 text-white'
                   )}
                 />

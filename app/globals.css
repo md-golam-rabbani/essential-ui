@@ -1,9 +1,59 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-*: initial;
+  --font-primary:
+    var(--font-primary), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 .section-padding-primary {
-  @apply py-[3.75rem] md:py-[6.25rem] xl:py-[7.5rem];
+  @apply py-15 md:py-25 xl:py-30;
 }
 
 /* Keen Carousel Initial Style */
@@ -21,7 +71,7 @@
   max-width: var(--carousel-slide-width);
 }
 
-@screen sm {
+@media (width >= theme(--breakpoint-sm)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-width: calc(
       100% / var(--sm-view) -
@@ -30,7 +80,7 @@
   }
 }
 
-@screen md {
+@media (width >= theme(--breakpoint-md)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-width: calc(
       100% / var(--md-view) -
@@ -39,7 +89,7 @@
   }
 }
 
-@screen lg {
+@media (width >= theme(--breakpoint-lg)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-width: calc(
       100% / var(--lg-view) -
@@ -48,7 +98,7 @@
   }
 }
 
-@screen xl {
+@media (width >= theme(--breakpoint-xl)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-width: calc(
       100% / var(--xl-view) -
@@ -57,7 +107,7 @@
   }
 }
 
-@screen 2xl {
+@media (width >= theme(--breakpoint-2xl)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-width: calc(
       100% / var(--2xl-view) -
@@ -102,31 +152,31 @@
   transform: translate3d(calc(var(--carousel-slide-gap) * 9), 0px, 0px);
 }
 
-@screen sm {
+@media (width >= theme(--breakpoint-sm)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-gap: var(--sm-gap);
   }
 }
 
-@screen md {
+@media (width >= theme(--breakpoint-md)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-gap: var(--md-gap);
   }
 }
 
-@screen lg {
+@media (width >= theme(--breakpoint-lg)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-gap: var(--lg-gap);
   }
 }
 
-@screen xl {
+@media (width >= theme(--breakpoint-xl)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-gap: var(--xl-gap);
   }
 }
 
-@screen 2xl {
+@media (width >= theme(--breakpoint-2xl)) {
   .keen-carousel .keen-carousel-slide {
     --carousel-slide-gap: var(--2xl-gap);
   }
