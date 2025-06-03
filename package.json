@@ -14,7 +14,6 @@
     "tsc": "tsc",
     "tsc-watch": "tsc --watch",
     "prepare": "husky",
-    "add-comp": "pnpm dlx shadcn-ui@latest add $npm_config_name && pnpm format:fix",
     "analyze": "ANALYZE=true pnpm build"
   },
   "dependencies": {
