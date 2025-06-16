@@ -1,3 +1,5 @@
+@reference 'tailwindcss';
+
 .raw-carousel-wrapper {
   --item-per-slide: var(--initial-view);
   --raw-carousel-gap: var(--initial-gap);

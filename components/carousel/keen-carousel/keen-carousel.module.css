@@ -1,3 +1,5 @@
+@reference 'tailwindcss';
+
 /**
 * The :global() function is used to access global classes.
 */
@@ -20,7 +22,7 @@
   --keen-carousel-slide-gap: var(--initial-gap);
 }
 
-@screen sm {
+@media (width >= theme(--breakpoint-sm)) {
   .keen-carousel :global(.keen-carousel-slide) {
     --keen-carousel-slide-width: calc(
       100% / var(--sm-view) -
@@ -30,7 +32,7 @@
   }
 }
 
-@screen md {
+@media (width >= theme(--breakpoint-md)) {
   .keen-carousel :global(.keen-carousel-slide) {
     --keen-carousel-slide-width: calc(
       100% / var(--md-view) -
@@ -40,7 +42,7 @@
   }
 }
 
-@screen lg {
+@media (width >= theme(--breakpoint-lg)) {
   .keen-carousel :global(.keen-carousel-slide) {
     --keen-carousel-slide-width: calc(
       100% / var(--lg-view) -
@@ -50,7 +52,7 @@
   }
 }
 
-@screen xl {
+@media (width >= theme(--breakpoint-xl)) {
   .keen-carousel :global(.keen-carousel-slide) {
     --keen-carousel-slide-width: calc(
       100% / var(--xl-view) -
@@ -60,7 +62,7 @@
   }
 }
 
-@screen 2xl {
+@media (width >= theme(--breakpoint-2xl)) {
   .keen-carousel :global(.keen-carousel-slide) {
     --keen-carousel-slide-width: calc(
       100% / var(--2xl-view) -

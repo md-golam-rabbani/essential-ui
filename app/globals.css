@@ -67,6 +67,7 @@
 }
 
 .keen-carousel .keen-carousel-slide {
+  --carousel-slide-gap: var(--initial-gap);
   --carousel-slide-width: calc(
     100% / var(--initial-view) -
       calc(var(--initial-gap) / var(--initial-view) * (var(--initial-view) - 1))
@@ -74,55 +75,46 @@
 
   min-width: var(--carousel-slide-width);
   max-width: var(--carousel-slide-width);
-}
 
-@media (width >= theme(--breakpoint-sm)) {
-  .keen-carousel .keen-carousel-slide {
+  @media (width >= theme(--breakpoint-sm)) {
+    --carousel-slide-gap: var(--sm-gap);
     --carousel-slide-width: calc(
       100% / var(--sm-view) -
         calc(var(--sm-gap) / var(--sm-view) * (var(--sm-view) - 1))
     );
   }
-}
 
-@media (width >= theme(--breakpoint-md)) {
-  .keen-carousel .keen-carousel-slide {
+  @media (width >= theme(--breakpoint-md)) {
+    --carousel-slide-gap: var(--md-gap);
     --carousel-slide-width: calc(
       100% / var(--md-view) -
         calc(var(--md-gap) / var(--md-view) * (var(--md-view) - 1))
     );
   }
-}
 
-@media (width >= theme(--breakpoint-lg)) {
-  .keen-carousel .keen-carousel-slide {
+  @media (width >= theme(--breakpoint-lg)) {
+    --carousel-slide-gap: var(--lg-gap);
     --carousel-slide-width: calc(
       100% / var(--lg-view) -
         calc(var(--lg-gap) / var(--lg-view) * (var(--lg-view) - 1))
     );
   }
-}
 
-@media (width >= theme(--breakpoint-xl)) {
-  .keen-carousel .keen-carousel-slide {
+  @media (width >= theme(--breakpoint-xl)) {
+    --carousel-slide-gap: var(--xl-gap);
     --carousel-slide-width: calc(
       100% / var(--xl-view) -
         calc(var(--xl-gap) / var(--xl-view) * (var(--xl-view) - 1))
     );
   }
-}
 
-@media (width >= theme(--breakpoint-2xl)) {
-  .keen-carousel .keen-carousel-slide {
+  @media (width >= theme(--breakpoint-2xl)) {
+    --carousel-slide-gap: var(--2xl-gap);
     --carousel-slide-width: calc(
       100% / var(--2xl-view) -
         calc(var(--2xl-gap) / var(--2xl-view) * (var(--2xl-view) - 1))
     );
   }
-}
-
-.keen-carousel .keen-carousel-slide {
-  --carousel-slide-gap: var(--initial-gap);
 }
 
 /* Assuming a maximum of 10 slides for the carousel case */
@@ -155,34 +147,4 @@
 }
 .keen-carousel .keen-carousel-slide:nth-child(10) {
   transform: translate3d(calc(var(--carousel-slide-gap) * 9), 0px, 0px);
-}
-
-@media (width >= theme(--breakpoint-sm)) {
-  .keen-carousel .keen-carousel-slide {
-    --carousel-slide-gap: var(--sm-gap);
-  }
-}
-
-@media (width >= theme(--breakpoint-md)) {
-  .keen-carousel .keen-carousel-slide {
-    --carousel-slide-gap: var(--md-gap);
-  }
-}
-
-@media (width >= theme(--breakpoint-lg)) {
-  .keen-carousel .keen-carousel-slide {
-    --carousel-slide-gap: var(--lg-gap);
-  }
-}
-
-@media (width >= theme(--breakpoint-xl)) {
-  .keen-carousel .keen-carousel-slide {
-    --carousel-slide-gap: var(--xl-gap);
-  }
-}
-
-@media (width >= theme(--breakpoint-2xl)) {
-  .keen-carousel .keen-carousel-slide {
-    --carousel-slide-gap: var(--2xl-gap);
-  }
 }
