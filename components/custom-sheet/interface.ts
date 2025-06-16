@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
-import { SheetContentProps } from '../ui/sheet';
 
-export interface ICustomSheet extends Pick<SheetContentProps, 'side'> {
+export interface ICustomSheet {
+  // TODO: Need to reduce duplication
+  side?: 'top' | 'right' | 'bottom' | 'left';
   /** Controls the open state of the sheet. */
   sheetOpen: boolean;
   /** Callback function to handle the open state change. */
