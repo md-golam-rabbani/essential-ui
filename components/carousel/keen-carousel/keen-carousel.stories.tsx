@@ -185,7 +185,7 @@ export const DifferentConfigExample: Story = {
               instanceRef={instanceRef}
               haveOffset={false}
               hasPagination
-              paginationWrapperClassName="absolute bottom-2 right-0 left-0 !m-0 gap-1"
+              paginationWrapperClassName="absolute bottom-2 right-0 left-0 m-0! gap-1"
               itemsPerSlide={itemsPerSlideConfig2}
               itemGap={itemGapConfig2}
             >

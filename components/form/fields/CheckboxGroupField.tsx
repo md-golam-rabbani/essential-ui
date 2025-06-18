@@ -99,7 +99,7 @@ export const CheckboxGroupField = <T extends FieldValues>({
                   />
                   <label
                     htmlFor={option.value}
-                    className="text-sm font-medium leading-none"
+                    className="text-sm leading-none font-medium"
                   >
                     {option.text}
                   </label>

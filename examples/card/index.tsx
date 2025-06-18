@@ -44,12 +44,12 @@ export const Card = ({ image, title, author, date, content }: ICard) => {
         />
         <div className="p-8">
           <header>
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+            <h3 className="text-sm font-semibold tracking-wide text-indigo-600 uppercase">
               {author}
             </h3>
             <Link
               href="#"
-              className="mt-1 block text-lg font-medium leading-tight text-black hover:underline"
+              className="mt-1 block text-lg leading-tight font-medium text-black hover:underline"
             >
               {title}
             </Link>

@@ -24,14 +24,14 @@ function IconsTemplate() {
   const [search, setSearch] = useState('');
   return (
     <div className="min-h-screen bg-gray-100 py-6">
-      <div className="mx-auto grid w-full max-w-[1800px]  gap-6 px-4 lg:gap-7">
+      <div className="mx-auto grid w-full max-w-[1800px] gap-6 px-4 lg:gap-7">
         <div className="flex max-w-[320px] flex-col gap-2">
           <p className="text-md font-bold">Total Icon: {icons.length}</p>
           <label htmlFor="search-icon">Search Icons</label>
           <input
             id="search-icon"
             placeholder="Enter icon name"
-            className="block w-full px-4 py-3 text-sm outline-slate-100 focus:outline"
+            className="block w-full px-4 py-3 text-sm outline-slate-100 focus:outline-solid"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);

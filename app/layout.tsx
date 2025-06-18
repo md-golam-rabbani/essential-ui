@@ -19,7 +19,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
       <body
         className={cn(
           primary.variable,
-          'font-primary text-[1rem]/[1.5] text-black'
+          'font-primary text-base/normal text-black'
         )}
       >
         <Header {...headerProps} />

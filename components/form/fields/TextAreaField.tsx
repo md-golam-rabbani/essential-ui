@@ -102,14 +102,14 @@ export const TextAreaField = <T extends FieldValues>({
                   size={'sm'}
                   onClick={action}
                   type="button"
-                  className={cn(iconClassName, 'absolute right-0.5 top-0.5')}
+                  className={cn(iconClassName, 'absolute top-0.5 right-0.5')}
                 >
                   {Icon ? Icon : <X className="h-4 w-4 text-red-500" />}
                 </Button>
               )}
 
               {!action && Icon && (
-                <div className={cn(iconClassName, 'absolute right-2 top-3')}>
+                <div className={cn(iconClassName, 'absolute top-3 right-2')}>
                   {Icon}
                 </div>
               )}

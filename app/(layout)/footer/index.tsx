@@ -4,7 +4,7 @@ import { CustomLink } from '@/components/custom-link';
 /** This is the footer section. It should render at the bottom of every page. */
 export function Footer({ menuLinks }: IFooter) {
   return (
-    <footer className="flex min-h-[3.75rem] items-center bg-black py-6 text-white backdrop-blur-sm">
+    <footer className="flex min-h-15 items-center bg-black py-6 text-white backdrop-blur-xs">
       <div className="container">
         <div className="flex flex-col flex-wrap items-center justify-center gap-x-6 gap-y-1 text-white md:flex-row md:justify-between">
           {menuLinks && menuLinks.length > 0 && (

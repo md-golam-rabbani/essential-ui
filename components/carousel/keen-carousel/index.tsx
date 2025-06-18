@@ -110,7 +110,7 @@ export function KeenCarousel({
           className={cn(
             'keen-slider',
             styles['keen-carousel'],
-            haveOffset && '!overflow-visible',
+            haveOffset && 'overflow-visible!',
             mainWrapperClassName
           )}
           aria-label="Keen slider"

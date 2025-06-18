@@ -29,7 +29,7 @@ export function TextareaControl({
   const isValue = value?.toString().length > 0;
   const textareaClassName = cn(
     styles['default-form-input'],
-    'resize-none min-h-[5rem] p-3',
+    'resize-none min-h-20 p-3',
     // Additional custom className (optional)
     className
   );

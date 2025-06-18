@@ -1,5 +1,5 @@
-import resolveConfig from 'tailwindcss/resolveConfig';
-import tailwindConfig from '@/tailwind.config';
+// import resolveConfig from 'tailwindcss/resolveConfig';
+// import tailwindConfig from '@/tailwind.config';
 
 export interface IImage {
   /** Specifies the path to the image */
@@ -50,6 +50,16 @@ export type ServerActionResponse<T> =
   | IServerActionSuccess<T>
   | IServerActionFailure;
 
-export const SCREENS = resolveConfig(tailwindConfig).theme.screens;
+// export const SCREENS = resolveConfig(tailwindConfig).theme.screens;
+
+// export type Breakpoints = Record<keyof typeof SCREENS | 'initial', number>;
+
+export const SCREENS = {
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px',
+};
 
 export type Breakpoints = Record<keyof typeof SCREENS | 'initial', number>;

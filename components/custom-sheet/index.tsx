@@ -37,15 +37,14 @@ export const CustomSheet = ({
   const sheetContentClasses = cn(
     'bg-white p-0',
     {
-      'w-full max-w-[20rem] md:max-w-[26.25rem]':
-        side == 'left' || side == 'right',
+      'w-full max-w-[20rem] md:max-w-105': side == 'left' || side == 'right',
       'w-full': side == 'top' || side == 'bottom',
     },
     className
   );
 
-  const scrollAreaClasses = cn('[&>div>div]:!block', {
-    'h-[100vh] max-md:h-[100dvh]': side == 'left' || side == 'right',
+  const scrollAreaClasses = cn('[&>div>div]:block!', {
+    'h-screen max-md:h-dvh': side == 'left' || side == 'right',
     'h-[80vh] max-md:h-[70dvh]': side == 'top' || side == 'bottom',
   });
 

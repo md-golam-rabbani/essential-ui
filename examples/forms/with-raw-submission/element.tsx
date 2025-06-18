@@ -368,7 +368,7 @@ export function FormElements({ formState: initialFormState }: IFormElements) {
           disabled={false}
           colorScheme="primary"
           variant="fill"
-          className="!bg-red-500"
+          className="bg-red-500!"
           type="action"
           onButtonClick={() => {
             setFormFields(initialFormFieldsValue);

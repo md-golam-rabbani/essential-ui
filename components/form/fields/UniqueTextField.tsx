@@ -83,7 +83,7 @@ export const UniqueTextField = <T extends FieldValues>({
                     'border-red-500 focus-visible:ring-red-500'
                 )}
               />
-              <div className="absolute right-3 top-1/2 -translate-y-1/2">
+              <div className="absolute top-1/2 right-3 -translate-y-1/2">
                 {isChecking && (
                   <Loader2 className="h-4 w-4 animate-spin text-gray-500" />
                 )}

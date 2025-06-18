@@ -16,7 +16,7 @@ export const PasswordControl = ({
   return (
     <button
       className={cn(
-        'absolute right-3 top-1/3 grid h-fit w-fit cursor-pointer select-none text-black disabled:cursor-default disabled:text-gray-300',
+        'absolute top-1/3 right-3 grid h-fit w-fit cursor-pointer text-black select-none disabled:cursor-default disabled:text-gray-300',
         className
       )}
       onClick={onIconClick}
