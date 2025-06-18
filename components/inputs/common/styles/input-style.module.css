@@ -1,3 +1,5 @@
+@reference "tailwindcss";
+
 /* Prevent auto fill background style */
 .default-form-input:-webkit-autofill,
 .default-form-input:-webkit-autofill:enabled,

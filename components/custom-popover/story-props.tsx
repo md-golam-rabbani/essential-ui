@@ -17,7 +17,7 @@ export function CustomPopoverStorybook() {
           popoverOpen={popoverOpen}
           onCustomPopoverChange={setPopoverOpen}
           // Position the Popover.Content
-          anchor={<div className="fixed right-0 top-0"></div>}
+          anchor={<div className="fixed top-0 right-0"></div>}
           // Custom trigger button for opening the drawer
           trigger={
             <CustomButton
@@ -25,7 +25,7 @@ export function CustomPopoverStorybook() {
               colorScheme="primary"
               variant="fill"
               disabled={false}
-              className="fixed right-7 top-7"
+              className="fixed top-7 right-7"
             >
               Custom Popover
             </CustomButton>
@@ -102,7 +102,7 @@ export function CustomPopoverStorybook() {
               </div>
 
               {/* Bottom Button */}
-              <div className="absolute bottom-0 flex min-h-[3.75rem] w-full flex-shrink-0 items-center rounded-bl-lg rounded-br-lg border-t border-black bg-white px-4 py-3 md:px-5">
+              <div className="absolute bottom-0 flex min-h-15 w-full shrink-0 items-center rounded-br-lg rounded-bl-lg border-t border-black bg-white px-4 py-3 md:px-5">
                 <CustomButton
                   type="action"
                   colorScheme="primary"

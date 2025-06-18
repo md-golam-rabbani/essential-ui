@@ -42,7 +42,7 @@ export const CustomModal = ({
       {trigger}
       <DialogContent
         className={cn(
-          'space-y-5 rounded border-0 border-none bg-white p-5 shadow-md shadow-gray-400',
+          'space-y-5 rounded-sm border-0 border-none bg-white p-5 shadow-md shadow-gray-400',
           contentWrapperClassName
         )}
         onInteractOutside={(event) => {

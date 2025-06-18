@@ -8,7 +8,7 @@ import { cn } from '@/lib/shadcn/utils';
 import { Typography } from '@/components/typography';
 import { IconStore } from '@/components/icon-store';
 
-interface IProps extends Pick<ICustomAccordion, 'accordionItems'> {}
+type IProps = Pick<ICustomAccordion, 'accordionItems'>;
 
 /** The itemPadding variable is a class string that applies
  * equal padding and alignment to the x-axis and y-axis
@@ -23,7 +23,7 @@ export const CustomAccordionInnerContent = ({ accordionItems }: IProps) => {
         <AccordionItem
           key={index}
           value={`item-${index}`}
-          className="border-b border-gray-300 bg-transparent transition-colors [&[data-state='open']]:bg-transparent"
+          className="border-b border-gray-300 bg-transparent transition-colors data-[state='open']:bg-transparent"
         >
           <AccordionTrigger className="w-full no-underline hover:no-underline [&[data-state='open']&_.accordion-icon]:-rotate-180">
             <Typography
@@ -37,7 +37,7 @@ export const CustomAccordionInnerContent = ({ accordionItems }: IProps) => {
               {accordionItem.title}
               <IconStore
                 iconName="chevron-down"
-                className="accordion-icon flex flex-none items-center justify-center self-baseline text-lg/[1] text-[inherit] transition-transform duration-300"
+                className="accordion-icon flex flex-none items-center justify-center self-baseline text-lg/[1] text-inherit transition-transform duration-300"
               />
             </Typography>
           </AccordionTrigger>

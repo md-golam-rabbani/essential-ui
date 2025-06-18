@@ -91,7 +91,7 @@ export const Default: Story = {
           // visible at the start and end of the content. This calculation
           // incorporates the content's top and bottom padding, as well as the
           // heights of the sticky header and footer.
-          scrollBarClassName="pb-[6.8125rem] pt-[5.0625rem] mr-1"
+          scrollBarClassName="pb-27.25 pt-20.25 mr-1"
           content={
             <>
               {/* Drawer Header implement with absolute */}
@@ -106,12 +106,12 @@ export const Default: Story = {
               {/** Ensures the first and last content items are visible by
                * adjusting the top and bottom padding.
                * @Calculation
-               *   pt-[5.0625rem] = 61px (Header height) + 20px (Content top
+               *   pt-20.25 = 61px (Header height) + 20px (Content top
                *     padding)
-               *   pb-[6.8125rem] = 89px (Footer height) + 20px (Content
+               *   pb-27.25 = 89px (Footer height) + 20px (Content
                *     bottom padding)
                */}
-              <div className="flex flex-col gap-5 p-5 pb-[6.8125rem] pt-[5.0625rem]">
+              <div className="flex flex-col gap-5 p-5 pt-20.25 pb-27.25">
                 <DummyDrawerContent />
               </div>
               {/* Drawer Footer implement with absolute */}

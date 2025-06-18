@@ -13,7 +13,7 @@ export function Header({ menuLinks }: IHeader) {
   const [sheetOpen, setSheetOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 flex min-h-[--header-min-height] items-center bg-white py-2 text-black shadow-sm backdrop-blur-sm [--header-min-height:3.5rem] lg:[--header-min-height:3.75rem]">
+    <header className="sticky top-0 z-50 flex min-h-(--header-min-height) items-center bg-white py-2 text-black shadow-xs backdrop-blur-xs [--header-min-height:3.5rem] lg:[--header-min-height:3.75rem]">
       <div className="container">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
           {/* Logo  */}
@@ -67,7 +67,7 @@ export function Header({ menuLinks }: IHeader) {
                             disabled={false}
                             label={menuLink.label}
                             target={menuLink.target}
-                            className="flex items-center rounded bg-gray-200 px-3 py-1"
+                            className="flex items-center rounded-sm bg-gray-200 px-3 py-1"
                           />
                         </li>
                       ))}

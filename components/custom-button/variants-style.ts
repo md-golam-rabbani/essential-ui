@@ -29,7 +29,7 @@ export const customButtonVariants = cva(
 
     // focus
     'ring-offset-blue-500',
-    'focus-visible:outline-none',
+    'focus-visible:outline-hidden',
     'focus-visible:ring-2',
     'focus-visible:ring-offset-2',
   ],

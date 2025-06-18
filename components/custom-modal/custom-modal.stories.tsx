@@ -63,7 +63,7 @@ export const Primary: Story = {
                 </CustomButton>
               }
               content={
-                <div className="flex flex-col items-center gap-5 rounded px-4 py-5">
+                <div className="flex flex-col items-center gap-5 rounded-sm px-4 py-5">
                   <h3 className="text-center text-xl font-semibold">
                     Modal Title
                   </h3>
@@ -128,7 +128,7 @@ export const AsyncAwait: Story = {
               </CustomButton>
             }
             content={
-              <div className="flex flex-col items-center gap-5 rounded px-4 py-5">
+              <div className="flex flex-col items-center gap-5 rounded-sm px-4 py-5">
                 <h3 className="text-center text-xl font-semibold">
                   Modal Title
                 </h3>
