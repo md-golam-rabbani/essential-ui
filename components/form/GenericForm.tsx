@@ -1,10 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  forwardRef,
-  ReactNode,
-  // Ref,
-  useImperativeHandle,
-} from 'react';
+import { ReactNode, Ref, useImperativeHandle } from 'react';
 import {
   Control,
   DefaultValues,
@@ -33,7 +28,7 @@ export type GenericFormProps<TSchema extends ZodType> = {
   initialValues: Partial<z.infer<TSchema>>;
   onSubmit: SubmitHandler<z.infer<TSchema>>;
   children: ReactNode;
-  // ref: Ref<GenericFormRef<z.infer<TSchema>>>;
+  ref: Ref<GenericFormRef<z.infer<TSchema>>>;
   mode?: Mode;
 } & React.ComponentPropsWithoutRef<'form'>;
 
@@ -59,18 +54,14 @@ export type GenericFormProps<TSchema extends ZodType> = {
 // }: GenericFormProps<TSchema>) => {
 
 // TODO: When update the react version, need to remove the legacy way
-export const GenericForm = forwardRef(function GenericForm<
-  TSchema extends ZodType,
->(
-  {
-    initialValues,
-    schema,
-    onSubmit,
-    children,
-    mode = 'onChange',
-  }: GenericFormProps<TSchema>,
-  ref: React.Ref<GenericFormRef<z.infer<TSchema>>>
-) {
+export const GenericForm = <TSchema extends ZodType>({
+  ref,
+  initialValues,
+  schema,
+  onSubmit,
+  children,
+  mode = 'onChange',
+}: GenericFormProps<TSchema>) => {
   const form = useForm<z.infer<TSchema>>({
     defaultValues: initialValues as DefaultValues<z.infer<TSchema>>,
     resolver: zodResolver(schema),
@@ -94,6 +85,6 @@ export const GenericForm = forwardRef(function GenericForm<
       <form onSubmit={form.handleSubmit(onSubmit)}>{children}</form>
     </Form>
   );
-});
+};
 
 GenericForm.displayName = 'GenericForm';
