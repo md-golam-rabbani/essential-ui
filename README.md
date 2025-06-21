@@ -1,39 +1,21 @@
-# Essential ui
-
-## Resources:
-
-- [Server Component Stories](https://storybook.js.org/blog/storybook-react-server-components/): This link details how to make stories for server side components.
+# Essential UI
 
 ## UI Library
 
-We will be relying on `shadcn` components to **avoid rewriting component logic**. Please go through the instruction of adding a `shadcn` component.
+This project uses [`shadcn/ui`](https://ui.shadcn.com) components to avoid reinventing common UI logic.  
+When styling or extending components, create custom wrappers instead of modifying the core shadcn components directly.
 
-## Add new components
+> ⚠️ Avoid altering shadcn component logic. Extend via composition when needed.
 
-Please use this convention to add new shadcn components:
+## Getting Started
 
+```bash
+# Install dependencies
+pnpm install
+
+# Run the development server
+pnpm dev
+
+# Format code
+pnpm format:fix
 ```
-npm run add-comp --name=$component_name
-```
-
-Replace the `$component_name` with the component name you want to add.
-
-So to add the `accordion`. Instead of using
-
-```
-npx shadcn-ui@latest add accordion
-```
-
-you will use
-
-```
-npm run add-comp --name=accordion
-```
-
-This custom script will run `prettier:fix` after it adds the component.
-
-### Shadcn Component Modifications
-
-We should avoid modifying shad-cn components directly. We can create our own `custom` components using shad-cn component and apply restyling as needed. We don't want to lose the functionality that shad-cn has already implemented.
-
-**This should be done carefully. We should not alter `shad-cn`'s logic implementation.**
