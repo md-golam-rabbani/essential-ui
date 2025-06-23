@@ -43,17 +43,6 @@ export type GenericFormProps<TSchema extends ZodType> = {
  * @returns The generic form component.
  */
 
-// Ref as a prop
-// export const GenericForm = <TSchema extends ZodType>({
-//   ref,
-//   initialValues,
-//   schema,
-//   onSubmit,
-//   children,
-//   mode = 'onChange',
-// }: GenericFormProps<TSchema>) => {
-
-// TODO: When update the react version, need to remove the legacy way
 export const GenericForm = <TSchema extends ZodType>({
   ref,
   initialValues,
