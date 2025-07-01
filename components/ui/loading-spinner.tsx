@@ -18,7 +18,7 @@ import { Loader2 } from 'lucide-react';
  */
 
 export const LoadingSpinner = ({ className = '' }: { className?: string }) => {
-  return <Loader2 className={cn('h-10 w-10 animate-spin', className)} />;
+  return <Loader2 className={cn('h-5 w-5 animate-spin', className)} />;
 };
 
 LoadingSpinner.displayName = 'LoadingSpinner';
