@@ -12,10 +12,12 @@ import {
   FormMessage,
 } from '../../ui/form';
 import { Input } from '../../ui/input';
+import { RequiredSign } from './RequiredSign';
 
 type TextFieldProps<T extends FieldValues> = {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   type?: 'text' | 'email' | 'number';
   placeholder?: string;
   required?: boolean;
@@ -32,13 +34,14 @@ type TextFieldProps<T extends FieldValues> = {
  * A text field component.
  * @param name The name of the field.
  * @param label The label of the field.
+ * @param labelClassName The class name of the label.
  * @param type The type of the field.
  * @param placeholder The placeholder of the field.
  * @param required If the field is required.
  * @param action The action to be performed on the field.
  * @param icon The icon of the field.
  * @param loading If the field is loading.
- * @param className The class name of the
+ * @param className The class name of the form item.
  * @param inputClass The class name of the input.
  * @param iconClass The class name of the
  * @param disabled If the field is disabled.
@@ -54,6 +57,7 @@ type TextFieldProps<T extends FieldValues> = {
 export const TextField = <T extends FieldValues>({
   name,
   label,
+  labelClassName,
   type = 'text',
   placeholder = 'Input',
   required = false,
@@ -73,38 +77,47 @@ export const TextField = <T extends FieldValues>({
       render={({ field }) => (
         <FormItem className={cn(className)}>
           {label && (
-            <FormLabel htmlFor={name}>
+            <FormLabel htmlFor={name} className={labelClassName}>
               <span>{label}</span>
-              {required && <span className="ml-1 text-red-500">*</span>}
+              {required && <RequiredSign />}
             </FormLabel>
           )}
+
           <FormControl>
             <div className="relative flex items-center gap-2">
               <Input
                 {...field}
                 type={type}
                 placeholder={placeholder ?? 'Enter a value'}
-                className={cn(`w-full ${inputClass}`, action && 'pr-12')}
+                className={cn('w-full', action && 'pr-12', inputClass)}
                 id={name}
                 disabled={disabled}
               />
 
               {loading && <LoadingSpinner className="absolute right-4" />}
 
-              {action && (
+              {!loading && !disabled && action && (
                 <Button
                   variant={'ghost'}
                   size={'sm'}
                   onClick={action}
                   type="button"
-                  className={cn('absolute top-0.5 right-0.5', iconClass)}
+                  className={cn(
+                    'absolute top-0.5 right-0.5 text-red-500',
+                    iconClass
+                  )}
                 >
-                  {icon ? icon : <X className="h-4 w-4 text-red-500" />}
+                  {icon ? icon : <X />}
                 </Button>
               )}
 
-              {!action && icon && (
-                <div className={cn('absolute top-3 right-2', iconClass)}>
+              {!loading && !action && icon && (
+                <div
+                  className={cn(
+                    'absolute top-1/2 right-2 flex -translate-y-1/2 text-base',
+                    iconClass
+                  )}
+                >
                   {icon}
                 </div>
               )}
