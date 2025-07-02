@@ -103,7 +103,7 @@ export const TextField = <T extends FieldValues>({
                   onClick={action}
                   type="button"
                   className={cn(
-                    'absolute top-0.5 right-0.5 text-red-500',
+                    'absolute top-1/2 right-0.5 -translate-y-1/2 text-red-500',
                     iconClass
                   )}
                 >
