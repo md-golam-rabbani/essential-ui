@@ -13,14 +13,19 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
+import { RequiredSign } from './RequiredSign';
+import { cn } from '@/lib/shadcn/utils';
 
 type Props<T extends FieldValues> = {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   placeholder?: string;
   options: { value: string; text: string }[];
   required?: boolean;
   className?: string;
+  inputClassName?: string;
+  disabled?: boolean;
 };
 
 /**
@@ -48,10 +53,13 @@ type Props<T extends FieldValues> = {
 export const SelectField = <T extends FieldValues>({
   name,
   label,
+  labelClassName,
   placeholder,
   options,
   required = false,
   className,
+  inputClassName,
+  disabled,
 }: Props<T>) => {
   const { control } = useFormContext<T>();
 
@@ -62,14 +70,19 @@ export const SelectField = <T extends FieldValues>({
       render={({ field }) => (
         <FormItem className={className}>
           {label && (
-            <FormLabel>
+            <FormLabel htmlFor={name} className={labelClassName}>
               <span>{label}</span>
-              {required && <span className="ml-1 text-red-500">*</span>}
+              {required && <RequiredSign />}
             </FormLabel>
           )}
-          <Select onValueChange={field.onChange} value={field.value}>
+
+          <Select
+            disabled={disabled}
+            onValueChange={field.onChange}
+            value={field.value}
+          >
             <FormControl>
-              <SelectTrigger>
+              <SelectTrigger className={cn('w-full', inputClassName)}>
                 <SelectValue placeholder={placeholder ?? 'Select an item'} />
               </SelectTrigger>
             </FormControl>
