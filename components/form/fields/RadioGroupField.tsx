@@ -8,6 +8,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { RequiredSign } from './RequiredSign';
 
 type OptionType = {
   value: string;
@@ -18,14 +19,16 @@ type QuestionTypeRadioGroupProps<T extends FieldValues> = {
   name: Path<T>;
   options: OptionType[];
   label?: string;
+  labelClassName?: string;
   required?: boolean;
   className?: string;
   column?: boolean;
   longGap?: boolean;
   reverse?: boolean;
-  gap?: '2' | '4' | '6' | '8';
   columnGroup?: boolean;
   rowGroup?: boolean;
+  groupWrapperClassName?: string;
+  disabled?: boolean;
 };
 
 /**
@@ -49,6 +52,7 @@ export const RadioGroupField = <T extends FieldValues>({
   name,
   options,
   label = 'Question Type',
+  labelClassName,
   required = false,
   className = '',
   column = false,
@@ -56,7 +60,8 @@ export const RadioGroupField = <T extends FieldValues>({
   reverse = false,
   columnGroup = true,
   rowGroup = false,
-  gap = '2',
+  groupWrapperClassName,
+  disabled,
 }: QuestionTypeRadioGroupProps<T>) => {
   const { control } = useFormContext<T>();
 
@@ -75,20 +80,22 @@ export const RadioGroupField = <T extends FieldValues>({
       render={({ field }) => (
         <FormItem>
           {label && (
-            <FormLabel>
+            <FormLabel className={labelClassName}>
               <span>{label}</span>
-              {required && <span className="ml-1 text-red-500">*</span>}
+              {required && <RequiredSign />}
             </FormLabel>
           )}
+
           <FormControl>
             <RadioGroup
+              disabled={disabled}
               onValueChange={field.onChange}
               value={field.value}
               className={cn(
-                className,
                 columnGroup ? 'flex-col' : '',
                 rowGroup ? 'flex-row' : '',
-                'flex gap-2'
+                'flex gap-2',
+                className
               )}
             >
               {options.map((option) => (
@@ -96,10 +103,10 @@ export const RadioGroupField = <T extends FieldValues>({
                   <FormControl>
                     <div
                       className={cn(
-                        'relative flex items-center',
-                        `gap-${gap}`,
+                        'relative flex items-center gap-2',
                         column ? 'flex-col items-start' : '',
-                        longGap ? 'justify-between' : ''
+                        longGap ? 'justify-between' : '',
+                        groupWrapperClassName
                       )}
                     >
                       <RadioGroupItem
@@ -107,6 +114,7 @@ export const RadioGroupField = <T extends FieldValues>({
                         className={cn(reverse ? 'order-1' : 'order-0')}
                         value={option.value}
                       />
+
                       <FormLabel
                         htmlFor={option.value}
                         className={cn(reverse ? 'order-0' : 'order-1')}
