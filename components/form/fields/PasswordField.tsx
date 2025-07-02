@@ -12,18 +12,25 @@ import {
 } from '../../ui/form';
 import { Input } from '../../ui/input';
 import { cn } from '@/lib/shadcn/utils';
+import { RequiredSign } from './RequiredSign';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 
 type PasswordFieldProps<T extends FieldValues> = {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
   icon?: boolean;
+  loading?: boolean;
   showIcon?: React.ReactNode;
   hideIcon?: React.ReactNode;
   showStrength?: boolean;
   showMessage?: boolean;
+  inputClass?: string;
+  disabled?: boolean;
+  iconClass?: string;
 };
 
 type Requirement = {
@@ -44,6 +51,7 @@ const requirements: Requirement[] = [
  *
  * @param name - The name of the field
  * @param label - The label of the field
+ * @param labelClassName The class name of the label.
  * @param placeholder - The placeholder of the field
  * @param required - The required status of the field
  * @param className - The class name of the field
@@ -52,6 +60,9 @@ const requirements: Requirement[] = [
  * @param hideIcon - The hide icon of the field
  * @param showStrength - The show strength of the field
  * @param showMessage - The show message of the field
+ * @param inputClass The class name of the input.
+ * @param iconClass The class name of the
+ * @param disabled If the field is disabled.
  *
  * @returns {JSX.Element} - The password field component
  */
@@ -67,6 +78,11 @@ export const PasswordField = <T extends FieldValues>({
   hideIcon = <EyeOff size={18} />,
   showMessage = false,
   showStrength = false,
+  disabled,
+  iconClass,
+  inputClass,
+  labelClassName,
+  loading,
 }: PasswordFieldProps<T>) => {
   const { control, watch } = useFormContext<T>();
   const password = watch(name);
@@ -81,25 +97,32 @@ export const PasswordField = <T extends FieldValues>({
       render={({ field }) => (
         <FormItem className={cn(className)}>
           {label && (
-            <FormLabel>
-              {label}
-              {required && <span className="ml-1 text-red-500">*</span>}
+            <FormLabel htmlFor={name} className={labelClassName}>
+              <span>{label}</span>
+              {required && <RequiredSign />}
             </FormLabel>
           )}
 
           <FormControl>
-            <div className="relative">
+            <div className="relative flex items-center gap-2">
               <Input
                 {...field}
                 type={showPassword ? 'text' : 'password'}
                 placeholder={placeholder}
-                className="pr-10"
+                className={cn(icon && 'pr-10', inputClass)}
+                id={name}
               />
-              {icon && (
+
+              {loading && <LoadingSpinner className="absolute right-4" />}
+
+              {!loading && !disabled && icon && (
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  className={cn(
+                    'absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 hover:text-gray-700',
+                    iconClass
+                  )}
                 >
                   {showPassword ? hideIcon : showIcon}
                 </button>
