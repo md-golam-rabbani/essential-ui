@@ -109,7 +109,7 @@ export const PasswordField = <T extends FieldValues>({
                 {...field}
                 type={showPassword ? 'text' : 'password'}
                 placeholder={placeholder}
-                className={cn(icon && 'pr-10', inputClass)}
+                className={cn('w-full', icon && 'pr-10', inputClass)}
                 id={name}
               />
 
