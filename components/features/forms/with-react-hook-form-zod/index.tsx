@@ -16,6 +16,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
 import { sleep } from '@/lib/utils/sleep';
+import { SwitchField } from '@/components/form/fields/SwitchField';
 
 const jobRoleOptions = [
   {
@@ -193,9 +194,8 @@ export default function FormExample() {
                   label="Languages"
                 />
 
-                {/* TODO: Need to create SwitchField  */}
                 {/* Interest  */}
-                <CheckboxField<IFormFields>
+                <SwitchField<IFormFields>
                   name="interest"
                   required
                   label="Are you interested?"

@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/form';
 import { cn } from '@/lib/shadcn/utils';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
+import { RequiredSign } from './RequiredSign';
 
 type Option = {
   text: string;
@@ -17,10 +18,12 @@ type Option = {
 type Props<T extends FieldValues> = {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   options: Option[];
   className?: string;
   disabled?: boolean;
   column?: boolean;
+  groupWrapperClassName?: string;
   required?: boolean;
 };
 
@@ -53,10 +56,12 @@ type Props<T extends FieldValues> = {
 export const CheckboxGroupField = <T extends FieldValues>({
   name,
   label,
+  labelClassName,
   options,
   className,
   disabled,
   column = true,
+  groupWrapperClassName,
   required,
 }: Props<T>) => {
   const { control } = useFormContext<T>();
@@ -68,16 +73,18 @@ export const CheckboxGroupField = <T extends FieldValues>({
       render={({ field }) => (
         <FormItem className={className}>
           {label && (
-            <FormLabel htmlFor={name}>
+            <FormLabel htmlFor={name} className={labelClassName}>
               <span>{label}</span>
-              {required && <span className="ml-1 text-red-500">*</span>}
+              {required && <RequiredSign />}
             </FormLabel>
           )}
+
           <FormControl>
-            <div
+            <fieldset
               className={cn(
                 'flex gap-4',
-                column ? 'flex-col' : 'flex-row flex-wrap'
+                column ? 'flex-col' : 'flex-row flex-wrap',
+                groupWrapperClassName
               )}
             >
               {options.map((option) => (
@@ -105,8 +112,9 @@ export const CheckboxGroupField = <T extends FieldValues>({
                   </label>
                 </div>
               ))}
-            </div>
+            </fieldset>
           </FormControl>
+
           <FormMessage />
         </FormItem>
       )}

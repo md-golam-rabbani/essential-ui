@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from '@/lib/shadcn/utils';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
 import {

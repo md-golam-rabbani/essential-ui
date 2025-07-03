@@ -1,3 +1,5 @@
+'use client';
+
 import { Checkbox } from '@/components/ui/checkbox';
 import {
   FormControl,
@@ -8,16 +10,18 @@ import {
 } from '@/components/ui/form';
 import { cn } from '@/lib/shadcn/utils';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
+import { RequiredSign } from './RequiredSign';
 
 type Props<T extends FieldValues> = {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   required?: boolean;
   disabled?: boolean;
   column?: boolean;
   longGap?: boolean;
   reverse?: boolean;
-  gap?: '2' | '4' | '6' | '8';
+  wrapperClassName?: string;
   className?: string;
 };
 
@@ -44,12 +48,13 @@ type Props<T extends FieldValues> = {
 export const CheckboxField = <T extends FieldValues>({
   name,
   label,
+  labelClassName,
   disabled = false,
   required = false,
   column = false,
   longGap = false,
   reverse = false,
-  gap = '2',
+  wrapperClassName,
   className,
 }: Props<T>) => {
   const { control } = useFormContext<T>();
@@ -64,9 +69,10 @@ export const CheckboxField = <T extends FieldValues>({
             <div
               className={cn(
                 'relative flex items-center',
-                `gap-${gap}`,
+                'gap-2',
                 column ? 'flex-col items-start' : '',
-                longGap ? 'justify-between' : ''
+                longGap ? 'justify-between' : '',
+                wrapperClassName
               )}
             >
               <Checkbox
@@ -76,13 +82,17 @@ export const CheckboxField = <T extends FieldValues>({
                 checked={field.value}
                 disabled={disabled}
               />
+
               {label && (
                 <FormLabel
                   htmlFor={name}
-                  className={cn(reverse ? 'order-0' : 'order-1')}
+                  className={cn(
+                    reverse ? 'order-0' : 'order-1',
+                    labelClassName
+                  )}
                 >
                   <span>{label}</span>
-                  {required && <span className="ml-1 text-red-500">*</span>}
+                  {required && <RequiredSign />}
                 </FormLabel>
               )}
             </div>

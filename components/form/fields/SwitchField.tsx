@@ -1,3 +1,5 @@
+'use client';
+
 import {
   FormControl,
   FormField,
@@ -8,17 +10,19 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/shadcn/utils';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
+import { RequiredSign } from './RequiredSign';
 
 type SwitchFieldProps<T extends FieldValues> = {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   className?: string;
   disabled?: boolean;
   required?: boolean;
   column?: boolean;
   longGap?: boolean;
   reverse?: boolean;
-  gap?: '2' | '4' | '6' | '8';
+  wrapperClassName?: string;
 };
 
 /**
@@ -40,13 +44,14 @@ type SwitchFieldProps<T extends FieldValues> = {
 export const SwitchField = <T extends FieldValues>({
   name,
   label,
+  labelClassName,
   className,
   required = false,
   disabled = false,
   column = false,
   longGap = false,
   reverse = false,
-  gap = '2',
+  wrapperClassName,
 }: SwitchFieldProps<T>) => {
   const { control } = useFormContext<T>();
 
@@ -60,9 +65,10 @@ export const SwitchField = <T extends FieldValues>({
             <div
               className={cn(
                 'relative flex items-center',
-                `gap-${gap}`,
+                'gap-2',
                 column ? 'flex-col items-start' : '',
-                longGap ? 'justify-between' : ''
+                longGap ? 'justify-between' : '',
+                wrapperClassName
               )}
             >
               <Switch
@@ -72,17 +78,22 @@ export const SwitchField = <T extends FieldValues>({
                 checked={field.value}
                 disabled={disabled}
               />
+
               {label && (
                 <FormLabel
                   htmlFor={name}
-                  className={cn(reverse ? 'order-0' : 'order-1')}
+                  className={cn(
+                    reverse ? 'order-0' : 'order-1',
+                    labelClassName
+                  )}
                 >
                   <span>{label}</span>
-                  {required && <span className="ml-1 text-red-500">*</span>}
+                  {required && <RequiredSign />}
                 </FormLabel>
               )}
             </div>
           </FormControl>
+
           <FormMessage className="line-clamp-1 text-xs" />
         </FormItem>
       )}
