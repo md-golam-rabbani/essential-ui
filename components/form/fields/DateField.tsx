@@ -8,10 +8,12 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { RequiredSign } from './RequiredSign';
 
 type Props<T extends FieldValues> = {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   required?: boolean;
   disabled?: boolean;
   className?: string;
@@ -31,6 +33,7 @@ type Props<T extends FieldValues> = {
 export const DateField = <T extends FieldValues>({
   name,
   label,
+  labelClassName,
   required = false,
   disabled = false,
   className,
@@ -44,20 +47,19 @@ export const DateField = <T extends FieldValues>({
       render={({ field }) => (
         <FormItem className={className}>
           {label && (
-            <FormLabel htmlFor={name}>
+            <FormLabel htmlFor={name} className={labelClassName}>
               <span>{label}</span>
-              {required && <span className="ml-1 text-red-500">*</span>}
+              {required && <RequiredSign />}
             </FormLabel>
           )}
+
           <FormControl>
-            <div>
-              <DateTimePicker
-                disabled={disabled}
-                value={field.value}
-                onChange={field.onChange}
-                granularity="day"
-              />
-            </div>
+            <DateTimePicker
+              disabled={disabled}
+              value={field.value}
+              onChange={field.onChange}
+              granularity="day"
+            />
           </FormControl>
           <FormMessage />
         </FormItem>
