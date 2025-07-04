@@ -17,6 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/components/ui/form';
 import { sleep } from '@/lib/utils/sleep';
 import { SwitchField } from '@/components/form/fields/SwitchField';
+import { DateField } from '@/components/form/fields/DateField';
 
 const jobRoleOptions = [
   {
@@ -169,6 +170,13 @@ export default function FormExample() {
                   name="phone"
                   label="Phone"
                   placeholder="Enter your phone number"
+                />
+
+                {/* DOB  */}
+                <DateField<IFormFields>
+                  name="dob"
+                  label="Date of Birth"
+                  required
                 />
 
                 {/* Job role  */}

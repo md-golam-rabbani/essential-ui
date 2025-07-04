@@ -21,6 +21,9 @@ export const formSchema = z.object({
       message:
         'Password must be at least 8 characters long, contain at least one digit, one lowercase letter, and one uppercase letter',
     }),
+  dob: z.date({
+    message: 'Invalid date',
+  }),
   jobLocation: z.enum(['remote', 'in-office'], {
     required_error: 'Please select your preferred job location',
   }),
@@ -47,6 +50,7 @@ export const initialValues: IFormFields = {
   email: '',
   phone: '',
   password: '',
+  dob: new Date(),
   jobLocation: 'in-office',
   jobRole: '',
   languages: [],
