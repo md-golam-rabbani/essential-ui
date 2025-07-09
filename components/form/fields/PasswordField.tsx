@@ -1,3 +1,5 @@
+'use client';
+
 import { PasswordMessage } from '@/components/form/fields/password-helpers/PasswordMessage';
 import { PasswordStrength } from '@/components/form/fields/password-helpers/PasswordStrength';
 import { Eye, EyeOff } from 'lucide-react';

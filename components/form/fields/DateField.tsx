@@ -1,3 +1,5 @@
+'use client';
+
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
 
 import { DateTimePicker } from '@/components/ui/date-time-picker';

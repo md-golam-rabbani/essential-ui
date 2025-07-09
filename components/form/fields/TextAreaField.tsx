@@ -2,6 +2,9 @@
  * File: TextAreaField.tsx
  * Responsibility: Component for rendering a textarea input field.
  */
+
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   FormControl,
@@ -15,10 +18,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/shadcn/utils';
 import { X } from 'lucide-react';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
+import { RequiredSign } from './RequiredSign';
 
 interface Props<T extends FieldValues> {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   required?: boolean;
   placeholder?: string;
   resizable?: boolean;
@@ -29,6 +34,7 @@ interface Props<T extends FieldValues> {
   className?: string;
   inputClassName?: string;
   iconClassName?: string;
+  disabled?: boolean;
 }
 /**
  * TextareaField component
@@ -40,11 +46,11 @@ interface Props<T extends FieldValues> {
  * @param {boolean} resizable - Whether the field is resizable
  * @param {boolean} autoResize - Whether the field should auto-grow based on content
  * @param {Function} action - The action to be performed on the field
- * @param {ReactNode} icon - The icon to be displayed
+ * @param {ReactNode} In - The In to be displayed
  * @param {boolean} loading - Whether the field is loading
  * @param {string} className - The class name of the field
  * @param {string} inputClassName - The class name of the input
- * @param {string} iconClassName - The class name of the icon
+ * @param {string} iconClassName - The class name of the In
  *
  * @returns {ReactElement} - The textarea field component
  *
@@ -56,6 +62,7 @@ interface Props<T extends FieldValues> {
 export const TextAreaField = <T extends FieldValues>({
   name,
   label,
+  labelClassName,
   placeholder,
   required = false,
   resizable = false,
@@ -66,6 +73,7 @@ export const TextAreaField = <T extends FieldValues>({
   className,
   inputClassName,
   iconClassName,
+  disabled,
 }: Props<T>) => {
   const { control } = useFormContext<T>();
 
@@ -76,11 +84,12 @@ export const TextAreaField = <T extends FieldValues>({
       render={({ field }) => (
         <FormItem className={cn(className)}>
           {label && (
-            <FormLabel>
+            <FormLabel className={labelClassName}>
               <span>{label}</span>
-              {required && <span className="ml-1 text-red-500">*</span>}
+              {required && <RequiredSign />}
             </FormLabel>
           )}
+
           <FormControl>
             <div className="relative flex items-center gap-2">
               <Textarea
@@ -92,24 +101,33 @@ export const TextAreaField = <T extends FieldValues>({
                   resizable === false && 'resize-none',
                   inputClassName
                 )}
-
+                disabled={disabled}
                 // autoResize={autoResize}
               />
               {loading && <LoadingSpinner className="absolute right-4" />}
-              {action && (
+
+              {!loading && !disabled && action && (
                 <Button
                   variant={'ghost'}
                   size={'sm'}
                   onClick={action}
                   type="button"
-                  className={cn(iconClassName, 'absolute top-0.5 right-0.5')}
+                  className={cn(
+                    'absolute top-1/2 right-0.5 -translate-y-1/2 text-red-500',
+                    iconClassName
+                  )}
                 >
-                  {Icon ? Icon : <X className="h-4 w-4 text-red-500" />}
+                  {Icon ? Icon : <X />}
                 </Button>
               )}
 
-              {!action && Icon && (
-                <div className={cn(iconClassName, 'absolute top-3 right-2')}>
+              {!loading && !action && Icon && (
+                <div
+                  className={cn(
+                    'absolute top-1/2 right-2 flex -translate-y-1/2 text-base',
+                    iconClassName
+                  )}
+                >
                   {Icon}
                 </div>
               )}

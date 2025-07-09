@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   FormControl,
@@ -13,10 +15,12 @@ import { generateDummyImageUrl } from '@/lib/utils/generateDummyImageUrl';
 import { Image, Upload, X } from 'lucide-react';
 import { useState } from 'react';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
+import { RequiredSign } from './RequiredSign';
 
 type ImageUploadFieldProps<T extends FieldValues> = {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   required?: boolean;
   className?: string;
   disabled?: boolean;
@@ -40,6 +44,7 @@ type ImageUploadFieldProps<T extends FieldValues> = {
 export const ImageUploadField = <T extends FieldValues>({
   name,
   label,
+  labelClassName,
   required = false,
   className,
   disabled = false,
@@ -47,7 +52,7 @@ export const ImageUploadField = <T extends FieldValues>({
 }: ImageUploadFieldProps<T>) => {
   const { control } = useFormContext<T>();
 
-  const { loading, handleFileChange } = useImageLinkField();
+  const { loading, handleFileChange } = useImageUploadField();
 
   return (
     <FormField
@@ -56,11 +61,12 @@ export const ImageUploadField = <T extends FieldValues>({
       render={({ field: { value, onChange } }) => (
         <FormItem className={cn(className)}>
           {label && (
-            <FormLabel>
+            <FormLabel className={labelClassName}>
               <span>{label}</span>
-              {required && <span className="ml-1 text-red-500">*</span>}
+              {required && <RequiredSign />}
             </FormLabel>
           )}
+
           <FormControl>
             <div className="flex flex-col gap-4">
               {value ? (
@@ -125,7 +131,7 @@ export const ImageUploadField = <T extends FieldValues>({
   );
 };
 
-ImageUploadField.displayName = 'ImageLinkField';
+ImageUploadField.displayName = 'ImageUploadField';
 
 /**
  * Custom hook to handle image upload
@@ -133,7 +139,7 @@ ImageUploadField.displayName = 'ImageLinkField';
  * @returns {Object} - Object containing loading state and file change handler
  */
 
-const useImageLinkField = () => {
+const useImageUploadField = () => {
   const [loading, setLoading] = useState(false);
 
   const handleFileChange = async (

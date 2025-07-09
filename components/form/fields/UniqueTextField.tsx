@@ -1,3 +1,5 @@
+'use client';
+
 import { useDebounce } from '@/hooks/useDebounce';
 import { cn } from '@/lib/shadcn/utils';
 import { Check, Loader2 } from 'lucide-react';
@@ -11,10 +13,12 @@ import {
   FormMessage,
 } from '../../ui/form';
 import { Input } from '../../ui/input';
+import { RequiredSign } from './RequiredSign';
 
 type UniqueTextFieldProps<T extends FieldValues> = {
   name: Path<T>;
   label?: string;
+  labelClassName?: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
@@ -41,6 +45,7 @@ type UniqueTextFieldProps<T extends FieldValues> = {
 export const UniqueTextField = <T extends FieldValues>({
   name,
   label,
+  labelClassName,
   placeholder,
   required = false,
   className,
@@ -64,11 +69,12 @@ export const UniqueTextField = <T extends FieldValues>({
       render={({ field }) => (
         <FormItem className={className}>
           {label && (
-            <FormLabel>
-              {label}
-              {required && <span className="ml-1 text-red-500">*</span>}
+            <FormLabel className={labelClassName}>
+              <span>{label}</span>
+              {required && <RequiredSign />}
             </FormLabel>
           )}
+
           <FormControl>
             <div className="relative">
               <Input
@@ -83,6 +89,7 @@ export const UniqueTextField = <T extends FieldValues>({
                     'border-red-500 focus-visible:ring-red-500'
                 )}
               />
+
               <div className="absolute top-1/2 right-3 -translate-y-1/2">
                 {isChecking && (
                   <Loader2 className="h-4 w-4 animate-spin text-gray-500" />

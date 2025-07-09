@@ -3,6 +3,8 @@
  * Responsibility: Component for rendering a date field with a calendar picker.
  */
 
+'use client';
+
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
 
 import { DateTimePicker } from '@/components/ui/date-time-picker';
@@ -66,4 +68,4 @@ export const DateTimeField = <T extends FieldValues>({
   );
 };
 
-DateTimeField.displayName = 'DateField';
+DateTimeField.displayName = 'DateTimeField';

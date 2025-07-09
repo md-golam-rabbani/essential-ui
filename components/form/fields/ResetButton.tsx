@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/shadcn/utils';
 import { useFormContext } from 'react-hook-form';

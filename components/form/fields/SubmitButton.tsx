@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from '@/lib/shadcn/utils';
 import { FC } from 'react';
 import { Button, ButtonProps } from '@/components/ui/button';
