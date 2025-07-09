@@ -2,6 +2,7 @@ import { HeadingSize, ParagraphSize } from '../typography/interface';
 import { ICustomLink } from '../custom-link/interface';
 import { VariantProps } from 'class-variance-authority';
 import { textComponentVariants } from './variants-style';
+import { JSX } from 'react';
 
 export type TextComponentVariantProps = VariantProps<
   typeof textComponentVariants

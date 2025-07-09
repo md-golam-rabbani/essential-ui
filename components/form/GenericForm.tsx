@@ -13,7 +13,7 @@ import {
   UseFormReturn,
   Mode,
 } from 'react-hook-form';
-import { z, ZodType } from 'zod';
+import { z, ZodTypeAny } from 'zod';
 import { Form } from '@/components/ui/form';
 
 export type GenericFormRef<T extends FieldValues> = {
@@ -25,7 +25,7 @@ export type GenericFormRef<T extends FieldValues> = {
   form: UseFormReturn<T>;
 };
 
-export type GenericFormProps<TSchema extends ZodType> = {
+export type GenericFormProps<TSchema extends ZodTypeAny> = {
   schema: TSchema;
   initialValues: Partial<z.infer<TSchema>>;
   onSubmit: SubmitHandler<z.infer<TSchema>>;
@@ -45,7 +45,7 @@ export type GenericFormProps<TSchema extends ZodType> = {
  * @returns The generic form component.
  */
 
-export const GenericForm = <TSchema extends ZodType>({
+export const GenericForm = <TSchema extends ZodTypeAny>({
   ref,
   initialValues,
   schema,
