@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import { SwitchControl } from '.';
 import { switchControlProps } from './story-props';
-import { useArgs } from '@storybook/preview-api';
+import { useArgs } from 'storybook/preview-api';
 import { ISwitchControl } from './interface';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction

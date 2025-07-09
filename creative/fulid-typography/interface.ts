@@ -1,3 +1,5 @@
+import { JSX } from 'react';
+
 // Define the possible heading, paragraph, and other sizes.
 const headingSizes = ['hero', 'h1', 'h2', 'h3'] as const;
 const paragraphSizes = ['p1', 'p2'] as const;

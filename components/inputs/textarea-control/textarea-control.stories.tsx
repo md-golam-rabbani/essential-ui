@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import { TextareaControl } from '.';
 import { textareaControlProps } from './story-props';
-import { useArgs } from '@storybook/preview-api';
+import { useArgs } from 'storybook/preview-api';
 import { ITextareaControl } from './interface';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction

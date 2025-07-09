@@ -1,7 +1,7 @@
 import { toast } from 'sonner';
 import { CustomButton } from '../custom-button';
 import { Toaster } from './sonner';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { Typography } from '../typography';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction

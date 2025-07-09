@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { IIconStore } from './interface';
 import { ChevronDown } from './sub-components/chevron-down';
 import { ChevronLeft } from './sub-components/chevron-left';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { KeenCarousel } from '.';
 import { KeenCarouselItem } from './sub-components/item';
 import { keenCarouselOptions } from './story-props';

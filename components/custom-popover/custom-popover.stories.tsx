@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { CustomPopover } from '.';
-import { useArgs, useState } from '@storybook/preview-api';
+import { useArgs, useState } from 'storybook/preview-api';
 import { ICustomPopover } from './interface';
 import { CustomButton } from '../custom-button';
 

@@ -1,10 +1,9 @@
-import React from 'react';
 import clsx from 'clsx';
 import '../app/globals.css';
 import { primary } from '../fonts';
 import { Toaster } from '../components/ui/sonner';
-import type { Preview } from '@storybook/react';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import type { Preview } from '@storybook/nextjs';
+import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 // import { fontFamily } from 'tailwindcss/defaultTheme';
 
 const preview: Preview = {
