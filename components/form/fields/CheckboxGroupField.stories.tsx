@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { CheckboxGroupField } from './CheckboxGroupField';
 import { FormProvider, useForm } from 'react-hook-form';
 

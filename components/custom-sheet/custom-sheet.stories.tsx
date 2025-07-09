@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { CustomButton } from '../custom-button';
 import { Typography } from '../typography';
 import { CustomSheet } from '.';
-import { useArgs } from '@storybook/preview-api';
+import { useArgs } from 'storybook/preview-api';
 import { ICustomSheet } from './interface';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction

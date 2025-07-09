@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { useForm, FormProvider } from 'react-hook-form';
 import { SwitchField } from './SwitchField';
 

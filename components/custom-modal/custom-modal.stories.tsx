@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs, useState } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import { useArgs, useState } from 'storybook/preview-api';
 import { CustomButton } from '../custom-button';
 import { CustomModal } from '.';
 import { ICustomModal } from './interface';

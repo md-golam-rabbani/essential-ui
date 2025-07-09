@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import { RadioControl } from '.';
-import { useArgs, useState } from '@storybook/preview-api';
+import { useArgs, useState } from 'storybook/preview-api';
 import { IRadioControl } from './interface';
 import { radioControlProps } from './story-props';
 

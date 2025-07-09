@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { TextField } from './TextField';
 import { FormProvider, useForm } from 'react-hook-form';
 import { X } from 'lucide-react';

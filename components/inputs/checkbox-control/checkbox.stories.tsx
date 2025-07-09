@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import { CheckboxControl } from '.';
-import { useArgs, useState } from '@storybook/preview-api';
+import { useArgs, useState } from 'storybook/preview-api';
 import { ICheckboxControl } from './interface';
 import { checkboxControlProps } from './story-props';
 import { ChangeEvent } from 'react';
