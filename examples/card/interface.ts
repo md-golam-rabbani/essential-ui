@@ -15,5 +15,5 @@ export interface ICard {
 
 export const EXAMPLE_CARD_IMAGE_DIMENSION_1_1 = {
   width: 500,
-  height: 500,
+  height: 500
 };

@@ -22,7 +22,7 @@ export function useCustomKeenSlider({
   itemsPerSlide = KEEN_ITEMS_PER_SLIDE,
   itemGap = KEEN_ITEM_TO_ITEM_GAP,
   loop = false,
-  plugins = [] as KeenSliderPlugin[],
+  plugins = [] as KeenSliderPlugin[]
 }) {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [sliderReady, setSliderReady] = useState<boolean>(false);
@@ -33,14 +33,14 @@ export function useCustomKeenSlider({
         transitionSpeed: transitionSpeed,
         itemsPerSlide: itemsPerSlide,
         itemGap: itemGap,
-        loop: loop,
+        loop: loop
       }),
       slideChanged(slider) {
         setCurrentSlide(slider.track.details.rel);
       },
       created() {
         setSliderReady(true);
-      },
+      }
     },
     plugins
   );

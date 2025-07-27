@@ -21,12 +21,12 @@ export function TextComponent({
   buttons,
   alignment,
   hasBottomSpacing,
-  className,
+  className
 }: ITextComponent) {
   const wrapperClasses = cn(
     // Variants
     textComponentVariants({
-      alignment,
+      alignment
     }),
 
     // Bottom Spacing

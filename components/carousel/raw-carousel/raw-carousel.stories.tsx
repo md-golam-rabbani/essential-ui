@@ -4,7 +4,7 @@ import { RawCarousel } from '.';
 import {
   rawCarouselCardProps,
   rawCarouselProps,
-  rawCarouselWithOffsetProps,
+  rawCarouselWithOffsetProps
 } from './story-props';
 import { RawCarouselItem } from './sub-components/item';
 import { Typography } from '@/components/typography';
@@ -23,11 +23,11 @@ const meta: Meta<typeof RawCarousel> = {
           <Story />
         </div>
       </section>
-    ),
+    )
   ],
   parameters: {
-    layout: true,
-  },
+    layout: true
+  }
 };
 
 interface ICard {
@@ -71,7 +71,7 @@ export const Default: Story = {
           </RawCarouselItem>
         ))}
     </RawCarousel>
-  ),
+  )
 };
 
 export const Offset: Story = {
@@ -85,5 +85,5 @@ export const Offset: Story = {
           </RawCarouselItem>
         ))}
     </RawCarousel>
-  ),
+  )
 };

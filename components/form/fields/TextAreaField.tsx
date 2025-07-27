@@ -11,7 +11,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { Textarea } from '@/components/ui/textarea';
@@ -73,7 +73,7 @@ export const TextAreaField = <T extends FieldValues>({
   className,
   inputClassName,
   iconClassName,
-  disabled,
+  disabled
 }: Props<T>) => {
   const { control } = useFormContext<T>();
 

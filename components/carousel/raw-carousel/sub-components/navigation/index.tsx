@@ -5,7 +5,7 @@ import { IconStore } from '@/components/icon-store';
 export function RawCarouselNavigation({
   iconName,
   onClick,
-  className,
+  className
 }: IRawCarouselNavigation) {
   return (
     <button

@@ -14,8 +14,8 @@ const meta: Meta<typeof SwitchField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          isEnabled: false,
-        },
+          isEnabled: false
+        }
       });
 
       return (
@@ -29,8 +29,8 @@ const meta: Meta<typeof SwitchField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -40,46 +40,46 @@ type Story = StoryObj<typeof SwitchField<FormValues>>;
 export const Default: Story = {
   args: {
     name: 'isEnabled',
-    label: 'Enable Feature',
-  },
+    label: 'Enable Feature'
+  }
 };
 
 export const Required: Story = {
   args: {
     name: 'isEnabled',
     label: 'Accept Terms',
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const Disabled: Story = {
   args: {
     name: 'isEnabled',
     label: 'Disabled Switch',
-    disabled: true,
-  },
+    disabled: true
+  }
 };
 
 export const ReversedLayout: Story = {
   args: {
     name: 'isEnabled',
     label: 'Reversed Label',
-    reverse: true,
-  },
+    reverse: true
+  }
 };
 
 export const ColumnLayout: Story = {
   args: {
     name: 'isEnabled',
     label: 'Column Layout',
-    column: true,
-  },
+    column: true
+  }
 };
 
 export const LongGapLayout: Story = {
   args: {
     name: 'isEnabled',
     label: 'Long Gap',
-    longGap: true,
-  },
+    longGap: true
+  }
 };

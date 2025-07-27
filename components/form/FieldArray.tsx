@@ -6,7 +6,7 @@ import {
   FieldValues,
   useFieldArray,
   UseFieldArrayReturn,
-  useFormContext,
+  useFormContext
 } from 'react-hook-form';
 
 type FieldArrayProps<T extends FieldValues> = {
@@ -35,7 +35,7 @@ type FieldArrayProps<T extends FieldValues> = {
 
 export const FieldArray = <T extends FieldValues>({
   children,
-  name,
+  name
 }: FieldArrayProps<T>) => {
   const { control } = useFormContext<T>();
   const fieldArray = useFieldArray({ control, name });

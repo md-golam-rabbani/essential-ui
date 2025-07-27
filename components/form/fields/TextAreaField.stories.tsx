@@ -15,8 +15,8 @@ const meta: Meta<typeof TextAreaField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          summary: '',
-        },
+          summary: ''
+        }
       });
 
       return (
@@ -30,8 +30,8 @@ const meta: Meta<typeof TextAreaField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -42,8 +42,8 @@ export const Default: Story = {
   args: {
     name: 'summary',
     label: 'Summary',
-    placeholder: 'Write your summary here...',
-  },
+    placeholder: 'Write your summary here...'
+  }
 };
 
 export const Required: Story = {
@@ -51,46 +51,46 @@ export const Required: Story = {
     name: 'summary',
     label: 'Summary',
     placeholder: 'This field is required',
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const WithIcon: Story = {
   args: {
     name: 'summary',
     label: 'Summary',
-    Icon: <X />,
-  },
+    Icon: <X />
+  }
 };
 
 export const WithAction: Story = {
   args: {
     name: 'summary',
     label: 'Summary',
-    action: () => alert('Clear or reset action'),
-  },
+    action: () => alert('Clear or reset action')
+  }
 };
 
 export const Disabled: Story = {
   args: {
     name: 'summary',
     label: 'Disabled Field',
-    disabled: true,
-  },
+    disabled: true
+  }
 };
 
 export const Resizable: Story = {
   args: {
     name: 'summary',
     label: 'Resizable Textarea',
-    resizable: true,
-  },
+    resizable: true
+  }
 };
 
 export const Loading: Story = {
   args: {
     name: 'summary',
     label: 'Loading...',
-    loading: true,
-  },
+    loading: true
+  }
 };

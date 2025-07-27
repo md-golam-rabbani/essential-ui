@@ -5,7 +5,7 @@ import { CSSProperties } from 'react';
 import {
   IKeenCarousel,
   KEEN_ITEM_TO_ITEM_GAP,
-  KEEN_ITEMS_PER_SLIDE,
+  KEEN_ITEMS_PER_SLIDE
 } from './interface';
 import { KeenCarouselPagination } from './sub-components/pagination';
 import { KeenCarouselProgressBar } from './sub-components/progress';
@@ -51,7 +51,7 @@ export function KeenCarousel({
   sliderRef,
   instanceRef,
   currentSlide,
-  sliderReady,
+  sliderReady
 }: IKeenCarousel) {
   // Pagination, Progress, SlidePerView
   let progress: number = 0;
@@ -87,7 +87,7 @@ export function KeenCarousel({
     '--md-view': itemsPerSlide.md,
     '--lg-view': itemsPerSlide.lg,
     '--xl-view': itemsPerSlide.xl,
-    '--2xl-view': itemsPerSlide['2xl'],
+    '--2xl-view': itemsPerSlide['2xl']
   } as CSSProperties;
 
   // Item gap
@@ -97,7 +97,7 @@ export function KeenCarousel({
     '--md-gap': `${itemGap.md}px`,
     '--lg-gap': `${itemGap.lg}px`,
     '--xl-gap': `${itemGap.xl}px`,
-    '--2xl-gap': `${itemGap['2xl']}px`,
+    '--2xl-gap': `${itemGap['2xl']}px`
   } as CSSProperties;
 
   return (

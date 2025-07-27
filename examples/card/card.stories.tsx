@@ -15,8 +15,8 @@ const meta: Meta<typeof Card> = {
           <Story />
         </div>
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export default meta;
@@ -29,8 +29,8 @@ export const Default: Story = {
       <div className="mx-auto max-w-[400px]">
         <Story />
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export const GridView: Story = {
@@ -43,6 +43,6 @@ export const GridView: Story = {
             <Story key={i} />
           ))}
       </div>
-    ),
-  ],
+    )
+  ]
 };

@@ -10,7 +10,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from '@/components/ui/select';
 import { genMonths, genYears } from '@/lib/utils/datetime';
 import { enUS } from 'date-fns/locale';
@@ -32,7 +32,7 @@ function Calendar({
       locale = {
         options,
         localize,
-        formatLong,
+        formatLong
       };
     }
     return genMonths(locale);
@@ -103,7 +103,7 @@ function Calendar({
         range_middle:
           'aria-selected:bg-accent aria-selected:text-accent-foreground',
         hidden: 'invisible',
-        ...classNames,
+        ...classNames
       }}
       components={{
         Chevron: ({ ...props }) =>
@@ -158,7 +158,7 @@ function Calendar({
               </Select>
             </div>
           );
-        },
+        }
       }}
       {...props}
     />

@@ -11,7 +11,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '../../ui/form';
 import { Input } from '../../ui/input';
 import { RequiredSign } from './RequiredSign';
@@ -69,7 +69,7 @@ export const TextField = <T extends FieldValues>({
   className,
   inputClass,
   iconClass,
-  disabled = false,
+  disabled = false
 }: TextFieldProps<T>) => {
   const { control } = useFormContext<T>();
   return (

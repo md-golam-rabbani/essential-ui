@@ -8,8 +8,8 @@ const meta: Meta<typeof Header> = {
   tags: ['autodocs'],
   args: headerProps,
   parameters: {
-    layout: 'fullscreen',
-  },
+    layout: 'fullscreen'
+  }
 };
 
 export default meta;

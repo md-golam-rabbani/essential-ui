@@ -29,7 +29,7 @@ const initialFormFieldsValue: IFormFields = {
   jobRole: '',
   languages: [],
   interest: false,
-  terms: false,
+  terms: false
 };
 
 export function FormElements({ formState: initialFormState }: IFormElements) {
@@ -69,14 +69,14 @@ export function FormElements({ formState: initialFormState }: IFormElements) {
             prevValue[element.name as keyof IFormFields] as string[],
             element.value,
             element.checked
-          ),
+          )
         };
       }
       // Check if the element is a checkbox for "terms"
       else if (element.name === 'terms') {
         newStateValue = {
           ...newStateValue,
-          terms: element.checked,
+          terms: element.checked
         };
       }
       // For other input types
@@ -92,7 +92,7 @@ export function FormElements({ formState: initialFormState }: IFormElements) {
     if (formSubmitState && formSubmitState.success) {
       toast.success(formSubmitState.message);
       setFormFields({
-        ...initialFormFieldsValue,
+        ...initialFormFieldsValue
       });
     }
     if (
@@ -194,20 +194,20 @@ export function FormElements({ formState: initialFormState }: IFormElements) {
         items={[
           {
             label: 'Select job Role',
-            value: '',
+            value: ''
           },
           {
             label: 'Frontend',
-            value: 'frontend',
+            value: 'frontend'
           },
           {
             label: 'Backend',
-            value: 'backend',
+            value: 'backend'
           },
           {
             label: 'FullStack',
-            value: 'fullstack',
-          },
+            value: 'fullstack'
+          }
         ]}
         onSelectChange={(value) => {
           setFormFields((prevValue) => ({ ...prevValue, jobRole: value }));

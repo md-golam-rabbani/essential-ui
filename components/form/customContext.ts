@@ -16,7 +16,7 @@ export const GenericFormContext = createContext<null | GenericFormContext>(
  */
 
 export const useGenericFormContext = <
-  TFormValues extends FieldValues = any,
+  TFormValues extends FieldValues = any
 >() => {
   const context = useContext(GenericFormContext);
   if (!context) {

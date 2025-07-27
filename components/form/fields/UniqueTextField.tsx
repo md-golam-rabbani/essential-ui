@@ -10,7 +10,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '../../ui/form';
 import { Input } from '../../ui/input';
 import { RequiredSign } from './RequiredSign';
@@ -51,7 +51,7 @@ export const UniqueTextField = <T extends FieldValues>({
   className,
   type = 'text',
   checkFunction,
-  debounceMs = 500,
+  debounceMs = 500
 }: UniqueTextFieldProps<T>) => {
   const { control, watch } = useFormContext<T>();
   const value = watch(name);
@@ -59,7 +59,7 @@ export const UniqueTextField = <T extends FieldValues>({
   const { isChecking, isAvailable } = useUniqueTextField({
     value,
     debounceMs,
-    checkFunction,
+    checkFunction
   });
 
   return (
@@ -122,7 +122,7 @@ UniqueTextField.displayName = 'UniqueTextField';
 const useUniqueTextField = ({
   value,
   debounceMs,
-  checkFunction,
+  checkFunction
 }: {
   value: string;
   debounceMs: number;
@@ -156,6 +156,6 @@ const useUniqueTextField = ({
 
   return {
     isChecking,
-    isAvailable,
+    isAvailable
   };
 };

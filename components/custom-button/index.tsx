@@ -6,7 +6,7 @@ import {
   ICustomButton,
   IFormButton,
   IInlineButton,
-  ILinkButton,
+  ILinkButton
 } from './interface';
 import { cn } from '@/lib/shadcn/utils';
 import Link from 'next/link';
@@ -39,8 +39,7 @@ export const CustomButton = (props: ICustomButton) => {
       colorScheme: props.colorScheme,
       variant: props.variant,
       disabled: props.disabled,
-      loading:
-        props.type !== 'link' && props.type !== 'inline' && props.loading,
+      loading: props.type !== 'link' && props.type !== 'inline' && props.loading
     }),
     props.className
   );
@@ -105,7 +104,7 @@ const CustomLinkButton = ({
   children,
   prefetch,
   target,
-  buttonClasses,
+  buttonClasses
 }: ICustomLinkButton) => {
   return (
     <Link
@@ -146,7 +145,7 @@ const CustomActionButton = ({
   ariaLabel,
   loading,
   buttonClasses,
-  children,
+  children
 }: ICustomActionButton) => {
   return (
     <button
@@ -187,7 +186,7 @@ const CustomFormButton = ({
   buttonClasses,
   children,
   type,
-  onButtonClick,
+  onButtonClick
 }: ICustomFormButton) => {
   return (
     <button
@@ -225,7 +224,7 @@ const CustomInlineButton = ({
   disabled,
   ariaLabel,
   buttonClasses,
-  children,
+  children
 }: ICustomInlineButton) => {
   return (
     <span

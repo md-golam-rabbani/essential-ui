@@ -13,43 +13,43 @@ const meta: Meta<typeof CustomSheet> = {
   argTypes: {
     side: {
       options: ['left', 'right', 'top', 'bottom'],
-      control: { type: 'radio' },
+      control: { type: 'radio' }
     },
     onCustomSheetChange: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     trigger: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     content: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     className: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     contentWrapperClassName: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     scrollBarClassName: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     scrollAreaViewportClassName: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (Story) => (
@@ -58,8 +58,8 @@ const meta: Meta<typeof CustomSheet> = {
           <Story />
         </div>
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export default meta;
@@ -133,8 +133,8 @@ export const Default: Story = {
           }
         />
       );
-    },
-  ],
+    }
+  ]
 };
 
 const DummyDrawerContent = () => {

@@ -5,7 +5,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/shadcn/utils';
@@ -51,7 +51,7 @@ export const SwitchField = <T extends FieldValues>({
   column = false,
   longGap = false,
   reverse = false,
-  wrapperClassName,
+  wrapperClassName
 }: SwitchFieldProps<T>) => {
   const { control } = useFormContext<T>();
 

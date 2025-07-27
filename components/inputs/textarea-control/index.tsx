@@ -23,7 +23,7 @@ export function TextareaControl({
   helperText,
   className,
   labelClassName,
-  helperTextClassName,
+  helperTextClassName
 }: ITextareaControl) {
   const uniqueId = useUniqueId();
   const isValue = value?.toString().length > 0;
@@ -59,7 +59,7 @@ export function TextareaControl({
             className: textareaClassName,
             disabled: disabled,
             isError: !!error,
-            isValue,
+            isValue
           })}
           aria-disabled={disabled}
           aria-required={required}

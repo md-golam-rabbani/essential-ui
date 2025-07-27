@@ -2,7 +2,7 @@ import {
   KeenSliderHooks,
   KeenSliderInstance,
   KeenSliderOptions,
-  SliderInstance,
+  SliderInstance
 } from 'keen-slider';
 
 export type IKeenSliderInstance = SliderInstance<

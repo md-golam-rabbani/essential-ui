@@ -12,8 +12,8 @@ const meta: Meta<typeof Tag> = {
           <Story />
         </div>
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export default meta;
@@ -22,6 +22,6 @@ type Story = StoryObj<typeof Tag>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    label: 'Tag Label',
-  },
+    label: 'Tag Label'
+  }
 };

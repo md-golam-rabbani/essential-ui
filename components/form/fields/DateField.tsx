@@ -8,7 +8,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { RequiredSign } from './RequiredSign';
 
@@ -38,7 +38,7 @@ export const DateField = <T extends FieldValues>({
   labelClassName,
   required = false,
   disabled = false,
-  className,
+  className
 }: Props<T>) => {
   const { control } = useFormContext<T>();
 

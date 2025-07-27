@@ -15,7 +15,7 @@ export const SwitchControl = ({
   className,
   required,
   onSwitchChange,
-  ariaLabel,
+  ariaLabel
 }: ISwitchControl) => {
   const switchClasses = cn(
     /** Default style */

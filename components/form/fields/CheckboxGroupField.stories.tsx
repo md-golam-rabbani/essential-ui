@@ -14,8 +14,8 @@ const meta: Meta<typeof CheckboxGroupField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          skills: ['react'],
-        },
+          skills: ['react']
+        }
       });
 
       return (
@@ -29,8 +29,8 @@ const meta: Meta<typeof CheckboxGroupField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -40,15 +40,15 @@ type Story = StoryObj<typeof CheckboxGroupField<FormValues>>;
 const baseOptions = [
   { text: 'React', value: 'react' },
   { text: 'Vue', value: 'vue' },
-  { text: 'Angular', value: 'angular' },
+  { text: 'Angular', value: 'angular' }
 ];
 
 export const Default: Story = {
   args: {
     name: 'skills',
     label: 'Select Skills',
-    options: baseOptions,
-  },
+    options: baseOptions
+  }
 };
 
 export const Required: Story = {
@@ -56,8 +56,8 @@ export const Required: Story = {
     name: 'skills',
     label: 'Required Skills',
     options: baseOptions,
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const Disabled: Story = {
@@ -65,8 +65,8 @@ export const Disabled: Story = {
     name: 'skills',
     label: 'Disabled Group',
     options: baseOptions,
-    disabled: true,
-  },
+    disabled: true
+  }
 };
 
 export const RowLayout: Story = {
@@ -74,6 +74,6 @@ export const RowLayout: Story = {
     name: 'skills',
     label: 'Skills in Row Layout',
     options: baseOptions,
-    column: false,
-  },
+    column: false
+  }
 };

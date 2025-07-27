@@ -6,7 +6,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { cn } from '@/lib/shadcn/utils';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
@@ -64,7 +64,7 @@ export const CheckboxGroupField = <T extends FieldValues>({
   disabled,
   column = true,
   groupWrapperClassName,
-  required,
+  required
 }: Props<T>) => {
   const { control } = useFormContext<T>();
 

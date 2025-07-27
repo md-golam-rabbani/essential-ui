@@ -10,13 +10,13 @@ const meta: Meta<typeof CustomAccordion> = {
   argTypes: {
     accordionItems: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     collapsible: {
       control: 'boolean',
-      if: { arg: 'type', eq: 'single' },
-    },
+      if: { arg: 'type', eq: 'single' }
+    }
   },
   decorators: [
     (Story) => (
@@ -27,8 +27,8 @@ const meta: Meta<typeof CustomAccordion> = {
           </div>
         </div>
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export default meta;

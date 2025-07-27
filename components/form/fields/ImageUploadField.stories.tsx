@@ -15,8 +15,8 @@ const meta: Meta<typeof ImageUploadField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          avatar: undefined,
-        },
+          avatar: undefined
+        }
       });
 
       return (
@@ -30,8 +30,8 @@ const meta: Meta<typeof ImageUploadField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -41,24 +41,24 @@ type Story = StoryObj<typeof ImageUploadField<FormValues>>;
 export const Default: Story = {
   args: {
     name: 'avatar',
-    label: 'Upload Avatar',
-  },
+    label: 'Upload Avatar'
+  }
 };
 
 export const Required: Story = {
   args: {
     name: 'avatar',
     label: 'Upload Avatar',
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const Disabled: Story = {
   args: {
     name: 'avatar',
     label: 'Upload Avatar',
-    disabled: true,
-  },
+    disabled: true
+  }
 };
 
 export const WithCustomUploadHandler: Story = {
@@ -68,6 +68,6 @@ export const WithCustomUploadHandler: Story = {
     onUpload: (file: File) => {
       // simulate returning a dummy URL
       return URL.createObjectURL(file);
-    },
-  },
+    }
+  }
 };

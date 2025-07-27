@@ -14,7 +14,7 @@ const itemsPerSlideConfig1: Breakpoints = {
   md: 2,
   lg: 2,
   xl: 3,
-  '2xl': 4,
+  '2xl': 4
 };
 
 const itemGapConfig1: Breakpoints = {
@@ -23,7 +23,7 @@ const itemGapConfig1: Breakpoints = {
   md: 24,
   lg: 24,
   xl: 24,
-  '2xl': 24,
+  '2xl': 24
 };
 
 interface ICard {
@@ -50,7 +50,7 @@ export default function Page() {
       transitionSpeed: 2000,
       itemsPerSlide: itemsPerSlideConfig1,
       itemGap: itemGapConfig1,
-      plugins: [keenCarouselTouchScrollPlugin],
+      plugins: [keenCarouselTouchScrollPlugin]
     });
 
   return (
@@ -96,18 +96,18 @@ const cards: { title: string; description: string }[] = [
   {
     title: 'Lorem ipsum dolor sit amet, consectetur',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.'
   },
   {
     title: 'Lorem ipsum dolor sit amet, consectetur',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.'
   },
   {
     title: 'Lorem ipsum dolor sit amet, consectetur',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.',
-  },
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.'
+  }
 ];
 
 function DummySection({ className }: { className?: string }) {

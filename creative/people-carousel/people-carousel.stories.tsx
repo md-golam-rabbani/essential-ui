@@ -7,7 +7,7 @@ const meta: Meta<typeof PeopleCarousel> = {
   title: 'Creative/People Carousel',
   component: PeopleCarousel,
   tags: ['autodocs'],
-  args: peopleCarouselProps,
+  args: peopleCarouselProps
 };
 
 export default meta;

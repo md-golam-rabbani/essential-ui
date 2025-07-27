@@ -8,7 +8,7 @@ import { Typography } from '@/components/typography';
 
 const initialFormStateValue: IFormState = {
   success: true,
-  message: '',
+  message: ''
 };
 
 /**

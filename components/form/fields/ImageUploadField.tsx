@@ -6,7 +6,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
@@ -48,7 +48,7 @@ export const ImageUploadField = <T extends FieldValues>({
   required = false,
   className,
   disabled = false,
-  onUpload,
+  onUpload
 }: ImageUploadFieldProps<T>) => {
   const { control } = useFormContext<T>();
 

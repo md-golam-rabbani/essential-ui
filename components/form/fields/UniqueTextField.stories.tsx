@@ -14,8 +14,8 @@ const meta: Meta<typeof UniqueTextField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          username: '',
-        },
+          username: ''
+        }
       });
 
       return (
@@ -29,8 +29,8 @@ const meta: Meta<typeof UniqueTextField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -48,8 +48,8 @@ export const Default: Story = {
     name: 'username',
     label: 'Username',
     placeholder: 'Enter your username',
-    checkFunction: fakeCheckUsername,
-  },
+    checkFunction: fakeCheckUsername
+  }
 };
 
 export const Required: Story = {
@@ -58,8 +58,8 @@ export const Required: Story = {
     label: 'Username',
     placeholder: 'Required username',
     required: true,
-    checkFunction: fakeCheckUsername,
-  },
+    checkFunction: fakeCheckUsername
+  }
 };
 
 export const EmailType: Story = {
@@ -68,8 +68,8 @@ export const EmailType: Story = {
     label: 'Email Address',
     placeholder: 'Enter your email',
     type: 'email',
-    checkFunction: fakeCheckUsername,
-  },
+    checkFunction: fakeCheckUsername
+  }
 };
 
 export const CustomDebounce: Story = {
@@ -78,6 +78,6 @@ export const CustomDebounce: Story = {
     label: 'Slow Debounce (1500ms)',
     placeholder: 'Wait a bit...',
     checkFunction: fakeCheckUsername,
-    debounceMs: 1500,
-  },
+    debounceMs: 1500
+  }
 };

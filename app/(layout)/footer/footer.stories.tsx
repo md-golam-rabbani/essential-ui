@@ -8,8 +8,8 @@ const meta: Meta<typeof Footer> = {
   tags: ['autodocs'],
   args: footerProps,
   parameters: {
-    layout: true,
-  },
+    layout: true
+  }
 };
 
 export default meta;

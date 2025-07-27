@@ -8,7 +8,7 @@ const config: StorybookConfig = {
     }
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': path.resolve(__dirname, '../'),
+      '@': path.resolve(__dirname, '../')
     };
     return config;
   },
@@ -16,22 +16,22 @@ const config: StorybookConfig = {
     '../components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../app/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../examples/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    '../creative/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../creative/**/*.stories.@(js|jsx|mjs|ts|tsx)'
   ],
   staticDirs: ['../public'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-onboarding',
     '@storybook/addon-styling-webpack',
-    '@storybook/addon-docs',
+    '@storybook/addon-docs'
   ],
   framework: {
     name: '@storybook/nextjs',
-    options: {},
+    options: {}
   },
   features: {
-    experimentalRSC: true,
+    experimentalRSC: true
   },
-  docs: {},
+  docs: {}
 };
 export default config;

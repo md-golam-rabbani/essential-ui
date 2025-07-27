@@ -7,10 +7,10 @@ export const rawCarouselCardProps = [
       alt: 'slide',
       lqip: ' ',
       width: 340,
-      height: 515,
+      height: 515
     },
     title: 'Jake Riordan',
-    description: 'Developer',
+    description: 'Developer'
   },
   {
     image: {
@@ -18,11 +18,11 @@ export const rawCarouselCardProps = [
       alt: 'slide',
       lqip: ' ',
       width: 340,
-      height: 515,
+      height: 515
     },
     title: 'Travis Michael Head',
     description:
-      'A talented, aggressive left-hand batter earmarked for big things at a young age, it was Travis Heads second coming as an international cricketer where his career really took off.',
+      'A talented, aggressive left-hand batter earmarked for big things at a young age, it was Travis Heads second coming as an international cricketer where his career really took off.'
   },
   {
     image: {
@@ -30,10 +30,10 @@ export const rawCarouselCardProps = [
       alt: 'slide',
       lqip: ' ',
       width: 340,
-      height: 515,
+      height: 515
     },
     title: 'Jake Riordan',
-    description: 'Developer',
+    description: 'Developer'
   },
   {
     image: {
@@ -41,10 +41,10 @@ export const rawCarouselCardProps = [
       alt: 'slide',
       lqip: ' ',
       width: 340,
-      height: 515,
+      height: 515
     },
     title: 'Jake Riordan',
-    description: 'Developer',
+    description: 'Developer'
   },
   {
     image: {
@@ -52,11 +52,11 @@ export const rawCarouselCardProps = [
       alt: 'slide',
       lqip: ' ',
       width: 340,
-      height: 515,
+      height: 515
     },
     title: 'Andre Dwayne Russell',
     description:
-      'Andre Russell made his IPL debut in 2012, for Delhi Daredevils (now Capitals). He played seven matches across two seasons without doing much of note.',
+      'Andre Russell made his IPL debut in 2012, for Delhi Daredevils (now Capitals). He played seven matches across two seasons without doing much of note.'
   },
   {
     image: {
@@ -64,10 +64,10 @@ export const rawCarouselCardProps = [
       alt: 'slide',
       lqip: ' ',
       width: 340,
-      height: 515,
+      height: 515
     },
     title: 'Jake Riordan',
-    description: 'Developer',
+    description: 'Developer'
   },
   {
     image: {
@@ -75,10 +75,10 @@ export const rawCarouselCardProps = [
       alt: 'slide',
       lqip: ' ',
       width: 340,
-      height: 515,
+      height: 515
     },
     title: 'Jake Riordan',
-    description: 'Developer',
+    description: 'Developer'
   },
   {
     image: {
@@ -86,10 +86,10 @@ export const rawCarouselCardProps = [
       alt: 'slide',
       lqip: ' ',
       width: 340,
-      height: 515,
+      height: 515
     },
     title: 'Jake Riordan',
-    description: 'Developer',
+    description: 'Developer'
   },
   {
     image: {
@@ -97,20 +97,20 @@ export const rawCarouselCardProps = [
       alt: 'slide',
       lqip: ' ',
       width: 340,
-      height: 515,
+      height: 515
     },
     title: 'Jake Riordan',
-    description: 'Developer',
-  },
+    description: 'Developer'
+  }
 ];
 
 export const rawCarouselProps: Omit<IRawCarousel, 'children'> = {
   itemPerSlide: ITEMS_PER_SLIDE,
   itemGap: ITEM_GAP,
-  hasNavigation: true,
+  hasNavigation: true
 };
 
 export const rawCarouselWithOffsetProps: Omit<IRawCarousel, 'children'> = {
   ...rawCarouselProps,
-  haveOffset: true,
+  haveOffset: true
 };

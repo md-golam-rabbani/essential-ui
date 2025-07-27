@@ -6,29 +6,29 @@ export const selectControlProps: Omit<ISelectControl, 'onSelectChange'> = {
   items: [
     {
       label: 'Select a language',
-      value: '',
+      value: ''
     },
     {
       label: 'Java',
-      value: 'java',
+      value: 'java'
     },
     {
       label: 'C++',
-      value: 'c++',
+      value: 'c++'
     },
     {
       label: 'Python',
-      value: 'python',
+      value: 'python'
     },
     {
       label: 'Javascript',
-      value: 'javascript',
-    },
+      value: 'javascript'
+    }
   ],
   label: 'language',
   disabled: false,
   required: false,
   error: '',
   helperText: 'Helper Text',
-  showErrorMsg: true,
+  showErrorMsg: true
 };

@@ -12,7 +12,7 @@ export const ConditionalTextDisplay = ({
   showErrorMsg,
   helperText,
   helperTextClassName,
-  error,
+  error
 }: IConditionalTextDisplay) => {
   return (
     <>

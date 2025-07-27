@@ -12,15 +12,15 @@ const meta: Meta<typeof CustomModal> = {
   argTypes: {
     content: { table: { disable: true } },
     trigger: {
-      table: { disable: true },
+      table: { disable: true }
     },
     onCustomModalChange: {
-      table: { disable: true },
+      table: { disable: true }
     },
     contentWrapperClassName: {
-      table: { disable: true },
-    },
-  },
+      table: { disable: true }
+    }
+  }
 };
 
 export default meta;
@@ -29,7 +29,7 @@ type Story = StoryObj<typeof CustomModal>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    closeOnOutSideClick: true,
+    closeOnOutSideClick: true
   },
   decorators: [
     () => {
@@ -87,8 +87,8 @@ export const Primary: Story = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export const AsyncAwait: Story = {
@@ -152,6 +152,6 @@ export const AsyncAwait: Story = {
           />
         </div>
       );
-    },
-  ],
+    }
+  ]
 };

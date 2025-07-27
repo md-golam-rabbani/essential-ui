@@ -5,7 +5,7 @@ const ctaButtonProps: ICustomLink = {
   label: 'Button Label',
   href: 'https://example.com/',
   disabled: false,
-  target: '_blank',
+  target: '_blank'
 };
 
 export const textComponentProps: ITextComponent = {
@@ -17,5 +17,5 @@ export const textComponentProps: ITextComponent = {
   descriptionSize: 'p1',
   buttons: Array(4).fill(ctaButtonProps),
   alignment: 'start',
-  hasBottomSpacing: false,
+  hasBottomSpacing: false
 };

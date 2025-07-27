@@ -13,19 +13,19 @@ const meta: Meta<typeof InputControl> = {
   argTypes: {
     type: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     name: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     onInputChange: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (Story, args) => {
@@ -38,8 +38,8 @@ const meta: Meta<typeof InputControl> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -58,8 +58,8 @@ export const Default: Story = {
           onInputChange={(e) => updateArgs({ ...args, value: e.target.value })}
         />
       );
-    },
-  ],
+    }
+  ]
 };
 
 export const Password: Story = {
@@ -67,7 +67,7 @@ export const Password: Story = {
     ...inputControlProps,
     label: 'Password',
     name: 'password',
-    type: 'password',
+    type: 'password'
   },
   decorators: [
     () => {
@@ -79,6 +79,6 @@ export const Password: Story = {
           onInputChange={(e) => updateArgs({ ...args, value: e.target.value })}
         />
       );
-    },
-  ],
+    }
+  ]
 };

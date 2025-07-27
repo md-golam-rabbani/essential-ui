@@ -15,7 +15,7 @@ const CarouselArrow = ({
   scrollLeft,
   scrollRight,
   peopleLength,
-  activeItem,
+  activeItem
 }: {
   scrollLeft: () => void;
   scrollRight: () => void;
@@ -110,7 +110,7 @@ export function PeopleCarousel({ textComponent, people }: IPeopleCarousel) {
               style={
                 {
                   '--active-item': activeItem,
-                  '--transition': '600ms cubic-bezier(0.22, 0.61, 0.36, 1)',
+                  '--transition': '600ms cubic-bezier(0.22, 0.61, 0.36, 1)'
                 } as CSSProperties
               }
               className={cn(

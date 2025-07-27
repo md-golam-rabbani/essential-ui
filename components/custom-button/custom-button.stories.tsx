@@ -5,7 +5,7 @@ import {
   normalButtonLoadingProps,
   linkButtonProps,
   formButtonProps,
-  inlineButtonProps,
+  inlineButtonProps
 } from './story-props';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -16,22 +16,22 @@ const meta: Meta<typeof CustomButton> = {
   argTypes: {
     onButtonClick: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     type: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     colorScheme: {
       options: ['primary', 'secondary'],
-      control: { type: 'radio' },
+      control: { type: 'radio' }
     },
     variant: {
       options: ['fill', 'outline'],
-      control: { type: 'radio' },
-    },
+      control: { type: 'radio' }
+    }
   },
   decorators: [
     (Story) => (
@@ -40,8 +40,8 @@ const meta: Meta<typeof CustomButton> = {
           <Story />
         </div>
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export default meta;
@@ -53,42 +53,42 @@ export const Default: Story = {
   argTypes: {
     href: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     target: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     prefetch: {
       table: {
-        disable: true,
-      },
-    },
-  },
+        disable: true
+      }
+    }
+  }
 };
 
 export const LoadingState: Story = {
   args: normalButtonLoadingProps,
-  argTypes: Default.argTypes,
+  argTypes: Default.argTypes
 };
 
 export const DisabledState: Story = {
   args: {
     ...normalButtonProps,
-    disabled: true,
+    disabled: true
   },
-  argTypes: Default.argTypes,
+  argTypes: Default.argTypes
 };
 
 export const LinkButton: Story = {
   args: linkButtonProps,
-  argTypes: { loading: { table: { disable: true } } },
+  argTypes: { loading: { table: { disable: true } } }
 };
 
 export const FormButton: Story = {
-  args: formButtonProps,
+  args: formButtonProps
 };
 
 export const InlineButton: Story = {
@@ -96,8 +96,8 @@ export const InlineButton: Story = {
   argTypes: {
     loading: {
       table: {
-        disable: true,
-      },
-    },
-  },
+        disable: true
+      }
+    }
+  }
 };

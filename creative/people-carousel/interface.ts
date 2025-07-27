@@ -15,5 +15,5 @@ export interface IPeopleCarousel {
 
 export const PEOPLE_CAROUSEL_IMAGE_DIMENSIONS = {
   width: 640,
-  height: 822,
+  height: 822
 };

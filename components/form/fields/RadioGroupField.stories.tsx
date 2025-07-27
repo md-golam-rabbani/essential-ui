@@ -14,8 +14,8 @@ const meta: Meta<typeof RadioGroupField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          questionType: '',
-        },
+          questionType: ''
+        }
       });
 
       return (
@@ -29,8 +29,8 @@ const meta: Meta<typeof RadioGroupField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -40,15 +40,15 @@ type Story = StoryObj<typeof RadioGroupField<FormValues>>;
 const baseOptions = [
   { value: 'mcq', text: 'Multiple Choice' },
   { value: 'written', text: 'Written' },
-  { value: 'boolean', text: 'True/False' },
+  { value: 'boolean', text: 'True/False' }
 ];
 
 export const Default: Story = {
   args: {
     name: 'questionType',
     label: 'Question Type',
-    options: baseOptions,
-  },
+    options: baseOptions
+  }
 };
 
 export const ColumnGroup: Story = {
@@ -56,8 +56,8 @@ export const ColumnGroup: Story = {
     name: 'questionType',
     label: 'Choose Question Type',
     options: baseOptions,
-    columnGroup: true,
-  },
+    columnGroup: true
+  }
 };
 
 export const RowGroup: Story = {
@@ -65,8 +65,8 @@ export const RowGroup: Story = {
     name: 'questionType',
     label: 'Question Format',
     options: baseOptions,
-    rowGroup: true,
-  },
+    rowGroup: true
+  }
 };
 
 export const ReverseLayout: Story = {
@@ -74,8 +74,8 @@ export const ReverseLayout: Story = {
     name: 'questionType',
     label: 'Question Style',
     options: baseOptions,
-    reverse: true,
-  },
+    reverse: true
+  }
 };
 
 export const Required: Story = {
@@ -83,8 +83,8 @@ export const Required: Story = {
     name: 'questionType',
     label: 'Required Type',
     options: baseOptions,
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const Disabled: Story = {
@@ -92,6 +92,6 @@ export const Disabled: Story = {
     name: 'questionType',
     label: 'Question Type',
     options: baseOptions,
-    disabled: true,
-  },
+    disabled: true
+  }
 };

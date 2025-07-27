@@ -5,17 +5,17 @@ export const footerProps: IFooter = {
     {
       label: 'React',
       href: 'https://react.dev/',
-      disabled: false,
+      disabled: false
     },
     {
       label: 'Next.js',
       href: 'https://nextjs.org/',
-      disabled: false,
+      disabled: false
     },
     {
       label: 'Sanity',
       href: 'https://www.sanity.io/',
-      disabled: false,
-    },
-  ],
+      disabled: false
+    }
+  ]
 };

@@ -69,7 +69,7 @@ export const KEEN_ITEM_TO_ITEM_GAP: Breakpoints = {
   md: 16,
   lg: 20,
   xl: 24,
-  '2xl': 24,
+  '2xl': 24
 };
 
 export const KEEN_ITEMS_PER_SLIDE: Breakpoints = {
@@ -78,5 +78,5 @@ export const KEEN_ITEMS_PER_SLIDE: Breakpoints = {
   md: 2,
   lg: 3,
   xl: 4,
-  '2xl': 5,
+  '2xl': 5
 };

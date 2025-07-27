@@ -15,16 +15,16 @@ import { z } from 'zod';
 const FormSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters'),
   gender: z.enum(['Male', 'Female', 'Other'], {
-    errorMap: () => ({ message: 'Gender is required' }),
+    errorMap: () => ({ message: 'Gender is required' })
   }),
   dob: z.date({
-    message: 'Invalid date',
+    message: 'Invalid date'
   }),
   bio: z.string().optional(),
   terms: z
     .boolean()
     .refine((value) => value, { message: 'You must agree to the terms' }),
-  interests: z.array(z.string()).optional(),
+  interests: z.array(z.string()).optional()
 });
 
 type FormValues = z.infer<typeof FormSchema>;
@@ -33,20 +33,20 @@ const initialValues: FormValues = {
   name: '',
   gender: 'Male',
   terms: false,
-  dob: new Date(),
+  dob: new Date()
 };
 
 const genderOptions = [
   { value: 'Male', text: 'Male' },
   { value: 'Female', text: 'Female' },
-  { value: 'Other', text: 'Other' },
+  { value: 'Other', text: 'Other' }
 ];
 
 const interestsOptions = [
   { value: 'Reading', text: 'Reading' },
   { value: 'Coding', text: 'Coding' },
   { value: 'Gaming', text: 'Gaming' },
-  { value: 'Traveling', text: 'Traveling' },
+  { value: 'Traveling', text: 'Traveling' }
 ];
 
 export const Playground = () => {

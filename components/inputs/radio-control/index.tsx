@@ -20,7 +20,7 @@ export const RadioControl = ({
   className,
   required,
   onRadioChange,
-  ariaLabel,
+  ariaLabel
 }: IRadioControl) => {
   const radioClasses = cn(
     //Default style

@@ -3,7 +3,7 @@ import {
   Popover,
   PopoverContent,
   PopoverAnchor,
-  PopoverTrigger,
+  PopoverTrigger
 } from '../ui/popover';
 import { ICustomPopover } from './interface';
 import { ScrollArea } from '../ui/scroll-area';
@@ -37,7 +37,7 @@ export const CustomPopover = ({
   contentWrapperClassName,
   scrollAreaViewportClassName,
   scrollBarClassName,
-  closeOnOutSideClick,
+  closeOnOutSideClick
 }: ICustomPopover) => {
   return (
     <Popover open={popoverOpen} onOpenChange={onCustomPopoverChange}>

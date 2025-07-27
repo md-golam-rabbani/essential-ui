@@ -17,14 +17,14 @@ const meta: Meta<typeof KeenCarousel> = {
   argTypes: {
     children: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   args: keenCarouselOptions,
   parameters: {
-    layout: true,
-  },
+    layout: true
+  }
 };
 
 export default meta;
@@ -73,7 +73,7 @@ export const Default: Story = {
         </div>
       </div>
     );
-  },
+  }
 };
 
 const itemsPerSlideConfig1: Breakpoints = {
@@ -82,7 +82,7 @@ const itemsPerSlideConfig1: Breakpoints = {
   md: 2,
   lg: 2,
   xl: 2,
-  '2xl': 5,
+  '2xl': 5
 };
 
 const itemGapConfig1: Breakpoints = {
@@ -91,7 +91,7 @@ const itemGapConfig1: Breakpoints = {
   md: 58,
   lg: 80,
   xl: 80,
-  '2xl': 80,
+  '2xl': 80
 };
 
 export const AutoplayExample: Story = {
@@ -107,7 +107,7 @@ export const AutoplayExample: Story = {
         transitionSpeed: 2000,
         itemsPerSlide: itemsPerSlideConfig1,
         itemGap: itemGapConfig1,
-        plugins: [keenCarouselAutoPlayPlugin(1500, false)],
+        plugins: [keenCarouselAutoPlayPlugin(1500, false)]
       });
 
     return (
@@ -138,7 +138,7 @@ export const AutoplayExample: Story = {
         </div>
       </div>
     );
-  },
+  }
 };
 
 const itemsPerSlideConfig2: Breakpoints = {
@@ -147,7 +147,7 @@ const itemsPerSlideConfig2: Breakpoints = {
   md: 2,
   lg: 2,
   xl: 2,
-  '2xl': 1,
+  '2xl': 1
 };
 
 const itemGapConfig2: Breakpoints = {
@@ -156,7 +156,7 @@ const itemGapConfig2: Breakpoints = {
   md: 0,
   lg: 0,
   xl: 0,
-  '2xl': 0,
+  '2xl': 0
 };
 
 export const DifferentConfigExample: Story = {
@@ -170,7 +170,7 @@ export const DifferentConfigExample: Story = {
     const { currentSlide, sliderReady, sliderRef, instanceRef } =
       useCustomKeenSlider({
         itemsPerSlide: itemsPerSlideConfig2,
-        itemGap: itemGapConfig2,
+        itemGap: itemGapConfig2
       });
 
     return (
@@ -202,7 +202,7 @@ export const DifferentConfigExample: Story = {
         </div>
       </div>
     );
-  },
+  }
 };
 
 export const TouchScrollExample: Story = {
@@ -218,7 +218,7 @@ export const TouchScrollExample: Story = {
         transitionSpeed: 2000,
         itemsPerSlide: itemsPerSlideConfig1,
         itemGap: itemGapConfig1,
-        plugins: [keenCarouselTouchScrollPlugin],
+        plugins: [keenCarouselTouchScrollPlugin]
       });
 
     return (
@@ -254,25 +254,25 @@ export const TouchScrollExample: Story = {
         <DummySection />
       </>
     );
-  },
+  }
 };
 
 const cards: { title: string; description: string }[] = [
   {
     title: 'Lorem ipsum dolor sit amet, consectetur',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.'
   },
   {
     title: 'Lorem ipsum dolor sit amet, consectetur',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.'
   },
   {
     title: 'Lorem ipsum dolor sit amet, consectetur',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.',
-  },
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eum minus repellendus provident sequi inventore esse, dolorum facere dolorem atque.'
+  }
 ];
 
 function DummySection({ className }: { className?: string }) {
@@ -303,7 +303,7 @@ const itemsPerSlideConfig3: Breakpoints = {
   md: 1,
   lg: 1,
   xl: 1,
-  '2xl': 1,
+  '2xl': 1
 };
 
 const itemGapConfig3: Breakpoints = {
@@ -312,7 +312,7 @@ const itemGapConfig3: Breakpoints = {
   md: 20,
   lg: 24,
   xl: 24,
-  '2xl': 24,
+  '2xl': 24
 };
 
 const itemsPerSlideConfig4: Breakpoints = {
@@ -321,7 +321,7 @@ const itemsPerSlideConfig4: Breakpoints = {
   md: 4,
   lg: 4,
   xl: 4,
-  '2xl': 4,
+  '2xl': 4
 };
 
 const itemGapConfig4: Breakpoints = {
@@ -330,7 +330,7 @@ const itemGapConfig4: Breakpoints = {
   md: 20,
   lg: 24,
   xl: 24,
-  '2xl': 24,
+  '2xl': 24
 };
 
 export const ThumbnailExample: Story = {
@@ -345,7 +345,7 @@ export const ThumbnailExample: Story = {
       useCustomKeenSlider({
         transitionSpeed: 2000,
         itemsPerSlide: itemsPerSlideConfig3,
-        itemGap: itemGapConfig3,
+        itemGap: itemGapConfig3
       });
 
     /**
@@ -358,12 +358,12 @@ export const ThumbnailExample: Story = {
       currentSlide: currentSlide2,
       sliderReady: sliderReady2,
       sliderRef: sliderRef2,
-      instanceRef: instanceRef2,
+      instanceRef: instanceRef2
     } = useCustomKeenSlider({
       transitionSpeed: 2000,
       itemsPerSlide: itemsPerSlideConfig4,
       itemGap: itemGapConfig4,
-      plugins: [KeenCarouselThumbnailPlugin(instanceRef)],
+      plugins: [KeenCarouselThumbnailPlugin(instanceRef)]
     });
 
     return (
@@ -414,5 +414,5 @@ export const ThumbnailExample: Story = {
         </div>
       </div>
     );
-  },
+  }
 };

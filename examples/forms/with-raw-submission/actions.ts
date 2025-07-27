@@ -70,7 +70,7 @@ export async function handleSubmit(
     return {
       success: false,
       message: 'Form values are not valid',
-      error: errors,
+      error: errors
     };
   }
 
@@ -80,8 +80,8 @@ export async function handleSubmit(
       service: 'gmail',
       auth: {
         user: process.env.CONTACT_MAIL_ADDRESS,
-        pass: process.env.CONTACT_MAIL_PASSWORD,
-      },
+        pass: process.env.CONTACT_MAIL_PASSWORD
+      }
     });
 
     const mailOptions = {
@@ -113,20 +113,20 @@ export async function handleSubmit(
           <br/>
           <h3 style="margin:0; margin-bottom:8px">Languages:</h3>
           <p style="margin-top:0">${languages.join(', ')}</p>
-        `,
+        `
     };
 
     await transporter.sendMail(mailOptions);
 
     return {
       success: true,
-      message: 'Form successfully submitted',
+      message: 'Form successfully submitted'
     };
   } catch (error) {
     console.error(`Error: ${JSON.stringify(error)}`);
     return {
       success: false,
-      message: 'Internal server error',
+      message: 'Internal server error'
     };
   }
 }

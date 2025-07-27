@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from '@/components/ui/popover';
 import { add, format } from 'date-fns';
 import { type Locale, enUS } from 'date-fns/locale';
@@ -12,7 +12,7 @@ import {
   Calendar as CalendarIcon,
   ChevronLeft,
   ChevronRight,
-  Clock,
+  Clock
 } from 'lucide-react';
 import * as React from 'react';
 import { useImperativeHandle, useRef } from 'react';
@@ -22,7 +22,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from '@/components/ui/select';
 import { DayPicker } from 'react-day-picker';
 import { cn } from '@/lib/shadcn/utils';
@@ -234,7 +234,7 @@ function genMonths(
 ) {
   return Array.from({ length: 12 }, (_, i) => ({
     value: i,
-    label: format(new Date(2021, i), 'MMMM', { locale }),
+    label: format(new Date(2021, i), 'MMMM', { locale })
   }));
 }
 
@@ -242,7 +242,7 @@ function genYears(yearRange = 50) {
   const today = new Date();
   return Array.from({ length: yearRange * 2 + 1 }, (_, i) => ({
     value: today.getFullYear() - yearRange + i,
-    label: (today.getFullYear() - yearRange + i).toString(),
+    label: (today.getFullYear() - yearRange + i).toString()
   }));
 }
 
@@ -262,7 +262,7 @@ function Calendar({
       locale = {
         options,
         localize,
-        formatLong,
+        formatLong
       };
     }
     return genMonths(locale);
@@ -333,7 +333,7 @@ function Calendar({
         range_middle:
           'aria-selected:bg-accent aria-selected:text-accent-foreground',
         hidden: 'invisible',
-        ...classNames,
+        ...classNames
       }}
       components={{
         Chevron: ({ ...props }) =>
@@ -388,7 +388,7 @@ function Calendar({
               </Select>
             </div>
           );
-        },
+        }
       }}
       {...props}
     />
@@ -615,7 +615,7 @@ const TimePicker = React.forwardRef<TimePickerRef, TimePickerProps>(
         minuteRef: minuteRef.current,
         hourRef: hourRef.current,
         secondRef: secondRef.current,
-        periodRef: periodRef.current,
+        periodRef: periodRef.current
       }),
       [minuteRef, hourRef, secondRef]
     );
@@ -771,7 +771,7 @@ const DateTimePicker = React.forwardRef<
       const diff = newDay.getTime() - defaultPopupValue.getTime();
       const diffInDays = diff / (1000 * 60 * 60 * 24);
       const newDateFull = add(defaultPopupValue, {
-        days: Math.ceil(diffInDays),
+        days: Math.ceil(diffInDays)
       });
       newDateFull.setHours(
         month?.getHours() ?? 0,
@@ -795,7 +795,7 @@ const DateTimePicker = React.forwardRef<
       ref,
       () => ({
         ...buttonRef.current,
-        value: displayDate,
+        value: displayDate
       }),
       [displayDate]
     );
@@ -806,7 +806,7 @@ const DateTimePicker = React.forwardRef<
         `PPP HH:mm${!granularity || granularity === 'second' ? ':ss' : ''}`,
       hour12:
         displayFormat?.hour12 ??
-        `PP hh:mm${!granularity || granularity === 'second' ? ':ss' : ''} b`,
+        `PP hh:mm${!granularity || granularity === 'second' ? ':ss' : ''} b`
     };
 
     let loc = enUS;
@@ -816,7 +816,7 @@ const DateTimePicker = React.forwardRef<
         ...enUS,
         options,
         localize,
-        formatLong,
+        formatLong
       };
     }
 
@@ -839,13 +839,13 @@ const DateTimePicker = React.forwardRef<
               ) : hourCycle === 24 ? (
                 <span>
                   {format(displayDate, initHourFormat.hour24, {
-                    locale: loc,
+                    locale: loc
                   })}
                 </span>
               ) : (
                 <span>
                   {format(displayDate, initHourFormat.hour12, {
-                    locale: loc,
+                    locale: loc
                   })}
                 </span>
               )

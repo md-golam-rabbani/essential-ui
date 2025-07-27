@@ -6,5 +6,5 @@ export const switchControlProps: Omit<ISwitchControl, 'onSwitchChange'> = {
   id: 'switch-1',
   disabled: false,
   required: false,
-  error: false,
+  error: false
 };

@@ -14,8 +14,8 @@ const meta: Meta<typeof DateField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          birthDate: new Date(),
-        },
+          birthDate: new Date()
+        }
       });
 
       return (
@@ -29,8 +29,8 @@ const meta: Meta<typeof DateField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -40,22 +40,22 @@ type Story = StoryObj<typeof DateField<FormValues>>;
 export const Default: Story = {
   args: {
     name: 'birthDate',
-    label: 'Birth Date',
-  },
+    label: 'Birth Date'
+  }
 };
 
 export const Required: Story = {
   args: {
     name: 'birthDate',
     label: 'Birth Date',
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const Disabled: Story = {
   args: {
     name: 'birthDate',
     label: 'Disabled Date Field',
-    disabled: true,
-  },
+    disabled: true
+  }
 };

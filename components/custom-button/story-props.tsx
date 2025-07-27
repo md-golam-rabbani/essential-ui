@@ -5,18 +5,18 @@ export const commonButtonProps: Omit<ICustomButton, 'onButtonClick' | 'type'> =
     children: 'Button Label',
     colorScheme: 'primary',
     variant: 'fill',
-    disabled: false,
+    disabled: false
   };
 
 export const normalButtonProps: ICustomButton = {
   ...commonButtonProps,
   type: 'action',
-  onButtonClick: () => alert('Hi, i am clicked!'),
+  onButtonClick: () => alert('Hi, i am clicked!')
 };
 
 export const normalButtonLoadingProps: ICustomButton = {
   ...normalButtonProps,
-  loading: true,
+  loading: true
 };
 
 export const linkButtonProps: ICustomButton = {
@@ -26,15 +26,15 @@ export const linkButtonProps: ICustomButton = {
   variant: 'fill',
   disabled: false,
   href: 'https://www.lemonhive.com/',
-  target: '_blank',
+  target: '_blank'
 };
 
 export const formButtonProps: IFormButton = {
   ...commonButtonProps,
-  type: 'submit',
+  type: 'submit'
 };
 
 export const inlineButtonProps: IInlineButton = {
   ...commonButtonProps,
-  type: 'inline',
+  type: 'inline'
 };

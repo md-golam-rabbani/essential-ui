@@ -22,7 +22,7 @@ type Props = {
 export const ResetButton = ({
   resetLabel = 'Reset',
   disabled = false,
-  className,
+  className
 }: Props) => {
   const form = useFormContext();
   return (

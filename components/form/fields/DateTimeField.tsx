@@ -12,7 +12,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { cn } from '@/lib/shadcn/utils';
 
@@ -40,7 +40,7 @@ export const DateTimeField = <T extends FieldValues>({
   label,
   required = false,
   disabled = false,
-  className,
+  className
 }: Props<T>) => {
   const { control } = useFormContext<T>();
 

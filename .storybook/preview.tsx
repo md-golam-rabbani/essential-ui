@@ -9,21 +9,21 @@ import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 const preview: Preview = {
   parameters: {
     chromatic: {
-      disableSnapshot: true,
+      disableSnapshot: true
     },
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/i,
-      },
+        date: /Date$/i
+      }
     },
     nextjs: {
-      appDirectory: true,
+      appDirectory: true
     },
     viewport: {
-      viewports: INITIAL_VIEWPORTS,
+      viewports: INITIAL_VIEWPORTS
     },
-    layout: 'fullscreen',
+    layout: 'fullscreen'
   },
 
   decorators: [
@@ -46,8 +46,8 @@ const preview: Preview = {
           <Toaster />
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default preview;

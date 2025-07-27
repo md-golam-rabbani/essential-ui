@@ -35,7 +35,7 @@ export const CustomModal = ({
   modalOpen,
   onCustomModalChange,
   contentWrapperClassName,
-  closeOnOutSideClick,
+  closeOnOutSideClick
 }: ICustomModal) => {
   return (
     <Dialog open={modalOpen} onOpenChange={onCustomModalChange}>

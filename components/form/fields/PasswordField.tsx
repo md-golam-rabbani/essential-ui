@@ -10,7 +10,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '../../ui/form';
 import { Input } from '../../ui/input';
 import { cn } from '@/lib/shadcn/utils';
@@ -45,7 +45,7 @@ const requirements: Requirement[] = [
   { regex: /[A-Z]/, label: 'At least one uppercase letter' },
   { regex: /[a-z]/, label: 'At least one lowercase letter' },
   { regex: /[0-9]/, label: 'At least one number' },
-  { regex: /[^A-Za-z0-9]/, label: 'At least one special character' },
+  { regex: /[^A-Za-z0-9]/, label: 'At least one special character' }
 ];
 
 /**
@@ -84,7 +84,7 @@ export const PasswordField = <T extends FieldValues>({
   iconClass,
   inputClass,
   labelClassName,
-  loading,
+  loading
 }: PasswordFieldProps<T>) => {
   const { control, watch } = useFormContext<T>();
   const password = watch(name);
@@ -172,6 +172,6 @@ const usePasswordField = (password: string) => {
     showPassword,
     setShowPassword,
     strength,
-    checks,
+    checks
   };
 };

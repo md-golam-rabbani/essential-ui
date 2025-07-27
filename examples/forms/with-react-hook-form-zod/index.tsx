@@ -37,15 +37,15 @@ export default function Form() {
     handleSubmit,
     reset,
     control,
-    formState: { isSubmitting, errors },
+    formState: { isSubmitting, errors }
   } = useForm<IFormFields>({
     resolver: zodResolver(formSchema),
     mode: 'all',
     defaultValues: {
       languages: [],
       interest: false,
-      terms: false,
-    },
+      terms: false
+    }
   });
 
   /**
@@ -216,20 +216,20 @@ export default function Form() {
                   items={[
                     {
                       label: 'Select job Role',
-                      value: '',
+                      value: ''
                     },
                     {
                       label: 'Frontend',
-                      value: 'frontend',
+                      value: 'frontend'
                     },
                     {
                       label: 'Backend',
-                      value: 'backend',
+                      value: 'backend'
                     },
                     {
                       label: 'FullStack',
-                      value: 'fullstack',
-                    },
+                      value: 'fullstack'
+                    }
                   ]}
                   label="Job Role"
                   helperText="Please select a job role"

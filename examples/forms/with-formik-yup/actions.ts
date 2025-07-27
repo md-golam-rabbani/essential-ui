@@ -14,8 +14,8 @@ export async function formSubmit(
       service: 'gmail',
       auth: {
         user: process.env.CONTACT_MAIL_ADDRESS,
-        pass: process.env.CONTACT_MAIL_PASSWORD,
-      },
+        pass: process.env.CONTACT_MAIL_PASSWORD
+      }
     });
 
     const mailOptions = {
@@ -47,7 +47,7 @@ export async function formSubmit(
           <br/>
           <h3 style="margin:0; margin-bottom:8px">Languages:</h3>
           <p style="margin-top:0">${languages?.join(', ')}</p>
-        `,
+        `
     };
 
     await transporter.sendMail(mailOptions);
@@ -55,7 +55,7 @@ export async function formSubmit(
     return {
       isSuccess: true,
       data: true,
-      message: 'Thanks for getting in touch',
+      message: 'Thanks for getting in touch'
     };
   } catch (error) {
     console.error(`Form Error: ${JSON.stringify(error)}`);
@@ -63,7 +63,7 @@ export async function formSubmit(
     return {
       success: false,
       data: null,
-      message: 'Internal Server Error',
+      message: 'Internal Server Error'
     };
   }
 }

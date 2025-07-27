@@ -30,46 +30,46 @@ export function Typography(props: ITypography) {
 const TYPOGRAPHY_DEFINITIONS: TypographyDefinitions = {
   hero: {
     tag: 'h2',
-    classNames: cn('tracking-tight', styles['hero']),
+    classNames: cn('tracking-tight', styles['hero'])
   },
   h1: {
     tag: 'h2',
-    classNames: cn('tracking-tight', styles['h1']),
+    classNames: cn('tracking-tight', styles['h1'])
   },
   h2: {
     tag: 'h2',
-    classNames: cn('tracking-tight', styles['h2']),
+    classNames: cn('tracking-tight', styles['h2'])
   },
   h3: {
     tag: 'h3',
-    classNames: cn('tracking-tight', styles['h3']),
+    classNames: cn('tracking-tight', styles['h3'])
   },
   s1: {
     tag: 'h4',
-    classNames: cn(styles['s1']),
+    classNames: cn(styles['s1'])
   },
   s2: {
     tag: 'h4',
-    classNames: cn('text-sm'),
+    classNames: cn('text-sm')
   },
   o1: {
     tag: 'span',
-    classNames: cn('block text-sm font-bold tracking-wide'),
+    classNames: cn('block text-sm font-bold tracking-wide')
   },
   c1: {
     tag: 'span',
-    classNames: cn('block text-xs'),
+    classNames: cn('block text-xs')
   },
   q1: {
     tag: 'p',
-    classNames: cn('text-md italic tracking-tight lg:text-lg'),
+    classNames: cn('text-md italic tracking-tight lg:text-lg')
   },
   p1: {
     tag: 'p',
-    classNames: cn('text-base'),
+    classNames: cn('text-base')
   },
   p2: {
     tag: 'p',
-    classNames: cn('text-sm'),
-  },
+    classNames: cn('text-sm')
+  }
 };

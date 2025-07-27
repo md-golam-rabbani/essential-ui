@@ -12,45 +12,45 @@ const meta: Meta<typeof CustomPopover> = {
   argTypes: {
     onCustomPopoverChange: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     anchor: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     trigger: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     content: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     className: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     contentWrapperClassName: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     scrollBarClassName: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     scrollAreaViewportClassName: {
       table: {
-        disable: true,
-      },
-    },
-  },
+        disable: true
+      }
+    }
+  }
 };
 
 export default meta;
@@ -59,7 +59,7 @@ type Story = StoryObj<typeof CustomPopover>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    closeOnOutSideClick: true,
+    closeOnOutSideClick: true
   },
   decorators: [
     () => {
@@ -114,8 +114,8 @@ export const Primary: Story = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export const AsyncAwait: Story = {
@@ -179,6 +179,6 @@ export const AsyncAwait: Story = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };

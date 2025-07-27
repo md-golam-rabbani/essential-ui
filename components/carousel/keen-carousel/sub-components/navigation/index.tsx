@@ -8,7 +8,7 @@ export function KeenCarouselNavigationButton({
   onClick,
   disabled,
   iconName,
-  className,
+  className
 }: IKeenCarouselNavigationButton) {
   const wrapperClasses = cn(
     // Typo

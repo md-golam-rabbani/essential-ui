@@ -13,14 +13,14 @@ const meta: Meta<typeof SwitchControl> = {
   argTypes: {
     name: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     onSwitchChange: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (Story, args) => {
@@ -38,8 +38,8 @@ const meta: Meta<typeof SwitchControl> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -58,6 +58,6 @@ export const Default: Story = {
           onSwitchChange={() => updateArgs({ ...args, checked: !args.checked })}
         />
       );
-    },
-  ],
+    }
+  ]
 };

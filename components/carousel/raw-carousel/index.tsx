@@ -46,7 +46,7 @@ export function RawCarousel({
   navigationPrevBtnClassName,
   navigationNextBtnClassName,
   mainWrapperClassName,
-  wrapperClassName,
+  wrapperClassName
 }: IRawCarousel) {
   const [wrapperWidth, setWrapperWidth] = useState(0);
   const [scrollBarWidth, setScrollBarWidth] = useState(0);
@@ -75,7 +75,7 @@ export function RawCarousel({
     '--md-view': itemPerSlide?.md,
     '--lg-view': itemPerSlide?.lg,
     '--xl-view': itemPerSlide?.xl,
-    '--2xl-view': itemPerSlide?.['2xl'],
+    '--2xl-view': itemPerSlide?.['2xl']
   } as CSSProperties;
 
   // Item gap
@@ -85,7 +85,7 @@ export function RawCarousel({
     '--md-gap': `${itemGap?.md}px`,
     '--lg-gap': `${itemGap?.lg}px`,
     '--xl-gap': `${itemGap?.xl}px`,
-    '--2xl-gap': `${itemGap?.['2xl']}px`,
+    '--2xl-gap': `${itemGap?.['2xl']}px`
   } as CSSProperties;
 
   return (
@@ -122,7 +122,7 @@ export function RawCarousel({
             ...slidesPerView,
             ...gapPerItem,
             '--scrollbar-width': `${scrollBarWidth}px`,
-            '--container-side-gap': `calc((100vw - var(--scrollbar-width) - ${wrapperWidth}px) / 2)`,
+            '--container-side-gap': `calc((100vw - var(--scrollbar-width) - ${wrapperWidth}px) / 2)`
           } as CSSProperties
         }
       >

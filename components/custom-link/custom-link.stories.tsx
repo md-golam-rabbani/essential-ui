@@ -13,15 +13,15 @@ const meta: Meta<typeof CustomLink> = {
     ...customLinkProps,
     className: cn(
       'underline text-lg lg:text-2xl font-semibold hover:text-info transition-colors aria-disabled:text-black/50'
-    ),
+    )
   },
   decorators: [
     (Story) => (
       <div className="section-padding-primary container">
         <Story />
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export default meta;

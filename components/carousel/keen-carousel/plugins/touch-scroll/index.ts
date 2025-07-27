@@ -18,8 +18,8 @@ export const keenCarouselTouchScrollPlugin: KeenSliderPlugin = (slider) => {
       new CustomEvent(name, {
         detail: {
           x: position.x,
-          y: position.y,
-        },
+          y: position.y
+        }
       })
     );
   }
@@ -27,7 +27,7 @@ export const keenCarouselTouchScrollPlugin: KeenSliderPlugin = (slider) => {
   function wheelStart(e: WheelEvent) {
     position = {
       x: e.pageX,
-      y: e.pageY,
+      y: e.pageY
     };
     dispatch(e, 'ksDragStart');
   }
@@ -59,7 +59,7 @@ export const keenCarouselTouchScrollPlugin: KeenSliderPlugin = (slider) => {
 
   slider.on('created', () => {
     slider.container.addEventListener('wheel', eventWheel, {
-      passive: false,
+      passive: false
     });
   });
 };

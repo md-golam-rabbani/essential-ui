@@ -11,39 +11,39 @@ const meta: Meta<typeof SelectControl> = {
   argTypes: {
     onSelectChange: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     items: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     name: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     className: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     helperTextClassName: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     labelClassName: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     showErrorMsg: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (Story, args) => {
@@ -54,8 +54,8 @@ const meta: Meta<typeof SelectControl> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -74,6 +74,6 @@ export const Default: Story = {
           onSelectChange={(value) => updateArgs({ ...args, value })}
         />
       );
-    },
-  ],
+    }
+  ]
 };

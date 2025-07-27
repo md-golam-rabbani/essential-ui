@@ -29,7 +29,7 @@ export const formSchema = Yup.object({
   terms: Yup.boolean().oneOf(
     [true],
     'You must agree to the terms and conditions'
-  ),
+  )
 });
 
 export type IFormFields = Yup.InferType<typeof formSchema>;
@@ -44,5 +44,5 @@ export const initialFormFieldValues: IFormFields = {
   jobLocation: '',
   languages: [],
   interest: false,
-  terms: false,
+  terms: false
 };

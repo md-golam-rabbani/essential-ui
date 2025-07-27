@@ -32,7 +32,7 @@ export function InputControl({
   labelClassName,
   helperText,
   helperTextClassName,
-  showErrorMsg,
+  showErrorMsg
 }: IInputControl) {
   const [inputType, setInputType] = useState<IInputControl['type']>(type);
   const uniqueId = useUniqueId();
@@ -81,7 +81,7 @@ export function InputControl({
             className: inputClassName,
             disabled: disabled,
             isError: !!error,
-            isValue,
+            isValue
           })}
           aria-disabled={disabled}
           aria-required={required}

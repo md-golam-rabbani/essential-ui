@@ -16,7 +16,7 @@ export function CustomLink({
   prefetch = true,
   className,
   ariaLabel,
-  target,
+  target
 }: ICustomLink) {
   return (
     <Link

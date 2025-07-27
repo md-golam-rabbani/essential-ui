@@ -8,5 +8,5 @@ export const primary = Inter({
   subsets: ['latin'],
   variable: '--font-primary',
   style: ['normal'],
-  display: 'optional',
+  display: 'optional'
 });

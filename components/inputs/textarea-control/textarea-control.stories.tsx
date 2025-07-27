@@ -13,14 +13,14 @@ const meta: Meta<typeof TextareaControl> = {
   argTypes: {
     name: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     onTextareaChange: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (Story, args) => {
@@ -33,8 +33,8 @@ const meta: Meta<typeof TextareaControl> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -55,6 +55,6 @@ export const Default: Story = {
           }
         />
       );
-    },
-  ],
+    }
+  ]
 };

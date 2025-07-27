@@ -9,5 +9,5 @@ export const keenCarouselOptions: Omit<
   hasPagination: false,
   hasProgress: false,
   currentSlide: 0,
-  sliderReady: false,
+  sliderReady: false
 };

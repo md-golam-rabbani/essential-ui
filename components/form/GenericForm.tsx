@@ -11,7 +11,7 @@ import {
   SubmitHandler,
   useForm,
   UseFormReturn,
-  Mode,
+  Mode
 } from 'react-hook-form';
 import { z, ZodTypeAny } from 'zod';
 import { Form } from '@/components/ui/form';
@@ -51,12 +51,12 @@ export const GenericForm = <TSchema extends ZodTypeAny>({
   schema,
   onSubmit,
   children,
-  mode = 'onChange',
+  mode = 'onChange'
 }: GenericFormProps<TSchema>) => {
   const form = useForm<z.infer<TSchema>>({
     defaultValues: initialValues as DefaultValues<z.infer<TSchema>>,
     resolver: zodResolver(schema),
-    mode,
+    mode
   });
 
   useImperativeHandle(ref, () => ({
@@ -68,7 +68,7 @@ export const GenericForm = <TSchema extends ZodTypeAny>({
     ) => form.setValue(name as Path<z.infer<TSchema>>, value),
     formState: form.formState,
     control: form.control,
-    form: form,
+    form: form
   }));
 
   return (

@@ -14,8 +14,8 @@ const meta: Meta<typeof DateTimeField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          appointment: new Date(),
-        },
+          appointment: new Date()
+        }
       });
 
       return (
@@ -29,8 +29,8 @@ const meta: Meta<typeof DateTimeField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -40,22 +40,22 @@ type Story = StoryObj<typeof DateTimeField<FormValues>>;
 export const Default: Story = {
   args: {
     name: 'appointment',
-    label: 'Appointment Date & Time',
-  },
+    label: 'Appointment Date & Time'
+  }
 };
 
 export const Required: Story = {
   args: {
     name: 'appointment',
     label: 'Appointment Date & Time',
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const Disabled: Story = {
   args: {
     name: 'appointment',
     label: 'Disabled Appointment',
-    disabled: true,
-  },
+    disabled: true
+  }
 };

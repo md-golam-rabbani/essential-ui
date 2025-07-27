@@ -20,7 +20,7 @@ export const CheckboxControl = ({
   className,
   required,
   onCheckboxChange,
-  ariaLabel,
+  ariaLabel
 }: ICheckboxControl) => {
   const checkboxClasses = cn(
     /** Default style */

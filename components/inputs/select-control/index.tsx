@@ -7,7 +7,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from '@/components/ui/select';
 import { cn } from '@/lib/shadcn/utils';
 import { useState } from 'react';
@@ -42,7 +42,7 @@ export const SelectControl = ({
   helperTextClassName,
   value,
   disabled,
-  className,
+  className
 }: ISelectControl) => {
   const uniqueId = useUniqueId();
   const isValue = value && value.toString().length > 0 ? true : false;
@@ -81,7 +81,7 @@ export const SelectControl = ({
                 className: cn(
                   className,
                   'opacity-100 disabled:opacity-100' // Prevent default disable style
-                ),
+                )
               }),
               styles['default-form-input'],
               styles['hide-input-appearance'],

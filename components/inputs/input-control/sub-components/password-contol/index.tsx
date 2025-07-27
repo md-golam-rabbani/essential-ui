@@ -11,7 +11,7 @@ export const PasswordControl = ({
   type,
   disabled,
   onIconClick,
-  className,
+  className
 }: IProps) => {
   return (
     <button

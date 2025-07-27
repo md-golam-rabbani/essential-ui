@@ -32,20 +32,20 @@ export const CustomSheet = ({
   className,
   scrollBarClassName,
   contentWrapperClassName,
-  scrollAreaViewportClassName,
+  scrollAreaViewportClassName
 }: ICustomSheet) => {
   const sheetContentClasses = cn(
     'bg-white p-0',
     {
       'w-full max-w-[20rem] md:max-w-105': side == 'left' || side == 'right',
-      'w-full': side == 'top' || side == 'bottom',
+      'w-full': side == 'top' || side == 'bottom'
     },
     className
   );
 
   const scrollAreaClasses = cn('[&>div>div]:block!', {
     'h-screen max-md:h-dvh': side == 'left' || side == 'right',
-    'h-[80vh] max-md:h-[70dvh]': side == 'top' || side == 'bottom',
+    'h-[80vh] max-md:h-[70dvh]': side == 'top' || side == 'bottom'
   });
 
   return (

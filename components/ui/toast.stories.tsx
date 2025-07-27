@@ -45,7 +45,7 @@ const meta: Meta<typeof Toaster> = {
               disabled={false}
               onButtonClick={() => {
                 toast.message('Event has been created', {
-                  description: 'Monday, January 3rd at 6:00pm',
+                  description: 'Monday, January 3rd at 6:00pm'
                 });
               }}
             >
@@ -109,8 +109,8 @@ const meta: Meta<typeof Toaster> = {
         </div>
         <Story />
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export default meta;

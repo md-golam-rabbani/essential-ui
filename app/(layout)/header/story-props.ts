@@ -5,22 +5,22 @@ export const headerProps: IHeader = {
     {
       label: 'Home',
       href: '/',
-      disabled: false,
+      disabled: false
     },
     {
       label: 'About',
       href: '/',
-      disabled: false,
+      disabled: false
     },
     {
       label: 'Services',
       href: '/',
-      disabled: false,
+      disabled: false
     },
     {
       label: 'Blogs',
       href: '/',
-      disabled: false,
-    },
-  ],
+      disabled: false
+    }
+  ]
 };

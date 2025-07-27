@@ -17,8 +17,8 @@ const meta: Meta<typeof TextField<FormValues>> = {
       const methods = useForm<FormValues>({
         defaultValues: {
           name: '',
-          email: '',
-        },
+          email: ''
+        }
       });
 
       return (
@@ -32,8 +32,8 @@ const meta: Meta<typeof TextField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -44,16 +44,16 @@ export const Default: Story = {
   args: {
     name: 'name',
     label: 'Name',
-    placeholder: 'Enter your name',
-  },
+    placeholder: 'Enter your name'
+  }
 };
 
 export const Required: Story = {
   args: {
     name: 'name',
     label: 'Name',
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const WithIcon: Story = {
@@ -61,8 +61,8 @@ export const WithIcon: Story = {
     name: 'email',
     label: 'Email',
     type: 'email',
-    icon: <X />,
-  },
+    icon: <X />
+  }
 };
 
 export const WithAction: Story = {
@@ -70,22 +70,22 @@ export const WithAction: Story = {
     name: 'email',
     label: 'Clearable Email',
     icon: <X />,
-    action: () => alert('Cleared'),
-  },
+    action: () => alert('Cleared')
+  }
 };
 
 export const LoadingState: Story = {
   args: {
     name: 'name',
     label: 'Loading Field',
-    loading: true,
-  },
+    loading: true
+  }
 };
 
 export const Disabled: Story = {
   args: {
     name: 'name',
     label: 'Disabled Field',
-    disabled: true,
-  },
+    disabled: true
+  }
 };

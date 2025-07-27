@@ -5,14 +5,14 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from '@/components/ui/select';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
 import { RequiredSign } from './RequiredSign';
@@ -61,7 +61,7 @@ export const SelectField = <T extends FieldValues>({
   required = false,
   className,
   inputClassName,
-  disabled,
+  disabled
 }: Props<T>) => {
   const { control } = useFormContext<T>();
 

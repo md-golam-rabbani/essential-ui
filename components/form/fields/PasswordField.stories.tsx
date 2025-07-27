@@ -14,8 +14,8 @@ const meta: Meta<typeof PasswordField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          password: '',
-        },
+          password: ''
+        }
       });
 
       return (
@@ -29,8 +29,8 @@ const meta: Meta<typeof PasswordField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -40,24 +40,24 @@ type Story = StoryObj<typeof PasswordField<FormValues>>;
 export const Default: Story = {
   args: {
     name: 'password',
-    label: 'Password',
-  },
+    label: 'Password'
+  }
 };
 
 export const WithStrength: Story = {
   args: {
     name: 'password',
     label: 'Password',
-    showStrength: true,
-  },
+    showStrength: true
+  }
 };
 
 export const WithMessage: Story = {
   args: {
     name: 'password',
     label: 'Password',
-    showMessage: true,
-  },
+    showMessage: true
+  }
 };
 
 export const FullFeatures: Story = {
@@ -66,22 +66,22 @@ export const FullFeatures: Story = {
     label: 'Password',
     required: true,
     showStrength: true,
-    showMessage: true,
-  },
+    showMessage: true
+  }
 };
 
 export const Loading: Story = {
   args: {
     name: 'password',
     label: 'Password',
-    loading: true,
-  },
+    loading: true
+  }
 };
 
 export const Disabled: Story = {
   args: {
     name: 'password',
     label: 'Password',
-    disabled: true,
-  },
+    disabled: true
+  }
 };

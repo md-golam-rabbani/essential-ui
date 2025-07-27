@@ -9,5 +9,5 @@ export const textareaControlProps: Omit<ITextareaControl, 'onTextareaChange'> =
     required: true,
     disabled: false,
     showErrorMsg: true,
-    helperText: 'Helper text',
+    helperText: 'Helper text'
   };

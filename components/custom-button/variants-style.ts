@@ -31,31 +31,31 @@ export const customButtonVariants = cva(
     'ring-offset-blue-500',
     'focus-visible:outline-hidden',
     'focus-visible:ring-2',
-    'focus-visible:ring-offset-2',
+    'focus-visible:ring-offset-2'
   ],
   {
     variants: {
       // Button color variants
       colorScheme: {
         primary: '',
-        secondary: '',
+        secondary: ''
       },
       // Button appearance (fill or outline)
       variant: {
         fill: '',
-        outline: '',
+        outline: ''
       },
 
       // Disabled state
       disabled: {
         true: ['pointer-events-none'],
-        false: '',
+        false: ''
       },
       // Loading state
       loading: {
         true: ['pointer-events-none', 'text-white'],
-        false: '',
-      },
+        false: ''
+      }
     },
 
     // Styles when multiple variant conditions are met
@@ -71,15 +71,15 @@ export const customButtonVariants = cva(
           'active:bg-blue-700',
           'active:border-blue-700',
           'hover:bg-blue-700',
-          'hover:border-blue-700',
-        ],
+          'hover:border-blue-700'
+        ]
       },
       // loading
       {
         colorScheme: 'primary',
         variant: 'fill',
         loading: true,
-        className: ['bg-blue-500', 'text-white'],
+        className: ['bg-blue-500', 'text-white']
       },
       // diabled
       {
@@ -92,8 +92,8 @@ export const customButtonVariants = cva(
           // Active
           'active:bg-blue-700',
           // Hover
-          'hover:bg-blue-700',
-        ],
+          'hover:bg-blue-700'
+        ]
       },
 
       // Primary outline
@@ -109,15 +109,15 @@ export const customButtonVariants = cva(
           'active:border-blue-700',
           'hover:text-white',
           'hover:bg-blue-700',
-          'hover:border-blue-700',
-        ],
+          'hover:border-blue-700'
+        ]
       },
       // loading
       {
         colorScheme: 'primary',
         variant: 'outline',
         loading: true,
-        className: ['bg-blue-500', 'text-white'],
+        className: ['bg-blue-500', 'text-white']
       },
       // disabled
       {
@@ -130,8 +130,8 @@ export const customButtonVariants = cva(
           // Active
           'active:border-blue-700 active:text-white active:bg-blue-700',
           // Hover
-          'hover:border-blue-700 hover:text-white hover:bg-blue-700',
-        ],
+          'hover:border-blue-700 hover:text-white hover:bg-blue-700'
+        ]
       },
 
       // Secondary fill
@@ -145,15 +145,15 @@ export const customButtonVariants = cva(
           'active:bg-gray-400',
           'active:border-gray-400',
           'hover:bg-gray-400',
-          'hover:border-gray-400',
-        ],
+          'hover:border-gray-400'
+        ]
       },
       // Loading
       {
         colorScheme: 'secondary',
         variant: 'fill',
         loading: true,
-        className: ['bg-slate-500', 'text-black'],
+        className: ['bg-slate-500', 'text-black']
       },
       // disabled
       {
@@ -166,8 +166,8 @@ export const customButtonVariants = cva(
           // Active
           'active:bg-gray-400',
           // Hover
-          'hover:bg-gray-400',
-        ],
+          'hover:bg-gray-400'
+        ]
       },
 
       // Secondary outline
@@ -182,15 +182,15 @@ export const customButtonVariants = cva(
           'active:border-gray-400',
           'hover:text-black',
           'hover:bg-gray-400',
-          'hover:border-gray-400',
-        ],
+          'hover:border-gray-400'
+        ]
       },
       // Loading
       {
         colorScheme: 'secondary',
         variant: 'outline',
         loading: true,
-        className: ['bg-slate-500', 'text-black'],
+        className: ['bg-slate-500', 'text-black']
       },
       // disabled
       {
@@ -203,9 +203,9 @@ export const customButtonVariants = cva(
           // Active
           'active:bg-gray-400 active:border-gray-400',
           // Hover
-          'hover:bg-gray-400 hover:border-gray-400',
-        ],
-      },
+          'hover:bg-gray-400 hover:border-gray-400'
+        ]
+      }
     ],
 
     // Default variants for the button
@@ -213,7 +213,7 @@ export const customButtonVariants = cva(
       colorScheme: 'primary',
       variant: 'fill',
       disabled: false,
-      loading: false,
-    },
+      loading: false
+    }
   }
 );

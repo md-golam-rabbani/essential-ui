@@ -14,8 +14,8 @@ const meta: Meta<typeof SelectField<FormValues>> = {
     (Story) => {
       const methods = useForm<FormValues>({
         defaultValues: {
-          publishedStatus: '',
-        },
+          publishedStatus: ''
+        }
       });
 
       return (
@@ -29,8 +29,8 @@ const meta: Meta<typeof SelectField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -40,7 +40,7 @@ type Story = StoryObj<typeof SelectField<FormValues>>;
 const options = [
   { value: 'draft', text: 'Draft' },
   { value: 'published', text: 'Published' },
-  { value: 'archived', text: 'Archived' },
+  { value: 'archived', text: 'Archived' }
 ];
 
 export const Default: Story = {
@@ -48,8 +48,8 @@ export const Default: Story = {
     name: 'publishedStatus',
     label: 'Published Status',
     placeholder: 'Select status',
-    options,
-  },
+    options
+  }
 };
 
 export const Required: Story = {
@@ -58,8 +58,8 @@ export const Required: Story = {
     label: 'Published Status',
     placeholder: 'Select status',
     options,
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const Disabled: Story = {
@@ -68,8 +68,8 @@ export const Disabled: Story = {
     label: 'Published Status',
     placeholder: 'Select status',
     options,
-    disabled: true,
-  },
+    disabled: true
+  }
 };
 
 export const WithCustomClasses: Story = {
@@ -78,6 +78,6 @@ export const WithCustomClasses: Story = {
     label: 'Status (Styled)',
     options,
     inputClassName: 'border-red-500 text-red-700',
-    className: 'bg-yellow-50 p-4 rounded-lg',
-  },
+    className: 'bg-yellow-50 p-4 rounded-lg'
+  }
 };

@@ -8,7 +8,7 @@ import { icons } from './interface';
 const meta: Meta<typeof IconStore> = {
   title: 'Components/Icon Store',
   component: IconStore,
-  tags: ['autodocs'],
+  tags: ['autodocs']
 };
 
 export default meta;
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof IconStore>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const AllIcons: Story = {
-  render: () => <IconsTemplate />,
+  render: () => <IconsTemplate />
 };
 
 function IconsTemplate() {

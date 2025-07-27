@@ -19,19 +19,19 @@ const buttonVariants = cva(
           'bg-slate-100 text-slate-900 shadow-xs hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80',
         ghost:
           'hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-100/50 dark:hover:bg-slate-800 dark:hover:text-slate-50 dark:dark:hover:bg-slate-800/50',
-        link: 'text-slate-900 underline-offset-4 hover:underline dark:text-slate-50',
+        link: 'text-slate-900 underline-offset-4 hover:underline dark:text-slate-50'
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',
         sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',
         lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
-        icon: 'size-9',
-      },
+        icon: 'size-9'
+      }
     },
     defaultVariants: {
       variant: 'default',
-      size: 'default',
-    },
+      size: 'default'
+    }
   }
 );
 

@@ -6,7 +6,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { cn } from '@/lib/shadcn/utils';
 import { FieldValues, Path, useFormContext } from 'react-hook-form';
@@ -55,7 +55,7 @@ export const CheckboxField = <T extends FieldValues>({
   longGap = false,
   reverse = false,
   wrapperClassName,
-  className,
+  className
 }: Props<T>) => {
   const { control } = useFormContext<T>();
 

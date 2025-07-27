@@ -11,5 +11,5 @@ export const inputControlProps: Omit<IInputControl, 'onInputChange'> = {
   disabled: false,
   showErrorMsg: true,
   helperText: 'Helper text',
-  showSuccessIcon: false,
+  showSuccessIcon: false
 };

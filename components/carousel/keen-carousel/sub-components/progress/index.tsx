@@ -4,7 +4,7 @@ import { ICarouselProgressBar } from './interface';
 export function KeenCarouselProgressBar({
   progress,
   progressWrapperClassName,
-  progressCompleteBarClassName,
+  progressCompleteBarClassName
 }: ICarouselProgressBar) {
   return (
     <div
@@ -19,7 +19,7 @@ export function KeenCarouselProgressBar({
           progressCompleteBarClassName
         )}
         style={{
-          width: `${progress * 100}%`,
+          width: `${progress * 100}%`
         }}
         aria-valuenow={Number(progress * 100)}
         aria-labelledby="keen carousel progress label"

@@ -10,9 +10,9 @@ const meta: Meta<typeof TextComponent> = {
   argTypes: {
     buttons: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (Story) => (
@@ -21,8 +21,8 @@ const meta: Meta<typeof TextComponent> = {
           <Story />
         </div>
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export default meta;

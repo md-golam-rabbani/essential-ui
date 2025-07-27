@@ -16,8 +16,8 @@ const meta: Meta<typeof CheckboxField<FormValues>> = {
       const methods = useForm<FormValues>({
         defaultValues: {
           isActive: false,
-          isSubscribed: true,
-        },
+          isSubscribed: true
+        }
       });
 
       return (
@@ -31,8 +31,8 @@ const meta: Meta<typeof CheckboxField<FormValues>> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -42,46 +42,46 @@ type Story = StoryObj<typeof CheckboxField<FormValues>>;
 export const Default: Story = {
   args: {
     name: 'isActive',
-    label: 'Is Active',
-  },
+    label: 'Is Active'
+  }
 };
 
 export const Required: Story = {
   args: {
     name: 'isActive',
     label: 'Required Field',
-    required: true,
-  },
+    required: true
+  }
 };
 
 export const Disabled: Story = {
   args: {
     name: 'isActive',
     label: 'Disabled Field',
-    disabled: true,
-  },
+    disabled: true
+  }
 };
 
 export const ColumnLayout: Story = {
   args: {
     name: 'isSubscribed',
     label: 'Subscribe to Newsletter',
-    column: true,
-  },
+    column: true
+  }
 };
 
 export const ReverseOrder: Story = {
   args: {
     name: 'isSubscribed',
     label: 'Reverse Label Position',
-    reverse: true,
-  },
+    reverse: true
+  }
 };
 
 export const LongGap: Story = {
   args: {
     name: 'isSubscribed',
     label: 'Long Gap Layout',
-    longGap: true,
-  },
+    longGap: true
+  }
 };

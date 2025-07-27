@@ -1,7 +1,7 @@
 import {
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionTrigger
 } from '@/components/ui/accordion';
 import { ICustomAccordion } from '../../interface';
 import { cn } from '@/lib/shadcn/utils';

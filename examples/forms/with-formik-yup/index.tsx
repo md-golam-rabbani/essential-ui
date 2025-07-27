@@ -69,7 +69,7 @@ export default function Form() {
               isSubmitting,
               handleReset,
               handleSubmit,
-              setFieldValue,
+              setFieldValue
             }) => (
               <form className="grid gap-4" onSubmit={handleSubmit}>
                 {/* First name */}
@@ -168,20 +168,20 @@ export default function Form() {
                   items={[
                     {
                       label: 'Select job Role',
-                      value: '',
+                      value: ''
                     },
                     {
                       label: 'Frontend',
-                      value: 'frontend',
+                      value: 'frontend'
                     },
                     {
                       label: 'Backend',
-                      value: 'backend',
+                      value: 'backend'
                     },
                     {
                       label: 'FullStack',
-                      value: 'fullstack',
-                    },
+                      value: 'fullstack'
+                    }
                   ]}
                   label="Job Role"
                   helperText="Please select a job role"

@@ -10,7 +10,7 @@ export function KeenCarouselPagination({
   currentSlide,
   paginationWrapperClassName,
   paginationBulletClassName,
-  paginationBulletActiveClassName,
+  paginationBulletActiveClassName
 }: IKeenCarouselPagination) {
   return (
     <div
@@ -44,7 +44,7 @@ export function KeenCarouselPagination({
               // Conditional classes
               isActive && [
                 'cursor-default bg-blue-500',
-                paginationBulletActiveClassName,
+                paginationBulletActiveClassName
               ]
             )}
           ></button>

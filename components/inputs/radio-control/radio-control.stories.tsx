@@ -13,29 +13,29 @@ const meta: Meta<typeof RadioControl> = {
   argTypes: {
     name: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     value: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     id: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     className: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     onRadioChange: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (Story) => {
@@ -48,8 +48,8 @@ const meta: Meta<typeof RadioControl> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -75,8 +75,8 @@ export const Default: Story = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export const FormExample: Story = {
@@ -84,19 +84,19 @@ export const FormExample: Story = {
   argTypes: {
     checked: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     required: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     ariaLabel: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (_, args) => {
@@ -133,6 +133,6 @@ export const FormExample: Story = {
           )}
         </div>
       );
-    },
-  ],
+    }
+  ]
 };

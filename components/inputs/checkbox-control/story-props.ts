@@ -6,5 +6,5 @@ export const checkboxControlProps: Omit<ICheckboxControl, 'onCheckboxChange'> =
     checked: false,
     disabled: false,
     required: false,
-    error: false,
+    error: false
   };

@@ -39,7 +39,7 @@ export const ITEM_GAP: Breakpoints = {
   md: 16,
   lg: 20,
   xl: 24,
-  '2xl': 24,
+  '2xl': 24
 };
 
 export const ITEMS_PER_SLIDE: Breakpoints = {
@@ -48,5 +48,5 @@ export const ITEMS_PER_SLIDE: Breakpoints = {
   md: 2.2,
   lg: 3.2,
   xl: 3.5,
-  '2xl': 4.4,
+  '2xl': 4.4
 };

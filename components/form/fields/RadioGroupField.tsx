@@ -7,7 +7,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { RequiredSign } from './RequiredSign';
@@ -63,7 +63,7 @@ export const RadioGroupField = <T extends FieldValues>({
   columnGroup = true,
   rowGroup = false,
   groupWrapperClassName,
-  disabled,
+  disabled
 }: QuestionTypeRadioGroupProps<T>) => {
   const { control } = useFormContext<T>();
 

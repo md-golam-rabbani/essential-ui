@@ -11,9 +11,9 @@ const meta: Meta<typeof Typography> = {
   argTypes: {
     className: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (Story) => (
@@ -22,8 +22,8 @@ const meta: Meta<typeof Typography> = {
           <Story />
         </div>
       </div>
-    ),
-  ],
+    )
+  ]
 };
 
 export default meta;
@@ -33,8 +33,8 @@ type Story = StoryObj<typeof Typography>;
 export const Default: Story = {
   args: {
     size: 'hero',
-    children: typographyProps.children,
-  },
+    children: typographyProps.children
+  }
 };
 
 function ShowCase() {
@@ -59,7 +59,7 @@ function ShowCase() {
 export const AllShowCase: Story = {
   args: {
     size: 'hero',
-    children: typographyProps.children,
+    children: typographyProps.children
   },
-  render: ShowCase,
+  render: ShowCase
 };

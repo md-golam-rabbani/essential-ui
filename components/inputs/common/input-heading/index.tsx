@@ -67,7 +67,7 @@ export const InputHeading = ({
 const InputHeadingContent = ({
   label,
   disabled,
-  required,
+  required
 }: Pick<IInputHeading, 'label' | 'required' | 'disabled'>) => {
   return (
     <>

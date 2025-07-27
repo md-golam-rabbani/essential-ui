@@ -22,42 +22,42 @@ import { DateField } from '@/components/form/fields/DateField';
 const jobRoleOptions = [
   {
     text: 'Frontend',
-    value: 'frontend',
+    value: 'frontend'
   },
   {
     text: 'Backend',
-    value: 'backend',
+    value: 'backend'
   },
   {
     text: 'Full Stack',
-    value: 'fullstack',
-  },
+    value: 'fullstack'
+  }
 ];
 
 const jobLocationOptions = [
   {
     text: 'Remote',
-    value: 'remote',
+    value: 'remote'
   },
   {
     text: 'In office',
-    value: 'in-office',
-  },
+    value: 'in-office'
+  }
 ];
 
 const languagesOptions = [
   {
     text: 'Javascript',
-    value: 'Javascript',
+    value: 'Javascript'
   },
   {
     text: 'TypeScript',
-    value: 'TypeScript',
+    value: 'TypeScript'
   },
   {
     text: 'Python',
-    value: 'Python',
-  },
+    value: 'Python'
+  }
 ];
 
 /**
@@ -80,7 +80,7 @@ export default function FormExample() {
   const form = useForm({
     defaultValues: initialValues,
     resolver: zodResolver(formSchema),
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   const onSubmit: SubmitHandler<IFormFields> = async (data) => {

@@ -59,7 +59,7 @@ export const SCREENS = {
   md: '768px',
   lg: '1024px',
   xl: '1280px',
-  '2xl': '1536px',
+  '2xl': '1536px'
 };
 
 export type Breakpoints = Record<keyof typeof SCREENS | 'initial', number>;

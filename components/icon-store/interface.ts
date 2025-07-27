@@ -11,7 +11,7 @@ export const icons = [
   ...iconSpinner,
   ...iconChevron,
   ...iconMenu,
-  ...iconClose,
+  ...iconClose
 ];
 
 export type IconName = (typeof icons)[number];

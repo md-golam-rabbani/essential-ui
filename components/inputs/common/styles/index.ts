@@ -10,7 +10,7 @@ export function inputFieldCommonClassesGenerator({
   isError,
   isValue,
   disabled,
-  className,
+  className
 }: Params): string {
   return cn(
     // Layout styles
@@ -38,7 +38,7 @@ export function inputFieldCommonClassesGenerator({
     {
       'border-black hover:border-black focus:border-black': isValue,
       'border-danger hover:border-danger focus:border-danger': isError,
-      'border-gray-300 hover:border-gray-300 focus:border-gray-300': disabled,
+      'border-gray-300 hover:border-gray-300 focus:border-gray-300': disabled
     },
 
     // Additional custom className (optional)

@@ -5,5 +5,5 @@ export const radioControlProps: Omit<IRadioControl, 'onRadioChange'> = {
   checked: false,
   disabled: false,
   required: false,
-  error: false,
+  error: false
 };

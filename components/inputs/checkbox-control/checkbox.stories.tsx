@@ -15,29 +15,29 @@ const meta: Meta<typeof CheckboxControl> = {
   argTypes: {
     name: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     value: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     id: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     className: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     onCheckboxChange: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (Story, args) => {
@@ -50,8 +50,8 @@ const meta: Meta<typeof CheckboxControl> = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 export default meta;
@@ -77,8 +77,8 @@ export const Default: Story = {
           </div>
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
 
 const checkboxWrapperClasses = cn(
@@ -90,19 +90,19 @@ export const Example: Story = {
   argTypes: {
     checked: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     required: {
       table: {
-        disable: true,
-      },
+        disable: true
+      }
     },
     ariaLabel: {
       table: {
-        disable: true,
-      },
-    },
+        disable: true
+      }
+    }
   },
   decorators: [
     (_, args) => {
@@ -181,6 +181,6 @@ export const Example: Story = {
           )}
         </div>
       );
-    },
-  ],
+    }
+  ]
 };
