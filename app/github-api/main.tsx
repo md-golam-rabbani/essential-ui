@@ -36,7 +36,7 @@ type GitHubResponse = {
 type SortOrder = 'desc' | 'asc';
 
 const PAGE_SIZE = 5;
-const BASE_URL = 'https://api.github.com/search/repositori';
+const BASE_URL = 'https://api.github.com/search/repositories';
 
 type FetchReposParams = {
   page: number;
