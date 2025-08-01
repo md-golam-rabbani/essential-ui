@@ -36,7 +36,7 @@ type GitHubResponse = {
 type SortOrder = 'desc' | 'asc';
 
 const PAGE_SIZE = 5;
-const BASE_URL = 'https://api.github.com/search/repositories';
+const BASE_URL = 'https://api.github.com/search/repositori';
 
 type FetchReposParams = {
   page: number;
@@ -62,13 +62,38 @@ const buildQueryURL = ({
   return `${BASE_URL}?${params.toString()}`;
 };
 
+// export const fetchRepositories = async (
+//   params: FetchReposParams
+// ): Promise<GitHubResponse> => {
+//   const url = buildQueryURL(params);
+//   try {
+//     const res = await axios.get(url);
+//     return res.data;
+//   } catch (error: unknown) {
+//     // Axios error handling
+//     if (axios.isAxiosError(error)) {
+//       if (error?.response) {
+//         throw new Error(
+//           `GitHub API error: ${error.response.status} ${error.response.statusText}`
+//         );
+//       } else if (error?.request) {
+//         throw new Error('No response received from GitHub API');
+//       } else {
+//         throw new Error(`Request error: ${error.message}`);
+//       }
+//     }
+//     // Non-Axios error fallback
+//     throw new Error('An unknown error occurred');
+//   }
+// };
+
 export const fetchRepositories = async (
   params: FetchReposParams
 ): Promise<GitHubResponse> => {
   const url = buildQueryURL(params);
   const res = await fetch(url);
 
-  if (!res.ok) throw new Error(`GitHub API error: ${res.statusText}`);
+  if (!res.ok) throw new Error(`GitHub API error: ${res?.status}`);
 
   return res.json();
 };
