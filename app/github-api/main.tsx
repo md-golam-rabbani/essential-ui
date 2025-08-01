@@ -88,15 +88,15 @@ export function MainComponent() {
   const [page, setPage] = useState(1);
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
   const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearch = useDebounce(searchTerm, 2000);
+  const debouncedSearch = useDebounce(searchTerm, 500);
 
   const { data, error, isPending, isFetching } = useQuery<
     GitHubResponse,
     Error
   >({
     queryKey: ['repos', page, sortOrder, debouncedSearch],
-    queryFn: () =>
-      fetchRepositories({
+    queryFn: async () =>
+      await fetchRepositories({
         page,
         sortOrder,
         searchQuery: debouncedSearch
@@ -164,6 +164,8 @@ export function MainComponent() {
     );
   }
 
+  const disabled = isFetching || isPending;
+
   return (
     <div className="py-10 xl:py-12">
       <div className="container">
@@ -178,6 +180,7 @@ export function MainComponent() {
                 setPage(1);
                 setSearchTerm(e.target.value);
               }}
+              disabled={disabled}
             />
           </div>
 
@@ -185,6 +188,7 @@ export function MainComponent() {
             <Select
               value={sortOrder}
               onValueChange={(value) => setSortOrder(value as SortOrder)}
+              disabled={disabled}
             >
               <SelectTrigger className="w-[200px]">
                 <SelectValue placeholder="Select a fruit" />
