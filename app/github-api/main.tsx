@@ -5,9 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { githubApi } from './lib/api';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useDebouncedValue } from './hooks/useDebouncedValue';
 import {
   Select,
   SelectContent,
@@ -15,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
+import { useDebounce } from '@/hooks/useDebounce';
 
 type Repository = {
   id: number;
@@ -37,49 +36,71 @@ type GitHubResponse = {
 type SortOrder = 'desc' | 'asc';
 
 const PAGE_SIZE = 5;
-const PATH = '/search/repositories';
+const BASE_URL = 'https://api.github.com/search/repositories';
 
-const buildQuery = (
-  path: string,
-  page: number,
-  sortOrder: SortOrder,
-  searchQuery: string
-): string => {
+type FetchReposParams = {
+  page: number;
+  sortOrder: SortOrder;
+  searchQuery: string;
+};
+
+const buildQueryURL = ({
+  page,
+  sortOrder,
+  searchQuery
+}: FetchReposParams): string => {
+  const q = searchQuery.trim() ? `${searchQuery} in:name` : 'stars:>1';
+
   const params = new URLSearchParams({
-    q: searchQuery?.trim() ? `${searchQuery} in:name` : `stars:>1`,
-    // q: searchQuery.length ? searchQuery : 'stars:>1',
+    q,
     sort: 'stars',
     order: sortOrder,
-    page: page.toString(),
-    per_page: PAGE_SIZE.toString()
+    page: String(page),
+    per_page: String(PAGE_SIZE)
   });
 
-  return `${path}?${params.toString()}`;
+  return `${BASE_URL}?${params.toString()}`;
 };
 
-const fetchRepositories = async (
-  page: number,
-  sortOrder: SortOrder,
-  searchQuery: string
+export const fetchRepositories = async (
+  params: FetchReposParams
 ): Promise<GitHubResponse> => {
-  const res = await githubApi.get<GitHubResponse>(
-    buildQuery(PATH, page, sortOrder, searchQuery)
-  );
-  return res.data;
+  const url = buildQueryURL(params);
+  const res = await fetch(url);
+
+  if (!res.ok) throw new Error(`GitHub API error: ${res.statusText}`);
+
+  return res.json();
 };
+
+// const fetchRepositories = async (
+//   page: number,
+//   sortOrder: SortOrder,
+//   searchQuery: string
+// ): Promise<GitHubResponse> => {
+//   const res = await githubApi.get<GitHubResponse>(
+//     buildQuery(PATH, page, sortOrder, searchQuery)
+//   );
+//   return res.data;
+// };
 
 export function MainComponent() {
   const [page, setPage] = useState(1);
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
   const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearch = useDebouncedValue(searchTerm, 1000);
+  const debouncedSearch = useDebounce(searchTerm, 2000);
 
   const { data, error, isPending, isFetching } = useQuery<
     GitHubResponse,
     Error
   >({
     queryKey: ['repos', page, sortOrder, debouncedSearch],
-    queryFn: () => fetchRepositories(page, sortOrder, debouncedSearch)
+    queryFn: () =>
+      fetchRepositories({
+        page,
+        sortOrder,
+        searchQuery: debouncedSearch
+      })
   });
 
   const totalPages = useMemo(() => {
